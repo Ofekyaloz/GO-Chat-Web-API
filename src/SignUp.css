@@ -1,0 +1,16 @@
+
+.leftSide {
+    float: left;
+}
+
+.rightSide {
+    float: right;
+}
+
+.paddingUp {
+    padding-top: 40px;
+}
+
+.fontSize {
+    font-size: 18px;
+}
