@@ -25,3 +25,9 @@
     border-width: 10px;
     border-style: solid;
 }
+
+.InputText{
+    position: fixed;
+    top: 100px;
+    width: 960px;
+}
