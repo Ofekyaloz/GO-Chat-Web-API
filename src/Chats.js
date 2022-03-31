@@ -4,7 +4,7 @@ function Chats() {
     return (
         <div className={"container-fluid"}>
             <div className={"row"}>
-                <div className={"col-4"}>
+                <div className={"col-4 vh-100"}>
                     <div id={"SearchUser"} className={"input-group flex-nowrap"}>
                         <button className="btn btn-outline-secondary" type="button" id="searchbutton">
                             {/*search icon*/}
@@ -19,24 +19,24 @@ function Chats() {
                     </div>
 
                     <div className="list-group ChatHistory align-items-center" id="list-tab" role="tablist">
-                        <a className="list-group-item list-group-item-action m-1" id="list-home-list"
-                           data-bs-toggle="list" href="#list-home" role="tab" aria-controls="list-home">Home</a>
+                        <a className="list-group-item list-group-item-action m-1 Contact" id="list-home-list"
+                           data-bs-toggle="list" href="#list-home" role="tab" aria-controls="list-home">Ofek</a>
                         <a className="list-group-item list-group-item-action" id="list-profile-list"
                            data-bs-toggle="list" href="#list-profile" role="tab"
-                           aria-controls="list-profile">Profile</a>
+                           aria-controls="list-profile">Gili</a>
                         <a className="list-group-item list-group-item-action" id="list-messages-list"
                            data-bs-toggle="list" href="#list-messages" role="tab"
-                           aria-controls="list-messages">Messages</a>
+                           aria-controls="list-messages">Mom</a>
                         <a className="list-group-item list-group-item-action" id="list-settings-list"
                            data-bs-toggle="list" href="#list-settings" role="tab"
-                           aria-controls="list-settings">Settings</a>
+                           aria-controls="list-settings">Dad</a>
                     </div>
 
 
                 </div>
 
 
-                <div className={"col-8"} id={"ChatBlock"}>
+                <div className={"col-8 vh-100"} id={"ChatBlock"}>
                     <div className="input-group mb-3 InputText">
 
                         <div className="btn-group dropup">
@@ -64,7 +64,8 @@ function Chats() {
                                     </button>
                                 </li>
                                 <li>
-                                    <button type="button" className="dropdown-item" href="#" id="videobutton">
+                                    <button type="button" className="dropdown-item input-group" href="#"
+                                            id="videobutton">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                              fill="currentColor"
                                              className="bi bi-camera-video" viewBox="0 0 16 16">

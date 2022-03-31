@@ -2,7 +2,7 @@
     position: fixed;
     font-weight: 800;
     width: 495px;
-    top: 0px;
+    top: 5px;
     z-index: 100;
     background: aliceblue;
     left: 5px;
@@ -18,16 +18,18 @@
     border: gray;
 }
 
+.Contact{
+
+}
 #ChatBlock{
     background: cornsilk;
     margin-left: 0px;
-    border-bottom: #61dafb;
-    border-width: 10px;
+    border-width: 2px;
     border-style: solid;
 }
 
 .InputText{
     position: fixed;
-    top: 100px;
-    width: 960px;
+    bottom: 5px;
+    width: 995px;
 }
