@@ -1,7 +1,7 @@
 #SearchUser {
     position: fixed;
     font-weight: 800;
-    width: 495px;
+    width: 480px;
     top: 5px;
     z-index: 100;
     background: aliceblue;
@@ -10,16 +10,17 @@
 
 .ChatHistory{
     position: relative;
-    top: 40px;
+    top: 45px;
     z-index: 10;
     left: -10px;
     background: ghostwhite;
-    width: 498px;
+    width: 500px;
     border: gray;
 }
 
 .Contact{
-
+    text-align: center;
+    margin-right: 70px;
 }
 #ChatBlock{
     background: cornsilk;
@@ -32,4 +33,10 @@
     position: fixed;
     bottom: 5px;
     width: 995px;
+}
+
+.dropdown-item{
+    margin-bottom: 10px;
+    text-align: center;
+
 }

@@ -1,6 +1,6 @@
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
-import Chats from "./Chats"
+import Chats from "./Chats/Chats"
 
 import './App.css';
 import {BrowserRouter, Routes, Route} from "react-router-dom";

@@ -1,11 +1,12 @@
 import './Chats.css';
+import img1 from './img1.jpg'
 
 function Chats() {
     return (
         <div className={"container-fluid"}>
             <div className={"row"}>
-                <div className={"col-4 vh-100"}>
-                    <div id={"SearchUser"} className={"input-group flex-nowrap"}>
+                <div className={"col-4 vh-100 d-flex"}>
+                    <div id={"SearchUser"} className={"input-group"}>
                         <button className="btn btn-outline-secondary" type="button" id="searchbutton">
                             {/*search icon*/}
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -15,28 +16,44 @@ function Chats() {
                             </svg>
                         </button>
                         <input type="text" className={"form-control"} placeholder="Username" aria-label="Username"
-                               aria-describedby="addon-wrapping" maxLength={30}></input>
+                               aria-describedby="addon-wrapping" maxLength={35}></input>
                     </div>
 
                     <div className="list-group ChatHistory align-items-center" id="list-tab" role="tablist">
-                        <a className="list-group-item list-group-item-action m-1 Contact" id="list-home-list"
-                           data-bs-toggle="list" href="#list-home" role="tab" aria-controls="list-home">Ofek</a>
-                        <a className="list-group-item list-group-item-action" id="list-profile-list"
-                           data-bs-toggle="list" href="#list-profile" role="tab"
-                           aria-controls="list-profile">Gili</a>
-                        <a className="list-group-item list-group-item-action" id="list-messages-list"
-                           data-bs-toggle="list" href="#list-messages" role="tab"
-                           aria-controls="list-messages">Mom</a>
-                        <a className="list-group-item list-group-item-action" id="list-settings-list"
-                           data-bs-toggle="list" href="#list-settings" role="tab"
-                           aria-controls="list-settings">Dad</a>
-                    </div>
 
+                        <a className="list-group-item list-group-item-action" data-bs-toggle="list" href="#list-home"
+                           role="tab" aria-controls="list-home">
+                            <div className="d-flex w-100 justify-content-between Contact">
+                                <img src={img1} style={{blockSize:"50px"}}></img>
+                                <h5 className="mb-1">Ofek Yaloz</h5>
+                                <small>Yesterday</small>
+                            </div>
+                            <p style={{textAlign:"center"}} className="mb-1">what's up.</p>
+                        </a>
+
+                        <a className="list-group-item list-group-item-action" data-bs-toggle="list" href="#list-home"
+                           role="tab" aria-controls="list-home">
+                            <div className="d-flex w-100 justify-content-between">
+                                <h5 className="mb-1">Gili</h5>
+                                <small>2 days ago</small>
+                            </div>
+                            <p className="mb-1">LoL</p>
+                        </a>
+
+                        <a className="list-group-item list-group-item-action" data-bs-toggle="list" href="#list-home"
+                           role="tab" aria-controls="list-home">
+                            <div className="d-flex w-100 justify-content-between">
+                                <h5 className="mb-1">Mom</h5>
+                                <small>3 days ago</small>
+                            </div>
+                            <p className="mb-1">See ya.</p>
+                        </a>
+                    </div>
 
                 </div>
 
 
-                <div className={"col-8 vh-100"} id={"ChatBlock"}>
+                <div className={"col-8 vh-100 d-flex"} id={"ChatBlock"}>
                     <div className="input-group mb-3 InputText">
 
                         <div className="btn-group dropup">
