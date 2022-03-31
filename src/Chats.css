@@ -1,26 +1,26 @@
 #SearchUser {
     position: fixed;
     font-weight: 800;
-    width: 400px;
+    width: 495px;
     top: 0px;
     z-index: 100;
     background: aliceblue;
+    left: 5px;
 }
 
-.History{
+.ChatHistory{
     position: relative;
     top: 40px;
     z-index: 10;
-    left: 2px;
+    left: -10px;
     background: ghostwhite;
-    width: 400px;
+    width: 498px;
     border: gray;
 }
 
 #ChatBlock{
     background: cornsilk;
     margin-left: 0px;
-    margin-top: 10px;
     border-bottom: #61dafb;
     border-width: 10px;
     border-style: solid;
