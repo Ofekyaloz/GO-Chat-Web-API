@@ -8,12 +8,29 @@ import {useState} from 'react';
 
 function App() {
 
-    const usersList = [];
-
-    const admin = {
+    const usersList = [{
         username: "giligutfeld",
         password: "123456"
-    };
+    }, {
+        username: "ofekyaloz",
+        password: "234567"
+    }, {
+        username: "leomessi",
+        password: "101010"
+    }, {
+        username: "noakirel",
+        password: "111111"
+    }, {
+        username: "yonitlevi",
+        password: "202020"
+    }];
+
+    const myMap = new Map();
+    myMap.set("giligutfeld", "123456");
+    myMap.set("ofekyaloz", "234567");
+    myMap.set("leomessi", "101010");
+    myMap.set("noakirel", "111111");
+    myMap.set("yonitlevi", "202020");
 
     const [user, setUser] = useState({username: "", password: ""});
     const [error, setError] = useState("");
@@ -21,7 +38,7 @@ function App() {
     const Login = details => {
         console.log(details);
 
-        if (details.username == admin.username && details.password == admin.password) {
+        if (myMap.get(details.username) == details.password) {
             console.log('Logged in');
             setUser({
                 username: details.username,
@@ -29,7 +46,6 @@ function App() {
             });
             return true;
         } else {
-            console.log('Details are wrong!');
             return false;
         }
     }
