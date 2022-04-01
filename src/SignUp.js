@@ -4,7 +4,7 @@ function SignUp() {
     return (
         <div className="App">
             <header className="App-header">
-                <div className={"col-3"}>
+                <div className={"col-3 niceBorder"}>
                     <label>Sign up to GoChat</label>
                     <form className="row g-3 paddingUp">
                         <div className="col-md-6">
@@ -29,10 +29,10 @@ function SignUp() {
                         </div>
                         <div className="col-md-12 paddingUp">
                             <div className={"col-6"}>
-                                <a href={"/"} className="link-primary col-6 leftSide">Sign in</a>
+                                <a href={"/"} className="link-primary col-6 leftSide fontSize">Sign in</a>
                             </div>
-                            <div className={"col-6"}>
-                                <button type="submit" className="btn btn-primary rightSide">Submit</button>
+                            <div className={"col-6 rightSide"}>
+                                <button type="submit" className="btn btn-primary rightSide col-6">Submit</button>
                             </div>
                         </div>
                     </form>

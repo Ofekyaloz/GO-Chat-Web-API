@@ -1,7 +1,7 @@
 import './Chats.css';
 import img1 from './img1.jpg'
 
-function Chats() {
+function Chats({username}) {
     return (
         <div className={"container-fluid"}>
             <div className={"row"}>

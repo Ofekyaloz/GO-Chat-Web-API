@@ -8,7 +8,7 @@
     left: 5px;
 }
 
-.ChatHistory{
+.ChatHistory {
     position: relative;
     top: 45px;
     z-index: 10;
@@ -18,25 +18,25 @@
     border: gray;
 }
 
-.Contact{
+.Contact {
     text-align: center;
     margin-right: 70px;
 }
-#ChatBlock{
+
+#ChatBlock {
     background: cornsilk;
     margin-left: 0px;
     border-width: 2px;
     border-style: solid;
 }
 
-.InputText{
+.InputText {
     position: fixed;
     bottom: 5px;
     width: 995px;
 }
 
-.dropdown-item{
+.dropdown-item {
     margin-bottom: 10px;
     text-align: center;
-
 }

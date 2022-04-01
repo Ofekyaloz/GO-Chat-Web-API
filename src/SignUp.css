@@ -14,3 +14,14 @@
 .fontSize {
     font-size: 18px;
 }
+
+.littlePaddingFromLeft {
+    padding-left: 10px;
+}
+
+.niceBorder {
+    border-color: darkgrey;
+    border-width: 2px;
+    border-style: solid;
+    padding: 20px;
+}
