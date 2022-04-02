@@ -9,17 +9,29 @@ function Chats({username}) {
 
             <div className={"row"}>
                 <div className={"col-4 vh-100 d-flex"}>
+
+                    <div id={"UserInfo"} className={"d-flex"}>
+                        <img className="UserImage" src={img1}></img>
+                        <span className="ContactName m-3"> Ofek </span>
+
+                        {/*<button className="btn btn-outline-secondary" type="button" id="SearchButton">*/}
+                        {/*    /!*search icon*!/*/}
+                        {/*    <i className="bi bi-search"></i>*/}
+                        {/*</button>*/}
+
+                        {/*<input id="SearchUser" type="text" className={"form-control"} placeholder="Username"*/}
+                        {/*       aria-label="Username"*/}
+                        {/*       aria-describedby="addon-wrapping" maxLength={35}>*/}
+                        {/*</input>*/}
+
+                        <button type="button" className="btn btn-secondary" aria-expanded="false" id="NewContact">
+                            {/*contact icon*/}
+                            <i className="bi bi-person-plus-fill"></i>
+                        </button>
+                    </div>
+
+
                     <div className="list-group d-flex ChatHistory align-items-center" id="list-tab" role="tablist">
-
-                        <div id={"SearchUser"} className={"input-group"}>
-                            <button className="btn btn-outline-secondary" type="button" id="searchbutton">
-                                {/*search icon*/}
-                                <i className="bi bi-search"></i>
-                            </button>
-                            <input type="text" className={"form-control"} placeholder="Username" aria-label="Username"
-                                   aria-describedby="addon-wrapping" maxLength={35}></input>
-                        </div>
-
                         <a className="list-group-item list-group-item-action" data-bs-toggle="list" href="#list-home"
                            role="tab" aria-controls="list-home">
                             <div>
@@ -105,7 +117,9 @@ function Chats({username}) {
                         </div>
 
                         <input type="text" className="form-control" placeholder="Type a message..."
-                               aria-label="Recipient's username" aria-describedby="button-addon2"></input>
+                               aria-label="Recipient's username" aria-describedby="button-addon2">
+                        </input>
+
                         <button className="btn btn-outline-secondary" type="button" id="imagebutton">
                             {/*mic icon*/}
                             <i className="bi bi-mic"></i>
