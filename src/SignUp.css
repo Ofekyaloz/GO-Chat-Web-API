@@ -28,7 +28,7 @@
     padding: 20px;
     background-color: #ffffff;
     padding-bottom: 50px;
-    width: 400px;
+    width: 800px;
     height: 350px;
 }
 
@@ -61,4 +61,9 @@ label {
 
 #CheckRemember {
     margin-left: 105px;
+}
+
+#logo {
+    width: 380px;
+    height: 325px;
 }

@@ -1,6 +1,7 @@
 import {useState} from "react";
 import {useHistory, useNavigate} from "react-router-dom";
 import './SignUp.css';
+import logo from "./Pictures/logo.png";
 
 function SignIn({Login, error}) {
     const [details, setDetails] = useState({username: "", password: ""});
@@ -15,7 +16,8 @@ function SignIn({Login, error}) {
 
     return (
         <div>
-            <div className={"formContainer"}>
+            <div className={"formContainer row"}>
+                <div className={"col-6"}>
                 <label>Sign in to GoChat</label>
                 <form onSubmit={submitHandler} className="row g-3 paddingUp">
                     <div className="col-12">
@@ -45,6 +47,10 @@ function SignIn({Login, error}) {
                     <a href="SignUp" className="link-primary col-6 rightSide">
                         <label className={"fontSize"}>Sign up for GoChat</label>
                     </a>
+                </div>
+                </div>
+                <div className={"col-6"}>
+                    <img src={logo} id={"logo"}></img>
                 </div>
             </div>
         </div>
