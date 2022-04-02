@@ -18,14 +18,24 @@
     border: gray;
 }
 
-.Contact {
+.UserImage {
+    vertical-align: middle;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.ContactName {
     text-align: center;
-    margin-right: 70px;
+    font-size: x-large;
+    font-style: italic;
+    font-weight: bolder;
 }
 
 #ChatBlock {
+    position: fixed;
+    right: 0px;
     background: cornsilk;
-    margin-left: 0px;
     border-width: 2px;
     border-style: solid;
 }
