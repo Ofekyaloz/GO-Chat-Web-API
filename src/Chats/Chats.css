@@ -19,6 +19,7 @@
 .ChatHistory {
     position: relative;
     top: 85px;
+    height: 9%;
     z-index: 10;
     left: -10px;
     background: ghostwhite;
@@ -65,4 +66,12 @@
 #NewContact {
     float: left;
     margin-left: 300px;
+}
+
+.list-group > a {
+
+}
+
+#Text-input {
+
 }
