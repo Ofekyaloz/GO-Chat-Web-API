@@ -8,7 +8,7 @@
 }
 
 .paddingUp {
-    padding-top: 40px;
+    padding-top: 35px;
 }
 
 .fontSize {
@@ -19,9 +19,46 @@
     padding-left: 10px;
 }
 
-.niceBorder {
+.formContainer {
+    float: left;
+    position: relative;
     border-color: darkgrey;
     border-width: 2px;
     border-style: solid;
     padding: 20px;
+    background-color: #ffffff;
+    padding-bottom: 50px;
+    width: 400px;
+    height: 350px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(#009688 0%, #009688 130px, #d9dbd5 130px, #d9dbd5 100%);
+}
+
+label {
+    display: block;
+    text-align: center;
+    line-height: 150%;
+    font-size: 20px;
+}
+
+#Remember {
+    float: right;
+    margin-right: 100px;
+}
+
+#CheckRemember {
+    margin-left: 105px;
 }

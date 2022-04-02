@@ -1,6 +1,7 @@
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import Chats from "./Chats/Chats"
+import logo from "./Pictures/logo.png"
 
 import './App.css';
 import {BrowserRouter as Router, Routes, Route, Navigate, useNavigate, Switch} from "react-router-dom";
@@ -55,13 +56,15 @@ function App() {
     }
 
     return (
-        <Router>
-            <Routes>
-                <Route path={"/Chats"} element={<Chats/>}></Route>
-                <Route path={"/"} element={<SignIn Login={Login} error={error}/>}></Route>
-                <Route path={"/SignUp"} element={<SignUp/>}></Route>
-            </Routes>
-        </Router>
+        <div>
+            <Router>
+                <Routes>
+                    <Route path={"/Chats"} element={<Chats/>}></Route>
+                    <Route path={"/"} element={<SignIn Login={Login} error={error}/>}></Route>
+                    <Route path={"/SignUp"} element={<SignUp/>}></Route>
+                </Routes>
+            </Router>
+        </div>
     );
 }
 
