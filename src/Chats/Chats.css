@@ -1,31 +1,53 @@
-#SearchUser {
+#UserInfo {
     position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 100;
+    height: 80px;
+    background: #1cc1ae;
+    width: 500px;
+}
+
+#SearchUser {
     font-weight: 800;
-    width: 480px;
-    top: 5px;
     z-index: 100;
     background: aliceblue;
-    left: 5px;
+    display: flex;
+    height: 50px;
 }
 
 .ChatHistory {
     position: relative;
-    top: 45px;
+    top: 85px;
+    height: 9%;
     z-index: 10;
     left: -10px;
     background: ghostwhite;
-    width: 500px;
+    width: 100%;
     border: gray;
 }
 
-.Contact {
+.UserImage {
+    vertical-align: middle;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-left: 10px;
+}
+
+.ContactName {
     text-align: center;
-    margin-right: 70px;
+    font-size: x-large;
+    font-style: italic;
+    font-weight: bolder;
+    padding-bottom: 4px;
 }
 
 #ChatBlock {
+    position: fixed;
+    right: 0px;
     background: cornsilk;
-    margin-left: 0px;
     border-width: 2px;
     border-style: solid;
 }
@@ -39,4 +61,17 @@
 .dropdown-item {
     margin-bottom: 10px;
     text-align: center;
+}
+
+#NewContact {
+    float: left;
+    margin-left: 300px;
+}
+
+.list-group > a {
+
+}
+
+#Text-input {
+
 }
