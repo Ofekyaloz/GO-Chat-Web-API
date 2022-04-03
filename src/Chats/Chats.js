@@ -4,34 +4,45 @@ import img1 from './img1.jpg'
 function Chats({username}) {
     return (
         <div className={"container-fluid"}>
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"/>
-
             <div className={"row"}>
-                <div className={"col-4 vh-100 d-flex"}>
+                <div className={"col-4 d-flex LeftSide"}>
 
-                    <div className="list-group d-flex ChatHistory" id="list-tab" role="tablist">
+                    <div className={"d-flex col-12"} id={"UserInfo"}>
+                        <img className="UserImage" src={img1} alt=""/>
+                        <div className="m-3 ContactName" id="UserName"> Ofek Yaloz</div>
 
-                        <div id={"UserInfo"} className={"d-flex"}>
-                            <img className="UserImage" src={img1} alt=""/>
-                            <span className="ContactName" id="UserName"> Ofek Yaloz</span>
+                        <div className="dropdown">
+                            <a className="btn btn-secondary" type="button" id="dropdownMenu2"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                <i className="bi bi-three-dots-vertical"></i>
+                            </a>
+                            <ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                <li>
+                                    <button className="btn btn-light" type="button" id="SearchButton">
+                                        {/*search icon*/}
+                                        <i className="bi bi-search"></i>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button type="button" className="btn btn-light" id="NewContact">
+                                        {/*contact icon*/}
+                                        <i className="bi bi-person-plus-fill"/>
+                                    </button>
+                                </li>
 
-                            <button className="btn btn-outline" type="button" id="SearchButton">
-                                {/*search icon*/}
-                                <i className="bi bi-search"></i>
-                            </button>
-
-                            <input id="SearchUser" type="text" className={"form-control"} placeholder="@Username"
-                                   aria-label="Username"
-                                   aria-describedby="addon-wrapping" maxLength={35}>
-                            </input>
-
-                            <button type="button" className="btn btn-outline" id="NewContact">
-                                {/*contact icon*/}
-                                <i className="bi bi-person-plus-fill"/>
-                            </button>
-
+                            </ul>
                         </div>
+                        {/*<div className="col-4">*/}
 
+                        {/*<input id="SearchUser" type="text" className={"form-control"} placeholder="@Username"*/}
+                        {/*       aria-label="Username"*/}
+                        {/*       aria-describedby="addon-wrapping" maxLength={35}>*/}
+                        {/*</input>*/}
+
+                        {/*</div>*/}
+                    </div>
+
+                    <div className="list-group ChatHistory" id="list-tab" role="tablist">
 
                         <a className="list-group-item list-group-item-action" data-bs-toggle="list" href=""
                            role="tab" aria-controls="list-home">
@@ -248,12 +259,10 @@ function Chats({username}) {
                     </div>
                 </div>
 
-
-                <div className={"col-8"} id={"ChatBlock"}>
-                    <div className="input-group bottom InputText row col-11" id={"bottom"}>
-                        <div className={"col-12"}>
-                            <div className="input-group">
-                            <button type="button" className="btn btn-secondary dropdown-toggle"
+                <div className={"col-8 d-flex"} id={"ChatBlock"}>
+                    <div className="input-group InputText row col-11">
+                        <div className="input-group">
+                            <button type="button" className="btn btn-secondary"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                 {/*paperclip icon*/}
                                 <i className="bi bi-paperclip"/>
@@ -276,7 +285,8 @@ function Chats({username}) {
                                 </li>
                             </ul>
                             <input type="text" className="form-control" placeholder="Type a message..."
-                                   aria-label="Recipient's username" aria-describedby="button-addon2" id="Text-input">
+                                   aria-label="Recipient's username" aria-describedby="button-addon2"
+                                   id="Text-input">
                             </input>
 
                             <button className="btn btn-outline-primary" type="button" id="send-button">
@@ -287,7 +297,6 @@ function Chats({username}) {
                                 {/*mic icon*/}
                                 <i className="bi bi-mic"/>
                             </button>
-                            </div>
                         </div>
                     </div>
                 </div>
