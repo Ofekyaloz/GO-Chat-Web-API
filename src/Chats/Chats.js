@@ -249,9 +249,10 @@ function Chats({username}) {
                 </div>
 
 
-                <div className={"col-8 vh-100 d-flex"} id={"ChatBlock"}>
-                    <div className="input-group mb-3 InputText">
-                        <div className="btn-group dropup">
+                <div className={"col-8"} id={"ChatBlock"}>
+                    <div className="input-group bottom InputText row col-11" id={"bottom"}>
+                        <div className={"col-12"}>
+                            <div className="input-group">
                             <button type="button" className="btn btn-secondary dropdown-toggle"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                 {/*paperclip icon*/}
@@ -274,20 +275,20 @@ function Chats({username}) {
                                     </button>
                                 </li>
                             </ul>
+                            <input type="text" className="form-control" placeholder="Type a message..."
+                                   aria-label="Recipient's username" aria-describedby="button-addon2" id="Text-input">
+                            </input>
+
+                            <button className="btn btn-outline-primary" type="button" id="send-button">
+                                {/*message icon*/}
+                                <i className="bi bi-chat"/>
+                            </button>
+                            <button className="btn btn-outline-primary" type="button" id="mic-button">
+                                {/*mic icon*/}
+                                <i className="bi bi-mic"/>
+                            </button>
+                            </div>
                         </div>
-
-                        <input type="text" className="form-control" placeholder="Type a message..."
-                               aria-label="Recipient's username" aria-describedby="button-addon2" id="Text-input">
-                        </input>
-
-                        <button className="btn btn-outline-primary" type="button" id="mic-button">
-                            {/*mic icon*/}
-                            <i className="bi bi-mic"/>
-                        </button>
-                        <button className="btn btn-outline-primary" type="button" id="send-button">
-                            {/*message icon*/}
-                            <i className="bi bi-chat"/>
-                        </button>
                     </div>
                 </div>
             </div>

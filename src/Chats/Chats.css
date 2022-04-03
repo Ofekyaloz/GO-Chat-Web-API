@@ -18,6 +18,7 @@
 #SearchUser {
     position: relative;
     top: 10px;
+    left: 10px;
     font-weight: 800;
     background: aliceblue;
     display: flex;
@@ -29,6 +30,7 @@
 #SearchButton {
     position: relative;
     top: 10px;
+    left: 10px;
     height: 50px;
 }
 
@@ -66,16 +68,22 @@
 
 #ChatBlock {
     position: fixed;
-    right: 0px;
+    right: 10px;
+    top: 10px;
+    bottom: 10px;
     background: cornsilk;
     border-width: 2px;
     border-style: solid;
 }
 
 .InputText {
-    position: fixed;
-    bottom: 5px;
-    width: 995px;
+    float: bottom;
+    bottom: 10px;
+    position: absolute;
+}
+
+#bottom {
+    float: bottom;
 }
 
 .dropdown-item {
