@@ -25,10 +25,11 @@ function SignUp() {
                                    placeholder={"Password"} required></input>
                         </div>
                         <div className="col-6">
-                            <input type="password" className="form-control" idf="inputPasswordAgain"
+                            <input type="password" className="form-control" id="inputPasswordAgain"
                                    placeholder={"Password again"} required></input>
                         </div>
-                        <div className="col-12 paddingUp">
+                        <div><input type={"file"} className={"form-control"} id={"inputImage"}></input></div>
+                        <div className="col-12">
                             <div className={"col-6"}>
                                 <a href={"/"} className="link-primary col-6 leftSide fontSize">Sign in</a>
                             </div>
