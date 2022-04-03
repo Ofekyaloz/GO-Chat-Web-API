@@ -22,10 +22,10 @@ function Chats({username}) {
                             {/*       aria-describedby="addon-wrapping" maxLength={35}>*/}
                             {/*</input>*/}
 
-                            <a className="btn btn--outline-secondary" type="button" id="dropdownMenu2"
-                               data-bs-toggle="dropdown" aria-expanded="false">
+                            <button className="btn btn--outline-secondary" type="button" id="dropdownMenu2"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
                                 <i className="bi bi-three-dots-vertical"/>
-                            </a>
+                            </button>
                             <ul className="dropdown-menu">
                                 <li>
                                     <button type="button" className="btn btn-light" id="NewContact">
@@ -56,10 +56,10 @@ function Chats({username}) {
                            role="tab" aria-controls="list-home">
                             <div>
                                 <div className="row">
-                                    <div className="col-4">
+                                    <div className="col-3">
                                         <img className="UserImage" src={img1}/>
                                     </div>
-                                    <div className="col-8">
+                                    <div className="col-9">
                                         <div className="row">
                                             <div className="col-8 d-flex ContactName"> Ofek</div>
                                             <div className="col-4"> Yesterday</div>
@@ -74,10 +74,10 @@ function Chats({username}) {
                            role="tab" aria-controls="list-home">
                             <div>
                                 <div className="row">
-                                    <div className="col-4">
+                                    <div className="col-3">
                                         <img className="UserImage" src={img1}/>
                                     </div>
-                                    <div className="col-8">
+                                    <div className="col-9">
                                         <div className="row">
                                             <div className="col-8 d-flex ContactName"> Gili</div>
                                             <div className="col-4"> 2 days ago</div>
@@ -92,10 +92,10 @@ function Chats({username}) {
                            role="tab" aria-controls="list-home">
                             <div>
                                 <div className="row">
-                                    <div className="col-4">
+                                    <div className="col-3">
                                         <img className="UserImage" src={img1}/>
                                     </div>
-                                    <div className="col-8">
+                                    <div className="col-9">
                                         <div className="row">
                                             <div className="col-8 d-flex ContactName"> Mom</div>
                                             <div className="col-4"> 3 days ago</div>
@@ -106,165 +106,6 @@ function Chats({username}) {
                             </div>
                         </a>
 
-                        {/*<a className="list-group-item list-group-item-action" data-bs-toggle="list" href=""*/}
-                        {/*   role="tab" aria-controls="list-home">*/}
-                        {/*    <div>*/}
-                        {/*        <div className="row">*/}
-                        {/*            <div className="col-4">*/}
-                        {/*                <img className="UserImage" src={img1}/>*/}
-                        {/*            </div>*/}
-                        {/*            <div className="col-8">*/}
-                        {/*                <div className="row">*/}
-                        {/*                    <div className="col-8 d-flex ContactName"> Ofek</div>*/}
-                        {/*                    <div className="col-4"> Yesterday</div>*/}
-                        {/*                </div>*/}
-                        {/*                <div> something</div>*/}
-                        {/*            </div>*/}
-                        {/*        </div>*/}
-                        {/*    </div>*/}
-                        {/*</a>*/}
-
-                        {/*<a className="list-group-item list-group-item-action" data-bs-toggle="list" href=""*/}
-                        {/*   role="tab" aria-controls="list-home">*/}
-                        {/*    <div>*/}
-                        {/*        <div className="row">*/}
-                        {/*            <div className="col-4">*/}
-                        {/*                <img className="UserImage" src={img1}/>*/}
-                        {/*            </div>*/}
-                        {/*            <div className="col-8">*/}
-                        {/*                <div className="row">*/}
-                        {/*                    <div className="col-8 d-flex ContactName"> Gili</div>*/}
-                        {/*                    <div className="col-4"> 2 days ago</div>*/}
-                        {/*                </div>*/}
-                        {/*                <div> something</div>*/}
-                        {/*            </div>*/}
-                        {/*        </div>*/}
-                        {/*    </div>*/}
-                        {/*</a>*/}
-
-                        {/*<a className="list-group-item list-group-item-action" data-bs-toggle="list" href=""*/}
-                        {/*   role="tab" aria-controls="list-home">*/}
-                        {/*    <div>*/}
-                        {/*        <div className="row">*/}
-                        {/*            <div className="col-4">*/}
-                        {/*                <img className="UserImage" src={img1}/>*/}
-                        {/*            </div>*/}
-                        {/*            <div className="col-8">*/}
-                        {/*                <div className="row">*/}
-                        {/*                    <div className="col-8 d-flex ContactName"> Mom</div>*/}
-                        {/*                    <div className="col-4"> 3 days ago</div>*/}
-                        {/*                </div>*/}
-                        {/*                <div> Goodbye.</div>*/}
-                        {/*            </div>*/}
-                        {/*        </div>*/}
-                        {/*    </div>*/}
-                        {/*</a>*/}
-                        {/*<a className="list-group-item list-group-item-action" data-bs-toggle="list" href=""*/}
-                        {/*   role="tab" aria-controls="list-home">*/}
-                        {/*    <div>*/}
-                        {/*        <div className="row">*/}
-                        {/*            <div className="col-4">*/}
-                        {/*                <img className="UserImage" src={img1}/>*/}
-                        {/*            </div>*/}
-                        {/*            <div className="col-8">*/}
-                        {/*                <div className="row">*/}
-                        {/*                    <div className="col-8 d-flex ContactName"> Ofek</div>*/}
-                        {/*                    <div className="col-4"> Yesterday</div>*/}
-                        {/*                </div>*/}
-                        {/*                <div> something</div>*/}
-                        {/*            </div>*/}
-                        {/*        </div>*/}
-                        {/*    </div>*/}
-                        {/*</a>*/}
-
-                        {/*<a className="list-group-item list-group-item-action" data-bs-toggle="list" href=""*/}
-                        {/*   role="tab" aria-controls="list-home">*/}
-                        {/*    <div>*/}
-                        {/*        <div className="row">*/}
-                        {/*            <div className="col-4">*/}
-                        {/*                <img className="UserImage" src={img1}/>*/}
-                        {/*            </div>*/}
-                        {/*            <div className="col-8">*/}
-                        {/*                <div className="row">*/}
-                        {/*                    <div className="col-8 d-flex ContactName"> Gili</div>*/}
-                        {/*                    <div className="col-4"> 2 days ago</div>*/}
-                        {/*                </div>*/}
-                        {/*                <div> something</div>*/}
-                        {/*            </div>*/}
-                        {/*        </div>*/}
-                        {/*    </div>*/}
-                        {/*</a>*/}
-
-                        {/*<a className="list-group-item list-group-item-action" data-bs-toggle="list" href=""*/}
-                        {/*   role="tab" aria-controls="list-home">*/}
-                        {/*    <div>*/}
-                        {/*        <div className="row">*/}
-                        {/*            <div className="col-4">*/}
-                        {/*                <img className="UserImage" src={img1}/>*/}
-                        {/*            </div>*/}
-                        {/*            <div className="col-8">*/}
-                        {/*                <div className="row">*/}
-                        {/*                    <div className="col-8 d-flex ContactName"> Mom</div>*/}
-                        {/*                    <div className="col-4"> 3 days ago</div>*/}
-                        {/*                </div>*/}
-                        {/*                <div> Goodbye.</div>*/}
-                        {/*            </div>*/}
-                        {/*        </div>*/}
-                        {/*    </div>*/}
-                        {/*</a>*/}
-                        {/*<a className="list-group-item list-group-item-action" data-bs-toggle="list" href=""*/}
-                        {/*   role="tab" aria-controls="list-home">*/}
-                        {/*    <div>*/}
-                        {/*        <div className="row">*/}
-                        {/*            <div className="col-4">*/}
-                        {/*                <img className="UserImage" src={img1}/>*/}
-                        {/*            </div>*/}
-                        {/*            <div className="col-8">*/}
-                        {/*                <div className="row">*/}
-                        {/*                    <div className="col-8 d-flex ContactName"> Ofek</div>*/}
-                        {/*                    <div className="col-4"> Yesterday</div>*/}
-                        {/*                </div>*/}
-                        {/*                <div> something</div>*/}
-                        {/*            </div>*/}
-                        {/*        </div>*/}
-                        {/*    </div>*/}
-                        {/*</a>*/}
-
-                        {/*<a className="list-group-item list-group-item-action" data-bs-toggle="list" href=""*/}
-                        {/*   role="tab" aria-controls="list-home">*/}
-                        {/*    <div>*/}
-                        {/*        <div className="row">*/}
-                        {/*            <div className="col-4">*/}
-                        {/*                <img className="UserImage" src={img1}/>*/}
-                        {/*            </div>*/}
-                        {/*            <div className="col-8">*/}
-                        {/*                <div className="row">*/}
-                        {/*                    <div className="col-8 d-flex ContactName"> Gili</div>*/}
-                        {/*                    <div className="col-4"> 2 days ago</div>*/}
-                        {/*                </div>*/}
-                        {/*                <div> something</div>*/}
-                        {/*            </div>*/}
-                        {/*        </div>*/}
-                        {/*    </div>*/}
-                        {/*</a>*/}
-
-                        {/*<a className="list-group-item list-group-item-action" data-bs-toggle="list" href=""*/}
-                        {/*   role="tab" aria-controls="list-home">*/}
-                        {/*    <div>*/}
-                        {/*        <div className="row">*/}
-                        {/*            <div className="col-4">*/}
-                        {/*                <img className="UserImage" src={img1}/>*/}
-                        {/*            </div>*/}
-                        {/*            <div className="col-8">*/}
-                        {/*                <div className="row">*/}
-                        {/*                    <div className="col-8 d-flex ContactName"> Mom</div>*/}
-                        {/*                    <div className="col-4"> 3 days ago</div>*/}
-                        {/*                </div>*/}
-                        {/*                <div> Goodbye.</div>*/}
-                        {/*            </div>*/}
-                        {/*        </div>*/}
-                        {/*    </div>*/}
-                        {/*</a>*/}
                     </div>
                 </div>
 
@@ -281,7 +122,7 @@ function Chats({username}) {
                                     <button type="button" className="dropdown-item" href="#" id="image-button">
                                         {/*image icon*/}
                                         <i className="bi bi-image"/>
-                                        photo
+                                        <span className="m-3"> photo</span>
                                     </button>
                                 </li>
                                 <li>
@@ -289,7 +130,7 @@ function Chats({username}) {
                                             id="video-button">
                                         {/*video icon*/}
                                         <i className="bi bi-camera-video"/>
-                                        video
+                                        <span className="m-3"> video</span>
                                     </button>
                                 </li>
                             </ul>
@@ -298,11 +139,11 @@ function Chats({username}) {
                                    id="Text-input">
                             </input>
 
-                            <button className="btn btn-outline-primary" type="button" id="send-button">
+                            <button className="btn btn-primary" type="button" id="send-button">
                                 {/*message icon*/}
-                                <i className="bi bi-chat"/>
+                                <i className="bi bi-send"/>
                             </button>
-                            <button className="btn btn-outline-primary" type="button" id="mic-button">
+                            <button className="btn btn-danger" type="button" id="mic-button">
                                 {/*mic icon*/}
                                 <i className="bi bi-mic"/>
                             </button>

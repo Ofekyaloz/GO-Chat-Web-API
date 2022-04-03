@@ -11,11 +11,11 @@
 
 #UserName {
     position: relative;
+    font-size: xx-large;
 }
 
 #SideMenu {
     position: relative;
-
 }
 
 #SearchUser {
@@ -95,6 +95,5 @@
 }
 
 .dropdown-item {
-    margin-bottom: 10px;
-    text-align: center;
+
 }
