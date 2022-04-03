@@ -1,5 +1,5 @@
 import './Chats.css';
-import img1 from './img1.jpg'
+import img1 from '../Pictures/img1.jpg'
 
 function Chats({username}) {
     return (
@@ -110,6 +110,13 @@ function Chats({username}) {
                 </div>
 
                 <div className={"col-8 d-flex"} id={"ChatBlock"}>
+
+                    <div className="row ChatBar">
+                        <div className="m-1">
+                            <img className="UserImage" src={img1}/>
+                            <span className="ContactName"> Mom </span>
+                        </div>
+                    </div>
                     <div className="input-group InputText row col-11">
                         <div className="input-group">
                             <button type="button" className="btn btn-secondary"

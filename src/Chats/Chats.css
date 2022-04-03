@@ -7,6 +7,7 @@
     border-style: solid;
     border-width: 1px;
     left: 0;
+    background: #63d2c5;
 }
 
 #UserName {
@@ -18,17 +19,17 @@
     position: relative;
 }
 
-#SearchUser {
-    position: relative;
-    top: 10px;
-    left: 10px;
-    font-weight: 800;
-    background: aliceblue;
-    display: flex;
-    height: 50px;
-    width: 300px;
-    margin-right: 10px;
-}
+/*#SearchUser {*/
+/*    position: relative;*/
+/*    top: 10px;*/
+/*    left: 10px;*/
+/*    font-weight: 800;*/
+/*    background: aliceblue;*/
+/*    display: flex;*/
+/*    height: 50px;*/
+/*    width: 300px;*/
+/*    margin-right: 10px;*/
+/*}*/
 
 #SearchButton {
     position: relative;
@@ -46,7 +47,7 @@
     left: 10px;
     top: 10px;
     bottom: 10px;
-    border-width: 2px;
+    border-width: 3px;
     border-style: solid;
 }
 
@@ -56,7 +57,7 @@
     left: 0;
     background: ghostwhite;
     width: 97%;
-    height: calc(100vh - 103px);
+    height: calc(100vh - 105px);
     border: gray;
     overflow: auto;
 }
@@ -84,7 +85,7 @@
     top: 10px;
     bottom: 10px;
     background: cornsilk;
-    border-width: 2px;
+    border-width: 3px;
     border-style: solid;
 }
 
@@ -94,6 +95,16 @@
     position: absolute;
 }
 
-.dropdown-item {
+.ChatBar {
+    position: relative;
+    height: 80px;
+    width: 120%;
+    padding-left: 10px;
+    background: #63d2c5;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.Chat {
 
 }
