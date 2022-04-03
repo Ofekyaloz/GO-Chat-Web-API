@@ -13,6 +13,11 @@
     position: relative;
 }
 
+#SideMenu {
+    position: relative;
+
+}
+
 #SearchUser {
     position: relative;
     top: 10px;
