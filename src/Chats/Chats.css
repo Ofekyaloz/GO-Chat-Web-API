@@ -1,6 +1,5 @@
 #UserInfo {
     position: absolute;
-    z-index: 100;
     padding-top: 5px;
     height: 80px;
     border-block: black;
@@ -10,16 +9,19 @@
     background: #63d2c5;
 }
 
-#exampleModal {
-    z-index: 1000;
-}
 #UserName {
     position: relative;
     font-size: xx-large;
 }
 
-#SideMenu {
+.SideMenu {
     position: relative;
+    left: 0;
+    height: 40px;
+    font-size: smaller;
+    background: white;
+    height: 100%;
+    width: 100%;
 }
 
 /*#SearchUser {*/
@@ -34,16 +36,6 @@
 /*    margin-right: 10px;*/
 /*}*/
 
-#SearchButton {
-    position: relative;
-    top: 10px;
-    left: 10px;
-    height: 50px;
-}
-
-#NewContact {
-    margin-left: 10px;
-}
 
 .LeftSide {
     position: fixed;
@@ -99,9 +91,10 @@
 }
 
 .ChatBar {
-    position: relative;
+    position: absolute;
     height: 80px;
-    width: 120%;
+    width: 100%;
+    left: 0;
     padding-left: 10px;
     background: #63d2c5;
     border-width: 1px;
