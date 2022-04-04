@@ -10,6 +10,9 @@
     background: #63d2c5;
 }
 
+#exampleModal {
+    z-index: 1000;
+}
 #UserName {
     position: relative;
     font-size: xx-large;
@@ -106,5 +109,7 @@
 }
 
 .Chat {
-
+    position: relative;
+    top: 90px;
+    font-size: larger;
 }

@@ -1,7 +1,18 @@
 import './Chats.css';
 import img1 from '../Pictures/img1.jpg'
+import icon from '../Pictures/icon-user-default.png'
+import ChatHistory from './ChatHistory.js'
 
 function Chats({username}) {
+
+    const history = [{photo: icon, name: 'Ofek', date: 'Yesterday' , message: 'Sup'},
+        {photo: icon, name: 'Gili', date: '2 days ago' , message: 'something'},
+        {photo: icon, name: 'Mom', date: '3 days ago' , message: 'Bye.'}];
+
+    const HistoryList = history.map((details, key) => {
+        return <ChatHistory {...details} key={key}/>
+    });
+
     return (
         <div className={"container-fluid"}>
             <div className={"row"}>
@@ -28,10 +39,31 @@ function Chats({username}) {
                             </button>
                             <ul className="dropdown-menu">
                                 <li>
-                                    <button type="button" className="btn btn-light" id="NewContact">
+                                    <button type="button" className="btn btn-light" id="NewContact" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                         {/*contact icon*/}
                                         <i className="bi bi-person-plus-fill"/>
                                     </button>
+                                    <div className="modal fade" id="exampleModal" tabIndex="-1"
+                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div className="modal-dialog">
+                                            <div className="modal-content">
+                                                <div className="modal-header">
+                                                    <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                    <button type="button" className="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                </div>
+                                                <div className="modal-body">
+                                                    ...
+                                                </div>
+                                                <div className="modal-footer">
+                                                    <button type="button" className="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close
+                                                    </button>
+                                                    <button type="button" className="btn btn-primary">Add</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </li>
                                 <li>
                                     <button className="btn btn-light" type="button" id="SearchButton">
@@ -52,71 +84,26 @@ function Chats({username}) {
 
                     <div className="list-group ChatHistory" id="list-tab" role="tablist">
 
-                        <a className="list-group-item list-group-item-action" data-bs-toggle="list" href=""
-                           role="tab" aria-controls="list-home">
-                            <div>
-                                <div className="row">
-                                    <div className="col-3">
-                                        <img className="UserImage" src={img1}/>
-                                    </div>
-                                    <div className="col-9">
-                                        <div className="row">
-                                            <div className="col-8 d-flex ContactName"> Ofek</div>
-                                            <div className="col-4"> Yesterday</div>
-                                        </div>
-                                        <div> something</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a className="list-group-item list-group-item-action" data-bs-toggle="list" href=""
-                           role="tab" aria-controls="list-home">
-                            <div>
-                                <div className="row">
-                                    <div className="col-3">
-                                        <img className="UserImage" src={img1}/>
-                                    </div>
-                                    <div className="col-9">
-                                        <div className="row">
-                                            <div className="col-8 d-flex ContactName"> Gili</div>
-                                            <div className="col-4"> 2 days ago</div>
-                                        </div>
-                                        <div> something</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a className="list-group-item list-group-item-action" data-bs-toggle="list" href=""
-                           role="tab" aria-controls="list-home">
-                            <div>
-                                <div className="row">
-                                    <div className="col-3">
-                                        <img className="UserImage" src={img1}/>
-                                    </div>
-                                    <div className="col-9">
-                                        <div className="row">
-                                            <div className="col-8 d-flex ContactName"> Mom</div>
-                                            <div className="col-4"> 3 days ago</div>
-                                        </div>
-                                        <div> Goodbye.</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
+                        {HistoryList}
 
                     </div>
                 </div>
 
                 <div className={"col-8 d-flex"} id={"ChatBlock"}>
-
                     <div className="row ChatBar">
                         <div className="m-1">
-                            <img className="UserImage" src={img1}/>
+                            <img className="UserImage" src={icon}/>
                             <span className="ContactName"> Mom </span>
                         </div>
                     </div>
+
+                    {/*<div className="Chat">*/}
+                    {/*    <lu id={"aa"}>*/}
+                    {/*        aa*/}
+                    {/*    </lu>*/}
+                    {/*</div>*/}
+
+
                     <div className="input-group InputText row col-11">
                         <div className="input-group">
                             <button type="button" className="btn btn-secondary"
@@ -146,7 +133,7 @@ function Chats({username}) {
                                    id="Text-input">
                             </input>
 
-                            <button className="btn btn-primary" type="button" id="send-button">
+                            <button className="btn btn-primary" type="button" id="send-button" onClick={SendMessage}>
                                 {/*message icon*/}
                                 <i className="bi bi-send"/>
                             </button>
@@ -160,6 +147,10 @@ function Chats({username}) {
             </div>
         </div>
     );
+}
+
+function SendMessage() {
+
 }
 
 export default Chats;
