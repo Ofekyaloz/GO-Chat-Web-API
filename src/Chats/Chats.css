@@ -105,8 +105,9 @@
     position: relative;
     top: 90px;
     font-size: larger;
-    background: #888888;
     height: 78%;
+    width: 100%;
+    overflow: auto;
 }
 
 .Chat li {

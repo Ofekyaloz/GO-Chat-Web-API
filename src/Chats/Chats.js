@@ -5,12 +5,23 @@ import ChatHistory from './ChatHistory.js'
 import history from "./history";
 import LeftMenu from "./LeftMenu";
 import Toolsbox from "./Toolsbox";
+import {useState} from "react";
+import msgs from "./msgs";
+import ChatResults from "./ChatResults";
 
 function Chats({username}) {
 
     const HistoryList = history.map((details, key) => {
         return <ChatHistory {...details} key={key}/>
     });
+
+    const [MessageList, setMessageList] = useState(msgs);
+
+    const doSearch = function (q) {
+        // setMessageList(msgs.filter((message) => message.msg.includes(q)));
+        setMessageList(msgs.push({msg: q}));
+
+    }
 
     return (
         <div className={"container-fluid"}>
@@ -46,27 +57,14 @@ function Chats({username}) {
                         </div>
                     </div>
 
-                    <div className="Chat">
-                        <lu id="session">
-                            <li>
-                                aa
-                            </li>
-                            <li >
-                                bb
-                            </li>
-                        </lu>
-                    </div>
+                    <ChatResults msgs={MessageList}/>
 
-                    <Toolsbox/>
+                    <Toolsbox doSearch={doSearch}/>
 
                 </div>
             </div>
         </div>
     );
-}
-
-function SendMessage() {
-
 }
 
 export default Chats;

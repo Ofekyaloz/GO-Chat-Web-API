@@ -1,6 +1,14 @@
-import Send from "./Send";
+import {useRef} from "react";
 
-function Toolsbox() {
+function Toolsbox({doSearch}) {
+
+    const messageBox = useRef(null)
+
+    const search = function() {
+        doSearch(messageBox.current.value);
+        document.getElementById("Text-input").value = '';
+    }
+
     return (
         <div className="input-group InputText row col-11">
             <div className="input-group">
@@ -27,7 +35,16 @@ function Toolsbox() {
                     </li>
                 </ul>
 
-                <Send />
+                <input ref={messageBox} type="text" className="form-control" placeholder="Type a message..."
+                       id="Text-input">
+                </input>
+
+                {/*onChange={event => SetMessage(event.target.value)}*/}
+
+                <button className="btn btn-primary" type="button" id="send-button" onClick={search}>
+                    {/*message icon*/}
+                    <i className="bi bi-send"/>
+                </button>
 
                 <button className="btn btn-danger" type="button" id="mic-button">
                     {/*mic icon*/}
