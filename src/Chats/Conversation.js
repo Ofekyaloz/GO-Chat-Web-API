@@ -1,5 +1,5 @@
 function Conversation({msg}) {
-    return(
+    return (
         <li>
             {msg}
         </li>

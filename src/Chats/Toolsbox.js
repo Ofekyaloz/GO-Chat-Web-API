@@ -10,7 +10,7 @@ function Toolsbox({AddMessage}) {
         }
     }
 
-    const search = function() {
+    const search = function () {
         AddMessage(messageBox.current.value);
         document.getElementById("Text-input").value = '';
     }

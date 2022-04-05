@@ -19,8 +19,6 @@ function Chats({username}) {
 
     const AddMessage = function (q) {
         setMessageList(msgs.filter((message) => message.msg.includes(q)));
-
-
     }
 
     return (
@@ -56,7 +54,6 @@ function Chats({username}) {
                             <span className="ContactName"> Mom </span>
                         </div>
                     </div>
-
 
 
                     <ChatResults msgs={MessageList}/>

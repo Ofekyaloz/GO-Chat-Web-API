@@ -3,10 +3,10 @@ import Conversation from "./Conversation";
 function ChatResults({msgs}) {
 
     const conversation = msgs.map(((datails, key) => {
-        return <Conversation {...datails} key={key} />
+        return <Conversation {...datails} key={key}/>
     }));
 
-    return(
+    return (
         <div className="Chat">
             {conversation}
         </div>

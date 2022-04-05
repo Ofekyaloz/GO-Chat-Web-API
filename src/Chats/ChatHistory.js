@@ -1,5 +1,5 @@
-function ChatHistory({photo, name, date , message}) {
-    return(
+function ChatHistory({photo, name, date, message}) {
+    return (
         <a className="list-group-item list-group-item-action" data-bs-toggle="list" href=""
            role="tab" aria-controls="list-home">
             <div>
