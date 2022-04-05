@@ -75,7 +75,7 @@
 }
 
 #ChatBlock {
-    position: fixed;
+    position: absolute;
     right: 10px;
     top: 10px;
     bottom: 10px;
@@ -105,4 +105,10 @@
     position: relative;
     top: 90px;
     font-size: larger;
+    background: #888888;
+    height: 78%;
+}
+
+.Chat li {
+    list-style: none;
 }
