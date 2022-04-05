@@ -1,37 +1,30 @@
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import Chats from "./Chats/Chats"
-import logo from "./Pictures/logo.png"
 
 import './App.css';
 import {BrowserRouter as Router, Routes, Route, Navigate, useNavigate, Switch} from "react-router-dom";
 import {useState} from 'react';
 
+export const myMap = new Map();
+
+class User {
+    constructor(username, password, email, nickname, img) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.nickname = nickname;
+        this.img = img;
+    }
+}
+
 function App() {
 
-    const usersList = [{
-        username: "giligutfeld",
-        password: "123456"
-    }, {
-        username: "ofekyaloz",
-        password: "234567"
-    }, {
-        username: "leomessi",
-        password: "101010"
-    }, {
-        username: "noakirel",
-        password: "111111"
-    }, {
-        username: "yonitlevi",
-        password: "202020"
-    }];
-
-    const myMap = new Map();
-    myMap.set("giligutfeld", "123456");
-    myMap.set("ofekyaloz", "234567");
-    myMap.set("leomessi", "101010");
-    myMap.set("noakirel", "111111");
-    myMap.set("yonitlevi", "202020");
+    myMap.set("giligutfeld", new User("giligutfeld", "123456", "gili@gmail.com", "gili", "img.jpg"));
+    myMap.set("ofekyaloz", new User("ofekyaloz", "234567", "ofek@gmail.com", "ofek", "img.jpg"));
+    myMap.set("leomessi", new User("leomessi", "101010", "leo@gmail.com", "leo", "img.jpg"));
+    myMap.set("noakirel", new User("noakirel", "111111", "noa@gmail.com", "noa", "img.jpg"));
+    myMap.set("yonitlevi", new User("yonitlevi", "202020", "yonit@gmail.com", "yonit", "img.jpg"));
 
     const [user, setUser] = useState({username: "", password: ""});
     const [error, setError] = useState("");
@@ -39,7 +32,7 @@ function App() {
     const Login = details => {
         console.log(details);
 
-        if (myMap.get(details.username) == details.password) {
+        if (myMap.get(details.username).password == details.password) {
             console.log('Logged in');
             setUser({
                 username: details.username,
@@ -50,18 +43,31 @@ function App() {
             return false;
         }
     }
+
+    const Register = details => {
+        console.log(details);
+
+        if (myMap.get(details.username)) {
+            console.log('The username is already exist!');
+            return true;
+        } else {
+            myMap.set(details.username, new User(details.username, details.password, details.email, details.nickname, details.image));
+            return false;
+        }
+    }
+
     const Logout = () => {
         console.log("Logout");
         setUser({username: '', password: ''});
     }
 
     return (
-        <div>
+        <div className={"center"}>
             <Router>
                 <Routes>
                     <Route path={"/Chats"} element={<Chats/>}></Route>
                     <Route path={"/"} element={<SignIn Login={Login} error={error}/>}></Route>
-                    <Route path={"/SignUp"} element={<SignUp/>}></Route>
+                    <Route path={"/SignUp"} element={<SignUp Register={Register}/>}></Route>
                 </Routes>
             </Router>
         </div>
