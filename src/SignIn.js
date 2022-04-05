@@ -15,14 +15,12 @@ function SignIn({Login, error}) {
     }
 
     return (
-        <div>
-            <div className={"formContainer row"}>
-                <div className={"col-6"}>
+        <div className={"formContainer row"}>
+            <div className={"col-6"}>
                 <label>Sign in to GoChat</label>
                 <form onSubmit={submitHandler} className="row g-3 paddingUp">
                     <div className="col-12">
-                        <input type="username" className="form-control" id="exampleInputEmail1"
-                               aria-describedby="emailHelp" placeholder={"Username"}
+                        <input type="username" className="form-control" id="exampleInputEmail1" placeholder={"Username"}
                                onChange={e => setDetails({...details, username: e.target.value})}
                                value={details.username}></input>
                     </div>
@@ -48,10 +46,9 @@ function SignIn({Login, error}) {
                         <label className={"fontSize"}>Sign up for GoChat</label>
                     </a>
                 </div>
-                </div>
-                <div className={"col-6"}>
-                    <img src={logo} id={"logo"}></img>
-                </div>
+            </div>
+            <div className={"col-6"}>
+                <img src={logo} id={"logo"}></img>
             </div>
         </div>
     );
