@@ -1,11 +1,17 @@
 import {useRef} from "react";
 
-function Toolsbox({doSearch}) {
+function Toolsbox({AddMessage}) {
 
     const messageBox = useRef(null)
 
+    const HandlePress = function (e) {
+        if (e.key == "Enter") {
+            search();
+        }
+    }
+
     const search = function() {
-        doSearch(messageBox.current.value);
+        AddMessage(messageBox.current.value);
         document.getElementById("Text-input").value = '';
     }
 
@@ -36,7 +42,7 @@ function Toolsbox({doSearch}) {
                 </ul>
 
                 <input ref={messageBox} type="text" className="form-control" placeholder="Type a message..."
-                       id="Text-input">
+                       id="Text-input" onKeyPress={HandlePress}>
                 </input>
 
                 {/*onChange={event => SetMessage(event.target.value)}*/}

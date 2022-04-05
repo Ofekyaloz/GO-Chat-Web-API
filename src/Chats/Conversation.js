@@ -1,5 +1,3 @@
-import Msgs from "./msgs";
-
 function Conversation({msg}) {
     return(
         <li>

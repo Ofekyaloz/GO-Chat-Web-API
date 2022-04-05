@@ -1,3 +1,3 @@
-var Msgs = [{msg: "ab"},{msg: "aa"},{msg: "bb"},{msg: "b"}];
+var msgs = [{msg: "ab"},{msg: "aa"},{msg: "bb"},{msg: "b"}];
 
-export default Msgs;
+export default msgs;

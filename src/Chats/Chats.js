@@ -17,9 +17,9 @@ function Chats({username}) {
 
     const [MessageList, setMessageList] = useState(msgs);
 
-    const doSearch = function (q) {
-        // setMessageList(msgs.filter((message) => message.msg.includes(q)));
-        setMessageList(msgs.push({msg: q}));
+    const AddMessage = function (q) {
+        setMessageList(msgs.filter((message) => message.msg.includes(q)));
+
 
     }
 
@@ -57,9 +57,11 @@ function Chats({username}) {
                         </div>
                     </div>
 
+
+
                     <ChatResults msgs={MessageList}/>
 
-                    <Toolsbox doSearch={doSearch}/>
+                    <Toolsbox AddMessage={AddMessage}/>
 
                 </div>
             </div>

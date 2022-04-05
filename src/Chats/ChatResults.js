@@ -1,4 +1,3 @@
-import Msgs from "./msgs";
 import Conversation from "./Conversation";
 
 function ChatResults({msgs}) {
