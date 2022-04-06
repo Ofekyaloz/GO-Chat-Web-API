@@ -4,10 +4,10 @@ import icon from '../Pictures/icon-user-default.png'
 import ChatHistory from './ChatHistory.js'
 import history from "./history";
 import LeftMenu from "./LeftMenu";
-import Toolsbox from "./Toolsbox";
+import Toolbox from "./Toolbox";
 import {useState} from "react";
 import msgs from "./msgs";
-import ChatResults from "./ChatResults";
+import ChatMsgs from "./ChatMsgs";
 
 function Chats({username}) {
 
@@ -52,9 +52,9 @@ function Chats({username}) {
                     </div>
 
 
-                    <ChatResults msgs={MessageList}/>
+                    <ChatMsgs msgs={MessageList}/>
 
-                    <Toolsbox msgs = {MessageList}/>
+                    <Toolbox msgs = {MessageList} setMessageList = {setMessageList}/>
 
                 </div>
             </div>

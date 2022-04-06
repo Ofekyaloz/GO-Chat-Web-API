@@ -110,11 +110,34 @@
     position: relative;
     top: 90px;
     font-size: larger;
-    height: 78%;
+    height: 77%;
     width: 100%;
     overflow: auto;
 }
 
 .Chat li {
     list-style: none;
+    background: #33ea33;
+    padding-bottom: 10px;
+    width: max-content;
+    height: max-content;
+    max-width: 500px;
+    max-height: 500px;
+}
+
+.mini-menu > .list-item {
+    width: max-content;
+}
+
+.modal-body {
+
+}
+
+.Chat-Image {
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+    max-width: border-box;
+    object-fit: cover;
+    padding: 10px;
 }
