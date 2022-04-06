@@ -69,7 +69,7 @@ function SignUp({Register}) {
                             <input type={"file"} className={"form-control upload-box"}
                                    onChange={e => setDetails({...details, image: e.target.value})}
                                    value={details.image}></input></div>
-                        <button type="submit" className="btn btn-primary">Sign up</button>
+                        <button type="submit" className="btn btn-forms">Sign up</button>
                         <a href={"/"} className="link-primary fontSize">One of us? Log in here</a>
                         <p className={"social-text"}>Or sign up with social media</p>
                         <div className={"social-media"}>
