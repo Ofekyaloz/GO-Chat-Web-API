@@ -1,17 +1,22 @@
 import {useRef} from "react";
 
-function Toolsbox({AddMessage}) {
+function Toolsbox({msgs}) {
 
     const messageBox = useRef(null)
 
     const HandlePress = function (e) {
-        if (e.key == "Enter") {
+        if (e.key == "Enter" && messageBox.current.value != '') {
             search();
         }
     }
 
     const search = function () {
-        AddMessage(messageBox.current.value);
+        if (messageBox.current.value == '') {
+            return;
+        }
+        msgs.push(messageBox.current.value);
+        console.log(msgs);
+        console.log(messageBox.current.value);
         document.getElementById("Text-input").value = '';
     }
 

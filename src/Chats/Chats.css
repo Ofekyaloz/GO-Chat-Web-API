@@ -72,6 +72,7 @@
     font-style: italic;
     font-weight: bolder;
     padding-bottom: 4px;
+    font-family: none;
 }
 
 #ChatBlock {
@@ -95,10 +96,14 @@
     height: 80px;
     width: 100%;
     left: 0;
-    padding-left: 10px;
+    padding-left: 20px;
     background: #63d2c5;
     border-width: 1px;
     border-style: solid;
+}
+
+#BarName {
+    margin-left: 30px;
 }
 
 .Chat {

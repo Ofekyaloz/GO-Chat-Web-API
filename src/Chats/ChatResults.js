@@ -2,14 +2,13 @@ import Conversation from "./Conversation";
 
 function ChatResults({msgs}) {
 
-    const conversation = msgs.map(((datails, key) => {
-        return <Conversation {...datails} key={key}/>
-    }));
-
+    // const conversation = ;
     return (
-        <div className="Chat">
-            {conversation}
-        </div>
+        <ul className="Chat">
+            {msgs.map((details, key) => (
+                <li key={key}>{details}</li>
+                ))}
+        </ul>
     )
 }
 

@@ -17,10 +17,6 @@ function Chats({username}) {
 
     const [MessageList, setMessageList] = useState(msgs);
 
-    const AddMessage = function (q) {
-        setMessageList(msgs.filter((message) => message.msg.includes(q)));
-    }
-
     return (
         <div className={"container-fluid"}>
             <div className={"row"}>
@@ -30,7 +26,7 @@ function Chats({username}) {
                         <div className="col-2">
                             <img className="UserImage" src={img1} alt=""/>
                         </div>
-                        <div className="col-7 m-3 ContactName" id="UserName">
+                        <div className="col-7 m-2 ContactName" id="UserName">
                             <span className="m-3"> Ofek Yaloz </span>
                             <LeftMenu/>
                         </div>
@@ -51,14 +47,14 @@ function Chats({username}) {
                     <div className="ChatBar">
                         <div className="m-1">
                             <img className="UserImage" src={icon}/>
-                            <span className="ContactName"> Mom </span>
+                            <span className="ContactName" id={"BarName"}> Mom </span>
                         </div>
                     </div>
 
 
                     <ChatResults msgs={MessageList}/>
 
-                    <Toolsbox AddMessage={AddMessage}/>
+                    <Toolsbox msgs = {MessageList}/>
 
                 </div>
             </div>
