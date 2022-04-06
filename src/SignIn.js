@@ -15,43 +15,56 @@ function SignIn({Login, error}) {
     }
 
     return (
-        <div className={"formContainer row"}>
-            <div className={"col-6"}>
-                <label>Sign in to GoChat</label>
-                <form onSubmit={submitHandler} className="row g-3 paddingUp">
-                    <div className="col-12">
-                        <input type="username" className="form-control" id="exampleInputEmail1" placeholder={"Username"}
-                               onChange={e => setDetails({...details, username: e.target.value})}
-                               value={details.username}></input>
+        <>
+            <div className={"container"}>
+                <div className={"forms-container"}>
+                    <div className={"signin-signup"}>
+                        <form onSubmit={submitHandler} className="g-3 paddingUp">
+                            <h2 className={"title"}>Sign in to GoChat</h2>
+                            <div className="input-field">
+                                <i className="bi bi-person-fill"></i>
+                                <input type="text" className="form-control" placeholder={"Username"}
+                                       onChange={e => setDetails({...details, username: e.target.value})}
+                                       value={details.username}></input>
+                            </div>
+                            <div className="input-field">
+                                <i className="bi bi-lock-fill"></i>
+                                <input type="password" className="form-control" placeholder={"Password"}
+                                       onChange={e => setDetails({...details, password: e.target.value})}
+                                       value={details.password}></input>
+                            </div>
+                            <div className="checkbox">
+                                <input type={"checkbox"} value={"remember-me"} id={"CheckRemember"}></input>
+                                <label className={"littlePaddingFromLeft fontSize"} id={"Remember"}>Remember me</label>
+                            </div>
+                            <button type="submit" className="btn">Log In</button>
+                            <div className={"paddingUp col-md-12"}>
+                                <a href="#" className="link-primary col-6 leftSide fontSize">Forgot password?</a>
+                                <a href="/SignUp" className="link-primary col-6 rightSide fontSize">Sign up for
+                                    GoChat</a>
+                            </div>
+                            <p className={"social-text"}>Or sign in with social media</p>
+                            <div className={"social-media"}>
+                                <a href={"#"} className={"social-icon"}>
+                                    <i className="bi bi-facebook"></i>
+                                </a>
+                                <a href={"#"} className={"social-icon"}>
+                                    <i className="bi bi-twitter"></i>
+                                </a>
+                                <a href={"#"} className={"social-icon"}>
+                                    <i className="bi bi-google"></i>
+                                </a>
+                                <a href={"#"} className={"social-icon"}>
+                                    <i className="bi bi-linkedin"></i>
+                                </a>
+                            </div>
+                        </form>
                     </div>
-                    <div className="col-12">
-                        <input type="password" className="form-control" id="exampleInputPassword1"
-                               placeholder={"Password"}
-                               onChange={e => setDetails({...details, password: e.target.value})}
-                               value={details.password}></input>
-                    </div>
-                    <div className="checkbox">
-                        <input type={"checkbox"} value={"remember-me"} id={"CheckRemember"}></input>
-                        <label className={"littlePaddingFromLeft fontSize"} id={"Remember"}>Remember me</label>
-                    </div>
-                    <div className="d-grid gap-2 col-12 mx-auto">
-                        <button type="submit" className="btn btn-primary">Log In</button>
-                    </div>
-                </form>
-                <div className={"paddingUp col-md-12"}>
-                    <a href="#" className="link-primary col-6 leftSide">
-                        <label className={"fontSize"}>Forgot password?</label>
-                    </a>
-                    <a href="SignUp" className="link-primary col-6 rightSide">
-                        <label className={"fontSize"}>Sign up for GoChat</label>
-                    </a>
                 </div>
             </div>
-            <div className={"col-6"}>
-                <img src={logo} id={"logo"}></img>
-            </div>
-        </div>
-    );
+        </>
+    )
+
 }
 
 export default SignIn;

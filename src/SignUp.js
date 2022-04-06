@@ -25,58 +25,73 @@ function SignUp({Register}) {
     }
 
     return (
-        <div className={"formContainer row align-self-center"}>
-            <div className={"col-6"}>
-                <label>Sign up to GoChat</label>
-                <form onSubmit={submitHandler} className="row g-3 paddingUp">
-                    <div className="col-6">
-                        <input type="text" className="form-control" id="inputUsername4"
-                               placeholder={"Username"}
-                               onChange={e => setDetails({...details, username: e.target.value})}
-                               value={details.username} required></input>
-                    </div>
-                    <div className="col-6">
-                        <input type="text" className="form-control" id="inputNickname4"
-                               placeholder={"Nickname"}
-                               onChange={e => setDetails({...details, nickname: e.target.value})}
-                               value={details.nickname} required></input>
-                    </div>
-                    <div className="col-12">
-                        <input type="email" className="form-control" id="inputEmail4" placeholder={"Email"}
-                               onChange={e => setDetails({...details, email: e.target.value})}
-                               value={details.email}
-                               required></input>
-                    </div>
-                    <div className="col-6">
-                        <input type="password" className="form-control" id="inputPassword4"
-                               placeholder={"Password"}
-                               onChange={e => setDetails({...details, password: e.target.value})}
-                               value={details.password} required></input>
-                    </div>
-                    <div className="col-6">
-                        <input type="password" className="form-control" id="inputPasswordAgain"
-                               placeholder={"Password again"}
-                               onChange={e => setDetails({...details, passwordAgain: e.target.value})}
-                               value={details.passwordAgain} required></input>
-                    </div>
-                    <div><input type={"file"} className={"form-control"} id={"inputImage"}
-                                onChange={e => setDetails({...details, image: e.target.value})}
-                                value={details.image}></input></div>
-                    <div className="col-12">
-                        <div className={"col-6"}>
-                            <a href={"/"} className="link-primary col-6 leftSide fontSize">Sign in</a>
+        <div className={"container"}>
+            <div className={"forms-container"}>
+                <div className={"signin-signup"}>
+                    <form onSubmit={submitHandler} className="g-3 paddingUp">
+                        <h2 className={"title"}>Sign up to GoChat</h2>
+                        <div className={"two-inputs"}>
+                            <div className="input-field half-row">
+                                <i className="bi bi-person-fill"></i>
+                                <input type="text" className="form-control" placeholder={"Username"}
+                                       onChange={e => setDetails({...details, username: e.target.value})}
+                                       value={details.username} required></input>
+                            </div>
+                            <div className="input-field half-row">
+                                <i className="bi bi-house-fill"></i>
+                                <input type="text" className="form-control" placeholder={"Nickname"}
+                                       onChange={e => setDetails({...details, nickname: e.target.value})}
+                                       value={details.nickname} required></input>
+                            </div>
                         </div>
-                        <div className={"col-6 rightSide"}>
-                            <button type="submit" className="btn btn-primary rightSide col-6">Submit</button>
+                        <div className="input-field">
+                            <i className="bi bi-envelope-fill"></i>
+                            <input type="email" className="form-control" placeholder={"Email"}
+                                   onChange={e => setDetails({...details, email: e.target.value})} value={details.email}
+                                   required></input>
                         </div>
-                    </div>
-                </form>
-            </div>
-            <div className={"col-6"}>
-                <img src={logo} id={"logo"}></img>
+                        <div className={"two-inputs"}>
+                            <div className="input-field half-row">
+                                <i className="bi bi-lock-fill"></i>
+                                <input type="password" className="form-control" placeholder={"Password"}
+                                       onChange={e => setDetails({...details, password: e.target.value})}
+                                       value={details.password} required></input>
+                            </div>
+                            <div className="input-field half-row">
+                                <i className="bi bi-lock-fill"></i>
+                                <input type="password" className="form-control" placeholder={"Again"}
+                                       onChange={e => setDetails({...details, passwordAgain: e.target.value})}
+                                       value={details.passwordAgain} required></input>
+                            </div>
+                        </div>
+                        <div className="input-field">
+                            <i className="bi bi-person-circle"></i>
+                            <input type={"file"} className={"form-control upload-box"}
+                                   onChange={e => setDetails({...details, image: e.target.value})}
+                                   value={details.image}></input></div>
+                        <button type="submit" className="btn btn-primary">Sign up</button>
+                        <a href={"/"} className="link-primary fontSize">One of us? Log in here</a>
+                        <p className={"social-text"}>Or sign up with social media</p>
+                        <div className={"social-media"}>
+                            <a href={"#"} className={"social-icon"}>
+                                <i className="bi bi-facebook"></i>
+                            </a>
+                            <a href={"#"} className={"social-icon"}>
+                                <i className="bi bi-twitter"></i>
+                            </a>
+                            <a href={"#"} className={"social-icon"}>
+                                <i className="bi bi-google"></i>
+                            </a>
+                            <a href={"#"} className={"social-icon"}>
+                                <i className="bi bi-linkedin"></i>
+                            </a>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    );
+    )
+        ;
 }
 
 export default SignUp;

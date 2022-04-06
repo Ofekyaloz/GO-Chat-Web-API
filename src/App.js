@@ -3,7 +3,7 @@ import SignUp from "./SignUp";
 import Chats from "./Chats/Chats"
 
 import './App.css';
-import {BrowserRouter as Router, Routes, Route, Navigate, useNavigate, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import {useState} from 'react';
 
 export const myMap = new Map();
