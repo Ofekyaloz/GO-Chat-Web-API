@@ -148,7 +148,7 @@ form {
     transition: all 0.5s;
 }
 
-.btn:hover {
+.btn-forms {
     background-color: #00bfa6;
 }
 

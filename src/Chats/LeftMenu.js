@@ -1,6 +1,8 @@
+import NewContactModal from "../Modal/newContactModal";
+
 function LeftMenu() {
     return (
-        <>
+        <span>
             <button className="btn" type="button" id="dropdownMenu"
                     data-bs-toggle="dropdown" aria-expanded="false">
                 {/*3-dots icon*/}
@@ -9,14 +11,15 @@ function LeftMenu() {
 
             <ul className="dropdown-menu">
                 <li>
-                    <button className="btn btn-light SideMenu" type="button" id="NewContactButton">
+                    <button className="btn btn-light SideMenu" type="button" id="NewContactButton" data-bs-toggle="modal"
+                            data-bs-target="#Modal-new-contact">
                         <span className="m-3"> New Contact </span>
                         {/*contact icon*/}
                         <i className="bi bi-person-plus-fill"/>
                     </button>
                 </li>
                 <li>
-                    <button className="btn btn-light SideMenu" type="button" id="SearchButton">
+                    <button className="btn btn-light SideMenu" type="button" id="SearchButton" >
                         <span className="m-3"> Search </span>
                         {/*search icon*/}
                         <i className="bi bi-search"/>
@@ -30,7 +33,8 @@ function LeftMenu() {
                     </button>
                 </li>
             </ul>
-        </>
+            <NewContactModal/>
+        </span>
     );
 }
 
