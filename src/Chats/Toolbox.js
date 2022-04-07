@@ -51,7 +51,7 @@ function Toolbox({msgs, setMessageList}) {
                 </ul>
 
                 <input ref={messageBox} type="text" className="form-control" placeholder="Type a message..."
-                       id="Text-input" onKeyPress={HandlePress}>
+                       maxLength={80} id="Text-input" onKeyPress={HandlePress}>
                 </input>
 
                 <button className="btn btn-primary" type="button" id="send-button" onClick={addMessage}>

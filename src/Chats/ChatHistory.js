@@ -30,7 +30,7 @@ function ChatHistory({photo, name, date, message}) {
                             <div className="col-8 d-flex ContactName"> {name} </div>
                             <div className="col-4"> {date}</div>
                         </div>
-                        <div> {message}</div>
+                        <div className="history-message"> {message} </div>
                     </div>
                 </div>
             </div>

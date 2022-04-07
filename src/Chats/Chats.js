@@ -1,6 +1,5 @@
 import './Chats.css';
 import img1 from '../Pictures/img1.jpg'
-import icon from '../Pictures/icon-user-default.png'
 import ChatHistory from './ChatHistory.js'
 import history from "./history";
 import LeftMenu from "./LeftMenu";
@@ -47,11 +46,10 @@ function Chats({username}) {
 
                     <div id="ChatBar">
                         <div className="m-1">
-                            <img className="UserImage" id = "BarImage" src={icon}/>
-                            <span className="ContactName" id={"BarName"}></span>
+                            <img className="UserImage" id = "BarImage"/>
+                            <span className="ContactName" id={"BarName"}/>
                         </div>
                     </div>
-
 
                     <ChatMsgs msgs={MessageList}/>
 
