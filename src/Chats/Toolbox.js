@@ -24,7 +24,7 @@ function Toolbox({msgs, setMessageList}) {
 
 
     return (
-        <div className="input-group InputText row col-11">
+        <div id ="toolbox" className="input-group InputText row col-11">
             <div className="input-group">
                 <button type="button" className="btn btn-secondary"
                         data-bs-toggle="dropdown" aria-expanded="false">

@@ -1,7 +1,7 @@
 function ChatMsgs({msgs}) {
 
     return (
-        <ul className="Chat">
+        <ul id="chat-msgs" className="Chat">
             {msgs.map((details, key) => (
                 <li key={key}>{details}</li>
             ))}

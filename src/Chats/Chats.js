@@ -44,10 +44,11 @@ function Chats({username}) {
                 </div>
 
                 <div className={"col-8 d-flex"} id={"ChatBlock"}>
-                    <div className="ChatBar">
+
+                    <div id="ChatBar">
                         <div className="m-1">
-                            <img className="UserImage" src={icon}/>
-                            <span className="ContactName" id={"BarName"}> Mom </span>
+                            <img className="UserImage" id = "BarImage" src={icon}/>
+                            <span className="ContactName" id={"BarName"}></span>
                         </div>
                     </div>
 

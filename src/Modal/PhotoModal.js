@@ -19,7 +19,7 @@ function PhotoModal({msgs, setMessageList}) {
     };
 
     const Close = function () {
-        document.getElementById("add-photo").value = '';
+        document.getElementById("add-file-photo").value = '';
     }
 
     return (
@@ -33,7 +33,7 @@ function PhotoModal({msgs, setMessageList}) {
                                 onClick={Close}/>
                     </div>
                     <div className="modal-body">
-                        <input ref={photo} accept="image/*" id="add-file" type={"file"}
+                        <input ref={photo} accept="image/*" id="add-file-photo" type={"file"}
                                className={"form-control upload-box"}/>
                     </div>
                     <div className="modal-footer">

@@ -26,7 +26,7 @@ function VideoModal({msgs, setMessageList}) {
     };
 
     const Close = function () {
-        document.getElementById("add-file").value = '';
+        document.getElementById("add-file-video").value = '';
     };
 
     return (
@@ -40,7 +40,7 @@ function VideoModal({msgs, setMessageList}) {
                                 onClick={Close}/>
                     </div>
                     <div className="modal-body">
-                        <input ref={video} accept="video/mp4,video/x-m4v,video/*" id="add-file" type={"file"}
+                        <input ref={video} accept="video/mp4,video/x-m4v,video/*" id="add-file-video" type={"file"}
                                className={"form-control upload-box"}/>
                     </div>
                     <div className="modal-footer">
