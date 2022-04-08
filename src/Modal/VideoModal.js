@@ -9,17 +9,10 @@ function VideoModal({msgs, setMessageList}) {
             return;
         }
         console.log("before push");
+        var media = URL.createObjectURL(video.current.files[0]);
         msgs.push(<video className="Chat-Video" controls>
-            <source id={msgs.length + 1} type="video/mp4"/>
+            <source className="Chat-Video" src={media} id={msgs.length + 1} type="video/mp4"/>
         </video>)
-        var Videoreader = new FileReader();
-        Videoreader.onload = function () {
-            const output = document.getElementById(msgs.length);
-            output.src = Videoreader.result;
-        };
-        console.log("after push");
-        Videoreader.readAsDataURL(video.current.files[0]);
-        console.log("after upload");
         setMessageList(msgs.filter((msg) => msg));
         Close();
         console.log(msgs);
