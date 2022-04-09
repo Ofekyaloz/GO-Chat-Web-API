@@ -40,12 +40,12 @@ function NewContactModal({history, setContactsList, user}) {
         let friend = myMap.get(newContact.current.value);
         if (friend != null) {
             // check if already exists or if it's the logged username
-            if (friend.nickname === user.nickname || user.chats.includes(friend.nickname)) {
+            if (friend.username === user.username || user.chats.includes(friend.username)) {
                 console.log(user.chats)
                 document.getElementById("CloseSearch").click();
                 return
             }
-            user.chats.push(friend.nickname);
+            user.chats.push(friend.username);
             // let lastmsg = user.messages.get(friend.nickname)[user.messages.get(friend.nickname).length - 1];
             // console.log("lastmsg");
             // console.log(lastmsg);
@@ -84,7 +84,7 @@ function NewContactModal({history, setContactsList, user}) {
                         <div id="not-found" className="alert alert-danger align-items-center" role="alert">
                             <i className="bi bi-exclamation-circle"/>
                             <div>
-                                Unexist username, Please enter correct username.
+                                Incorrect username, Please enter correct username.
                             </div>
                         </div>
                     </div>

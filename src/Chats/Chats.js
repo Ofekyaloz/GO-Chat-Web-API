@@ -14,11 +14,23 @@ function Chats({username, Logout}) {
 
     const user = myMap.get(username.username);
 
-    const HistoryList = history.map((details, key) => {
-        return <ChatHistory {...details} key={key}/>
-    });
+    // const HistoryList = history.map((details, key) => {
+    //     return <ChatHistory {...details} key={key}/>
+    // });
 
-    // const history = user.messages;
+    const HistoryList = user.chats.map((name, key) => {
+        console.log("name=",name)
+        const tmpuser = myMap.get(name);
+        console.log("tmpuser=",tmpuser)
+        const chat = tmpuser.messages.get(username.username);
+        console.log("chat=",chat)
+        if (chat === undefined || chat.length === 0) {
+            return <ChatHistory photo={tmpuser.img} message={""} date={""} name={tmpuser.nickname} key={key}/>
+        } else {
+            let lastmsg = chat[chat.length - 1];
+            return <ChatHistory photo={tmpuser.img} message={lastmsg.content} date={lastmsg.date} name={tmpuser.nickname} key={key}/>
+        }
+    });
 
     const [ContactsList, setContactsList] = useState(history);
 

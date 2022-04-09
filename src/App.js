@@ -31,9 +31,9 @@ function App() {
     myMap.set("noakirel", new User("noakirel", "111111", "noa@gmail.com", "noa", "img.jpg"));
     myMap.set("yonitlevi", new User("yonitlevi", "202020", "yonit@gmail.com", "yonit", "img.jpg"));
 
-    myMap.get("ofekyaloz").messages.set("giligutfeld", [new Message("abcd", true, new Date()),
-        new Message("acd", true, new Date()), new Message("ofek", true, new Date())]);
-    myMap.get("ofekyaloz").chats.push("gili");
+    myMap.get("ofekyaloz").chats.push("giligutfeld");
+    const ofekandgili = myMap.get("ofekyaloz").messages;
+    ofekandgili.set("giligutfeld", new Message("abcd", true, new Date()));
 
     const [user, setUser] = useState({username: "", password: ""});
     const [error, setError] = useState("");
@@ -41,7 +41,7 @@ function App() {
     const Login = details => {
         console.log(details);
 
-        if (myMap.get(details.username).password == details.password) {
+        if (myMap.get(details.username).password === details.password) {
             console.log('Logged in');
             setUser({
                 username: details.username,

@@ -1,4 +1,5 @@
-import {useRef} from "react";
+import {useRef, useState} from "react";
+import record from "../Chats/record";
 
 function RecordModal() {
 
@@ -14,49 +15,7 @@ function RecordModal() {
         document.getElementById("SearchUser").value = '';
     }
 
-    // let rec;
-    //
-    // navigator.mediaDevices.getUserMedia({audio: true})
-    //     .then(stream => {
-    //         handlerFunction(stream)
-    //     })
-    //
-    // function handlerFunction(stream) {
-    //     let rec = new MediaRecorder(stream);
-    //     rec.ondataavailable = e => {
-    //         let audioChunks;
-    //         audioChunks.push(e.data);
-    //         if (rec.state === "inactive") {
-    //             let blob = new Blob(audioChunks, {type: 'audio/mp3'});
-    //             let recordedAudio = document.getElementById("recordedAudio");
-    //             recordedAudio.src = URL.createObjectURL(blob);
-    //             recordedAudio.controls = true;
-    //             recordedAudio.autoplay = true;
-    //             sendData(blob)
-    //         }
-    //     }
-    // }
-    //
-    // function sendData(data) {
-    //
-    // }
-    //
-    // let record = document.getElementById("record");
-    // record.onclick = e => {
-    //     record.disabled = true;
-    //     record.style.backgroundColor = "blue"
-    //     stopRecord.disabled = false;
-    //     const audioChunks = [];
-    //     rec.start();
-    // }
-    // let stopRecord = document.getElementById("stopRecord");
-    // stopRecord.onclick = e => {
-    //     record.disabled = false;
-    //     // stop.disabled = true;
-    //     record.style.backgroundColor = "red"
-    //     rec.stop();
-    // }
-
+    const [getRecord, setRecord] = useState('');
 
     return (
         <div className="modal fade" id="Modal-new-record" tabIndex="-1" aria-labelledby="add-file"
@@ -69,13 +28,13 @@ function RecordModal() {
                     </div>
                     <div className="modal-body">
 
-                        {/*<p>*/}
-                        {/*    <button type="button" id="record">Record</button>*/}
-                        {/*    <button type="button" id="stopRecord" disabled>Stop</button>*/}
-                        {/*</p>*/}
+                        <p>
+                            <button type="button" id="record" onClick={() => record(setRecord)}>Record</button>
+                            <button type="button" id="stopRecord" disabled>Stop</button>
+                        </p>
                         <p>
                             <audio controls>
-                                    <source type="audio/ogg/mpeg" id="recordedAudio" src="../Pictures/bb.mp3"/>
+                                    <source id="recordedAudio"/>
                             </audio>
                         </p>
 
