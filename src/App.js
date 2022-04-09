@@ -1,6 +1,7 @@
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import Chats from "./Chats/Chats"
+import defaultImage from "./Pictures/icon-user-default.png"
 
 import './App.css';
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
@@ -8,20 +9,22 @@ import {useState} from 'react';
 
 export const myMap = new Map();
 
-class User {
+export class User {
     constructor(username, password, email, nickname, img) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.nickname = nickname;
         this.img = img;
+        this.messages = new Map();
     }
 }
+
 
 function App() {
 
     myMap.set("giligutfeld", new User("giligutfeld", "123456", "gili@gmail.com", "gili", "img.jpg"));
-    myMap.set("ofekyaloz", new User("ofekyaloz", "234567", "ofek@gmail.com", "ofek", "img.jpg"));
+    myMap.set("ofekyaloz", new User("ofekyaloz", "234567", "ofek@gmail.com", "ofek", defaultImage));
     myMap.set("leomessi", new User("leomessi", "101010", "leo@gmail.com", "leo", "img.jpg"));
     myMap.set("noakirel", new User("noakirel", "111111", "noa@gmail.com", "noa", "img.jpg"));
     myMap.set("yonitlevi", new User("yonitlevi", "202020", "yonit@gmail.com", "yonit", "img.jpg"));
@@ -59,13 +62,14 @@ function App() {
     const Logout = () => {
         console.log("Logout");
         setUser({username: '', password: ''});
+
     }
 
     return (
         <div className={"center"}>
             <Router>
                 <Routes>
-                    <Route path={"/Chats"} element={<Chats/>}></Route>
+                    <Route path={"/Chats"} element={<Chats username={user} Logout={Logout}/>}></Route>
                     <Route path={"/"} element={<SignIn Login={Login} error={error}/>}></Route>
                     <Route path={"/SignUp"} element={<SignUp Register={Register}/>}></Route>
                 </Routes>

@@ -8,8 +8,11 @@ import {useState} from "react";
 import msgs from "./msgs";
 import ChatMsgs from "./ChatMsgs";
 import NewContactModal from "../Modal/newContactModal";
+import {myMap} from "../App";
 
-function Chats({username}) {
+function Chats({username, Logout}) {
+
+    const user = myMap.get(username.username);
 
     const HistoryList = history.map((details, key) => {
         return <ChatHistory {...details} key={key}/>
@@ -26,11 +29,11 @@ function Chats({username}) {
 
                     <div className={"d-flex col-12"} id={"UserInfo"}>
                         <div className="col-2">
-                            <img className="UserImage" src={img1} alt=""/>
+                                <img className="UserImage" src={img1}/> {/* src={user.img} */}
                         </div>
                         <div className="col-7 m-2 ContactName" id="UserName">
-                            <span className="m-3"> Ofek Yaloz </span>
-                            <LeftMenu/>
+                            <span className="m-3"> Ofek Yaloz </span> {/* {user.nickname} */}
+                            <LeftMenu  Logout={Logout} />
                             <NewContactModal history={history} setContactsList={setContactsList}/>
                         </div>
 

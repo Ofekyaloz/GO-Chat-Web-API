@@ -1,4 +1,5 @@
 import {useRef} from "react";
+import Message from "../Chats/Message";
 
 function VideoModal({msgs, setMessageList}) {
     const video = useRef(null);
@@ -10,9 +11,9 @@ function VideoModal({msgs, setMessageList}) {
         }
         console.log("before push");
         var media = URL.createObjectURL(video.current.files[0]);
-        msgs.push(<video className="Chat-Video" controls>
+        msgs.push(new Message(<video className="Chat-Video" controls>
             <source className="Chat-Video" src={media} id={msgs.length + 1} type="video/mp4"/>
-        </video>)
+        </video>, true, new Date()))
         setMessageList(msgs.filter((msg) => msg));
         Close();
     };

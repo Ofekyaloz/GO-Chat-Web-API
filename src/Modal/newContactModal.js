@@ -34,7 +34,7 @@ function NewContactModal({history, setContactsList}) {
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"/>
                     </div>
                     <div className="modal-body">
-                        <input ref={newContact} type="text" className="form-control" id="SearchUser"
+                        <input ref={newContact} type="text" className="form-control" id="SearchUser" autoComplete="off"
                                placeholder="Username" maxLength={35} onKeyPress={HandlePress}>
                         </input>
                     </div>

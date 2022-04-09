@@ -1,4 +1,4 @@
-function LeftMenu() {
+function LeftMenu({Logout}) {
     return (
         <span>
             <button className="btn" type="button" id="dropdownMenu"
@@ -23,7 +23,7 @@ function LeftMenu() {
                     </button>
                 </li>
                 <li>
-                    <a className="btn btn-light SideMenu" type="button" id="LogOutButton" href="/">
+                    <a className="btn btn-light SideMenu" type="button" id="LogOutButton" onClick={Logout} href="/">
                         <span className="m-3"> LogOut </span>
                         {/*logout icon*/}
                         <i className="bi bi-box-arrow-right"/>

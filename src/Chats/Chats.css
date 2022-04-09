@@ -136,6 +136,13 @@
     border-width: 1px;
     border-style: solid;
     margin-top: 5px;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.msg-date {
+    color: gray;
+    font-size: small;
 }
 
 .mini-menu > .list-item {

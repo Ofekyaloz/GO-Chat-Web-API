@@ -2,6 +2,7 @@ import {useRef} from "react";
 import PhotoModal from "../Modal/PhotoModal";
 import VideoModal from "../Modal/VideoModal";
 import RecordModal from "../Modal/RecordModal";
+import Message from "./Message";
 
 function Toolbox({msgs, setMessageList}) {
 
@@ -17,7 +18,8 @@ function Toolbox({msgs, setMessageList}) {
         if (messageBox.current.value === '') {
             return;
         }
-        msgs.push(messageBox.current.value);
+        // msgs.push(messageBox.current.value);
+        msgs.push(new Message(messageBox.current.value, true, new Date()))
         setMessageList(msgs.filter((msg) => msg));
         document.getElementById("Text-input").value = '';
     };
@@ -51,7 +53,7 @@ function Toolbox({msgs, setMessageList}) {
                 </ul>
 
                 <input ref={messageBox} type="text" className="form-control" placeholder="Type a message..."
-                       maxLength={80} id="Text-input" onKeyPress={HandlePress}>
+                       maxLength={80} id="Text-input" onKeyPress={HandlePress} autoComplete="off">
                 </input>
 
                 <button className="btn btn-primary" type="button" id="send-button" onClick={addMessage}>
