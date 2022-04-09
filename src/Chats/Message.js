@@ -1,7 +1,7 @@
 class Message {
     constructor(content, amISend, date) {
         this.content = content;
-        this.amISend = amISend;
+        this.myMsg = amISend;
         this.date = date;
     }
 }

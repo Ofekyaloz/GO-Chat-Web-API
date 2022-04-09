@@ -18,6 +18,8 @@ function Chats({username, Logout}) {
         return <ChatHistory {...details} key={key}/>
     });
 
+    // const history = user.messages;
+
     const [ContactsList, setContactsList] = useState(history);
 
     const [MessageList, setMessageList] = useState(msgs);
@@ -34,7 +36,7 @@ function Chats({username, Logout}) {
                         <div className="col-7 m-2 ContactName" id="UserName">
                             <span className="m-3"> Ofek Yaloz </span> {/* {user.nickname} */}
                             <LeftMenu  Logout={Logout} />
-                            <NewContactModal history={history} setContactsList={setContactsList}/>
+                            <NewContactModal history={history} setContactsList={setContactsList} user={user}/>
                         </div>
 
                     </div>

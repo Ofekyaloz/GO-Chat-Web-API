@@ -30,6 +30,13 @@
     display: flex;
 }
 
+#not-found {
+    display: none;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-size: large;
+}
+
 
 .LeftSide {
     position: absolute;
@@ -114,6 +121,16 @@
     height: 77%;
     width: 100%;
     overflow: auto;
+}
+
+.left {
+    text-align: left;
+    float: left;
+}
+.right {
+    /*text-align: right;*/
+    position: relative;
+    flex-flow: column;
 }
 
 #chat-msgs {

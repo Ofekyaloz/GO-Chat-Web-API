@@ -6,6 +6,7 @@ import defaultImage from "./Pictures/icon-user-default.png"
 import './App.css';
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import {useState} from 'react';
+import Message from "./Chats/Message";
 
 export const myMap = new Map();
 
@@ -23,11 +24,14 @@ export class User {
 
 function App() {
 
-    myMap.set("giligutfeld", new User("giligutfeld", "123456", "gili@gmail.com", "gili", "img.jpg"));
+    myMap.set("giligutfeld", new User("giligutfeld", "123456", "gili@gmail.com", "gili", defaultImage));
     myMap.set("ofekyaloz", new User("ofekyaloz", "234567", "ofek@gmail.com", "ofek", defaultImage));
     myMap.set("leomessi", new User("leomessi", "101010", "leo@gmail.com", "leo", "img.jpg"));
     myMap.set("noakirel", new User("noakirel", "111111", "noa@gmail.com", "noa", "img.jpg"));
     myMap.set("yonitlevi", new User("yonitlevi", "202020", "yonit@gmail.com", "yonit", "img.jpg"));
+
+    myMap.get("ofekyaloz").messages.set("giligutfeld", [new Message("abcd", true, new Date()),
+        new Message("acd", true, new Date()), new Message("ofek", true, new Date())])
 
     const [user, setUser] = useState({username: "", password: ""});
     const [error, setError] = useState("");

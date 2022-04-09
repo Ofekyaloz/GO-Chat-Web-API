@@ -14,6 +14,10 @@ function Toolbox({msgs, setMessageList}) {
         }
     };
 
+    // const scrollChat = function (msg) {
+    //     document.getElementsByClassName('Chat')[0].scrollTop = document.getElementsByClassName('Chat')[0].scrollHeight;
+    // }
+
     const addMessage = function () {
         if (messageBox.current.value === '') {
             return;
@@ -22,6 +26,7 @@ function Toolbox({msgs, setMessageList}) {
         msgs.push(new Message(messageBox.current.value, true, new Date()))
         setMessageList(msgs.filter((msg) => msg));
         document.getElementById("Text-input").value = '';
+        // scrollChat();
     };
 
 
