@@ -1,5 +1,4 @@
 import {useRef} from "react";
-import icon from "../Pictures/icon-user-default.png";
 import {myMap} from "../App";
 
 function NewContactModal({history, setContactsList, user}) {
@@ -12,8 +11,8 @@ function NewContactModal({history, setContactsList, user}) {
     }
 
     function timeSince(date) {
-        var seconds = Math.floor((new Date() - date) / 1000);
-        var interval = seconds / 31536000;
+        let seconds = Math.floor((new Date() - date) / 1000);
+        let interval = seconds / 31536000;
 
         if (interval > 1) {
             return Math.floor(interval) + " years";
@@ -38,14 +37,24 @@ function NewContactModal({history, setContactsList, user}) {
     }
 
     const AddContact = function () {
-        var friend = myMap.get(newContact.current.value);
+        let friend = myMap.get(newContact.current.value);
         if (friend != null) {
-            var lastmsg = user.messages.get(friend.nickname)[user.messages.get(friend.nickname).length - 1];
+            // check if already exists or if it's the logged username
+            if (friend.nickname === user.nickname || user.chats.includes(friend.nickname)) {
+                console.log(user.chats)
+                document.getElementById("CloseSearch").click();
+                return
+            }
+            user.chats.push(friend.nickname);
+            // let lastmsg = user.messages.get(friend.nickname)[user.messages.get(friend.nickname).length - 1];
+            // console.log("lastmsg");
+            // console.log(lastmsg);
+            // console.log("lastmsg");
             history.unshift({
                 photo: friend.img,
                 name: friend.nickname,
-                date: timeSince(lastmsg.date),
-                message: lastmsg.content
+                date: "timeSince(lastmsg.date)",
+                message: "lastmsg.content"
             });
             setContactsList(history.filter((c) => c))
             document.getElementById("CloseSearch").click()
@@ -55,7 +64,6 @@ function NewContactModal({history, setContactsList, user}) {
     }
 
     const Close = function () {
-        console.log("3")
         document.getElementById("not-found").style.display = 'none';
         document.getElementById("SearchUser").value = '';
     }
@@ -74,7 +82,7 @@ function NewContactModal({history, setContactsList, user}) {
                                placeholder="Username" maxLength={35} onKeyPress={HandlePress}>
                         </input>
                         <div id="not-found" className="alert alert-danger align-items-center" role="alert">
-                            <i className="bi bi-exclamation-circle"></i>
+                            <i className="bi bi-exclamation-circle"/>
                             <div>
                                 Unexist username, Please enter correct username.
                             </div>
