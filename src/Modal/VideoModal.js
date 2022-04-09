@@ -15,7 +15,6 @@ function VideoModal({msgs, setMessageList}) {
         </video>)
         setMessageList(msgs.filter((msg) => msg));
         Close();
-        console.log(msgs);
     };
 
     const Close = function () {

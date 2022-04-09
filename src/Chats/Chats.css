@@ -24,21 +24,15 @@
     width: 100%;
 }
 
-/*#SearchUser {*/
-/*    position: relative;*/
-/*    top: 10px;*/
-/*    left: 10px;*/
-/*    font-weight: 800;*/
-/*    background: aliceblue;*/
-/*    display: flex;*/
-/*    height: 50px;*/
-/*    width: 300px;*/
-/*    margin-right: 10px;*/
-/*}*/
+#SearchUser {
+    font-weight: 800;
+    background: aliceblue;
+    display: flex;
+}
 
 
 .LeftSide {
-    position: fixed;
+    position: absolute;
     left: 10px;
     top: 10px;
     bottom: 10px;

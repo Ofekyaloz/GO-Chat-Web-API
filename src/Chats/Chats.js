@@ -7,12 +7,15 @@ import Toolbox from "./Toolbox";
 import {useState} from "react";
 import msgs from "./msgs";
 import ChatMsgs from "./ChatMsgs";
+import NewContactModal from "../Modal/newContactModal";
 
 function Chats({username}) {
 
     const HistoryList = history.map((details, key) => {
         return <ChatHistory {...details} key={key}/>
     });
+
+    const [ContactsList, setContactsList] = useState(history);
 
     const [MessageList, setMessageList] = useState(msgs);
 
@@ -28,12 +31,8 @@ function Chats({username}) {
                         <div className="col-7 m-2 ContactName" id="UserName">
                             <span className="m-3"> Ofek Yaloz </span>
                             <LeftMenu/>
+                            <NewContactModal history={history} setContactsList={setContactsList}/>
                         </div>
-
-                        {/*<input id="SearchUser" type="text" className={"form-control"} placeholder="Username"*/}
-                        {/*       aria-label="Username"*/}
-                        {/*       aria-describedby="addon-wrapping" maxLength={35}>*/}
-                        {/*</input>*/}
 
                     </div>
 
@@ -46,14 +45,14 @@ function Chats({username}) {
 
                     <div id="ChatBar">
                         <div className="m-1">
-                            <img className="UserImage" id = "BarImage"/>
+                            <img className="UserImage" id="BarImage"/>
                             <span className="ContactName" id={"BarName"}/>
                         </div>
                     </div>
 
                     <ChatMsgs msgs={MessageList}/>
 
-                    <Toolbox msgs = {MessageList} setMessageList = {setMessageList}/>
+                    <Toolbox msgs={MessageList} setMessageList={setMessageList}/>
 
                 </div>
             </div>

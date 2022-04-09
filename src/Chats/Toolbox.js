@@ -1,6 +1,7 @@
 import {useRef} from "react";
 import PhotoModal from "../Modal/PhotoModal";
 import VideoModal from "../Modal/VideoModal";
+import RecordModal from "../Modal/RecordModal";
 
 function Toolbox({msgs, setMessageList}) {
 
@@ -19,12 +20,11 @@ function Toolbox({msgs, setMessageList}) {
         msgs.push(messageBox.current.value);
         setMessageList(msgs.filter((msg) => msg));
         document.getElementById("Text-input").value = '';
-        console.log(msgs);
     };
 
 
     return (
-        <div id ="toolbox" className="input-group InputText row col-11">
+        <div id="toolbox" className="input-group InputText row col-11">
             <div className="input-group">
                 <button type="button" className="btn btn-secondary"
                         data-bs-toggle="dropdown" aria-expanded="false">
@@ -37,7 +37,7 @@ function Toolbox({msgs, setMessageList}) {
                                 data-bs-target="#Modal-upload-photo" id="image-button">
                             {/*image icon*/}
                             <i className="bi bi-image"/>
-                            <span className="m-3"> photo</span>
+                            <span className="m-3"> photo </span>
                         </button>
                     </li>
                     <li className="list-item">
@@ -45,7 +45,7 @@ function Toolbox({msgs, setMessageList}) {
                                 data-bs-target="#Modal-upload-video" id="video-button">
                             {/*video icon*/}
                             <i className="bi bi-camera-video"/>
-                            <span className="m-3"> video</span>
+                            <span className="m-3"> video </span>
                         </button>
                     </li>
                 </ul>
@@ -59,12 +59,14 @@ function Toolbox({msgs, setMessageList}) {
                     <i className="bi bi-send"/>
                 </button>
 
-                <button className="btn btn-danger" type="button" id="mic-button">
+                <button className="btn btn-danger" type="button" id="mic-button" data-bs-toggle="modal"
+                        data-bs-target="#Modal-new-record">
                     {/*mic icon*/}
                     <i className="bi bi-mic"/>
                 </button>
-                <PhotoModal msgs = {msgs} setMessageList={setMessageList}/>
-                <VideoModal msgs = {msgs} setMessageList={setMessageList}/>
+                <PhotoModal msgs={msgs} setMessageList={setMessageList}/>
+                <VideoModal msgs={msgs} setMessageList={setMessageList}/>
+                <RecordModal/>
             </div>
         </div>
     );
