@@ -25,14 +25,14 @@ function App() {
 
     myMap.set("giligutfeld", new User("giligutfeld", "123456", "gili@gmail.com", "gili", defaultImage));
     myMap.set("ofekyaloz", new User("ofekyaloz", "234567", "ofek@gmail.com", "ofek", defaultImage));
-    myMap.set("leomessi", new User("leomessi", "101010", "leo@gmail.com", "leo", "img.jpg"));
+    myMap.set("leomessi", new User("leomessi", "101010", "leo@gmail.com", "leo", defaultImage));
     myMap.set("noakirel", new User("noakirel", "111111", "noa@gmail.com", "noa", defaultImage));
-    myMap.set("yonitlevi", new User("yonitlevi", "202020", "yonit@gmail.com", "yonit", "img.jpg"));
+    myMap.set("yonitlevi", new User("yonitlevi", "202020", "yonit@gmail.com", "yonit", defaultImage));
 
     const ofekandgili = myMap.get("ofekyaloz").friends;
     ofekandgili.set("giligutfeld", []);
-    ofekandgili.get("giligutfeld").push(new Message("abcd", true, new Date()));
-    ofekandgili.get("giligutfeld").push(new Message("1234", true, new Date()));
+    ofekandgili.get("giligutfeld").push({message : new Message("abcd", true, new Date())});
+    ofekandgili.get("giligutfeld").push({message : new Message("1234", true, new Date())});
 
     const [user, setUser] = useState({username: "", password: ""});
     const [error, setError] = useState("");

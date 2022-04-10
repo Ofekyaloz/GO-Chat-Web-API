@@ -1,4 +1,4 @@
-function ChatHistory({photo, name, date, message}) {
+function ChatHistory({user, setMessageList, photo, name, date, message}) {
 
     const DisplayChat = function () {
         const bar = document.getElementById("ChatBar");
@@ -7,13 +7,16 @@ function ChatHistory({photo, name, date, message}) {
             document.getElementById("BarImage").src = photo;
             document.getElementById("BarName").innerText = name;
         }
-        const li = document.getElementById("chat-msgs");
-        if (li.style.display !== "none") {
-            li.style.display = "block";
-        }
         const toolbox = document.getElementById("toolbox");
         if (toolbox.style.display !== "none") {
             toolbox.style.display = "block";
+        }
+        const li = document.getElementById("chat-msgs");
+        if (li.style.display !== "none") {
+            li.style.display = "block";
+            let msgs = user.friends.get(name);
+
+            console.log(user.friends.get(name), " in ChatHistory")
         }
     }
 

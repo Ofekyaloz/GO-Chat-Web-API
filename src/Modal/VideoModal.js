@@ -1,20 +1,17 @@
 import {useRef} from "react";
 import Message from "../Chats/Message";
 
-function VideoModal({msgs, setMessageList}) {
+function VideoModal({msgs, handelAddMessage}) {
     const video = useRef(null);
 
     const AddVideo = function () {
-        console.log("aaa");
         if (video.current.value === '') {
             return;
         }
-        console.log("before push");
         var media = URL.createObjectURL(video.current.files[0]);
-        msgs.push(new Message(<video className="Chat-Video" controls>
+        handelAddMessage(new Message(<video className="Chat-Video" controls>
             <source className="Chat-Video" src={media} id={msgs.length + 1} type="video/mp4"/>
-        </video>, true, new Date()))
-        setMessageList(msgs.filter((msg) => msg));
+        </video>, true, new Date()));
         Close();
     };
 

@@ -4,7 +4,7 @@ import VideoModal from "../Modal/VideoModal";
 import RecordModal from "../Modal/RecordModal";
 import Message from "./Message";
 
-function Toolbox({user, msgs, setMessageList}) {
+function Toolbox({MessageList, handelAddMessage}) {
 
     const messageBox = useRef(null);
 
@@ -22,9 +22,8 @@ function Toolbox({user, msgs, setMessageList}) {
         if (messageBox.current.value === '') {
             return;
         }
-        // msgs.push(messageBox.current.value);
-        msgs.push(new Message(messageBox.current.value, true, new Date()))
-        setMessageList(msgs.filter((msg) => msg));
+        // msgs.push(new Message(messageBox.current.value, true, new Date()))
+        handelAddMessage(new Message(messageBox.current.value, true, new Date()));
         document.getElementById("Text-input").value = '';
         // scrollChat();
     };
@@ -71,8 +70,8 @@ function Toolbox({user, msgs, setMessageList}) {
                     {/*mic icon*/}
                     <i className="bi bi-mic"/>
                 </button>
-                <PhotoModal msgs={msgs} setMessageList={setMessageList}/>
-                <VideoModal msgs={msgs} setMessageList={setMessageList}/>
+                <PhotoModal msgs={MessageList} handelAddMessage={handelAddMessage}/>
+                <VideoModal msgs={MessageList} handelAddMessage={handelAddMessage}/>
                 <RecordModal/>
             </div>
         </div>

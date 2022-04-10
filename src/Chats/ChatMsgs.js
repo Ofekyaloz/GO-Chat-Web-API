@@ -1,16 +1,18 @@
-function ChatMsgs({msgs}) {
-    return (
-        <ul id="chat-msgs" className="Chat">
-            {msgs.map((details, key) => (
-                <li className={details.myMsg ? "right" : "left"} key={key}>
-                    <div>{details.content} </div>
-                    <div className="msg-date">
-                        {details.date.getHours()}:{details.date.getMinutes() < 10? '0': ''}{details.date.getMinutes()}
-                    </div>
-                </li>
-            ))}
-        </ul>
-    )
-}
-
-export default ChatMsgs
+// function ChatMsgs({MessageList}) {
+//
+//     return (
+//         <ul id="chat-msgs" className="Chat">
+//             {console.log("In Chatmsgs msgs=", MessageList.messages)}
+//             {MessageList.map((msg, key) => (
+//                 <li className={msg.message.myMsg ? "right" : "left"} key={key}>
+//                     <div>{msg.message.content} </div>
+//                     <div className="msg-date">
+//                         {msg.message.date.getHours()}:{msg.message.date.getMinutes() < 10 ? '0' : ''}{msg.message.date.getMinutes()}
+//                     </div>
+//                 </li>
+//             ))}
+//         </ul>
+//     )
+// }
+//
+// export default ChatMsgs
