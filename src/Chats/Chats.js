@@ -1,19 +1,17 @@
 import './Chats.css';
 import ChatHistory from './ChatHistory.js'
-import history from "./history";
+// import history from "./history";
 import LeftMenu from "./LeftMenu";
 import Toolbox from "./Toolbox";
 import {useState} from "react";
 import NewContactModal from "../Modal/newContactModal";
 import {myMap} from "../App";
-import Message from "./Message";
 
 function Chats({username, Logout}) {
 
     const user = myMap.get(username.username);
 
-    let MessagesArray = [{message: new Message("abcd", true, new Date())},
-        {message: new Message("acd", true, new Date())}];
+    let MessagesArray = [];
 
     const [MessageList, setMessageList] = useState(MessagesArray);
 
@@ -24,7 +22,12 @@ function Chats({username, Logout}) {
     }
     console.log("MessageList=",MessageList, MessageList);
 
+    let contactsHistory = [];
+
+    const [ContactsList, setContactsList] = useState(contactsHistory);
+
     const HistoryList = (Array.from(user.friends.keys()).reverse()).map((name, key) => {
+        // console.log("contactlist=", ContactsList);
         // console.log("name=", name)
         const chat = user.friends.get(name);
         // console.log("chat=", chat)
@@ -32,19 +35,18 @@ function Chats({username, Logout}) {
         // console.log("friend=", friend)
         if (chat === undefined || chat.length === 0) {
             // console.log("chat empty")
-            return <ChatHistory user={user} setMessageList={setMessageList} photo={friend.img} message={" "} date={" "}
-                                name={friend.nickname} key={key}/>
+            return <ChatHistory chat={chat} setMessageList={setMessageList} photo={friend.img} message={" "} date={" "}
+                                name={friend.nickname} frienUserName={friend.username} key={key}/>
         }
         // console.log("chat not empty")
         let last_message = chat.at(chat.length - 1);
         let x = last_message.message.date.getMinutes() < 10 ? '0' : '' + last_message.message.date.getMinutes().toString();
-        return <ChatHistory user={user} setMessageList={setMessageList} photo={friend.img}
+        return <ChatHistory setMessageList={setMessageList} photo={friend.img} chat={chat}
                             message={last_message.message.content} name={friend.nickname} key={key}
                             date={last_message.message.date.getHours().toString() + ":" + x}/>
 
     });
 
-    const [ContactsList, setContactsList] = useState(history);
 
     return (
         <div className={"container-fluid"}>
@@ -58,7 +60,7 @@ function Chats({username, Logout}) {
                         <div className="col-7 m-2 ContactName" id="UserName">
                             <span className="m-3"> {user.nickname} </span>
                             <LeftMenu Logout={Logout}/>
-                            <NewContactModal setContactsList={setContactsList} user={user} history={history}/>
+                            <NewContactModal setContactsList={setContactsList} user={user} history={contactsHistory}/>
                         </div>
 
                     </div>

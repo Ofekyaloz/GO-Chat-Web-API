@@ -22,7 +22,6 @@ function Toolbox({MessageList, handelAddMessage}) {
         if (messageBox.current.value === '') {
             return;
         }
-        // msgs.push(new Message(messageBox.current.value, true, new Date()))
         handelAddMessage(new Message(messageBox.current.value, true, new Date()));
         document.getElementById("Text-input").value = '';
         // scrollChat();

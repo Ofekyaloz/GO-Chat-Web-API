@@ -1,4 +1,6 @@
-function ChatHistory({user, setMessageList, photo, name, date, message}) {
+import {myMap} from "../App";
+
+function ChatHistory({chat, setMessageList, photo, name, date, message}) {
 
     const DisplayChat = function () {
         const bar = document.getElementById("ChatBar");
@@ -14,10 +16,9 @@ function ChatHistory({user, setMessageList, photo, name, date, message}) {
         const li = document.getElementById("chat-msgs");
         if (li.style.display !== "none") {
             li.style.display = "block";
-            let msgs = user.friends.get(name);
-
-            console.log(user.friends.get(name), " in ChatHistory")
         }
+        setMessageList(chat);
+        console.log(myMap);
     }
 
     return (
