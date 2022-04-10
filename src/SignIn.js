@@ -38,7 +38,7 @@ function SignIn({Login, error}) {
                                 <label className={"littlePaddingFromLeft fontSize"} id={"Remember"}>Remember me</label>
                             </div>
                             <button type="submit" className="btn btn-forms">Log In</button>
-                            <div className={"paddingUp col-md-12"}>
+                            <div className={"col-md-12"}>
                                 <a href="#" className="link-primary col-6 leftSide fontSize">Forgot password?</a>
                                 <a href="/SignUp" className="link-primary col-6 rightSide fontSize">Sign up for
                                     GoChat</a>
