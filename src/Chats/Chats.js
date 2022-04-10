@@ -49,7 +49,7 @@ function Chats({username, Logout}) {
                         <div className="col-7 m-2 ContactName" id="UserName">
                             <span className="m-3"> {user.nickname} </span>
                             <LeftMenu Logout={Logout}/>
-                            <NewContactModal history={history} setContactsList={setContactsList} user={user}/>
+                            <NewContactModal setContactsList={setContactsList} user={user}/>
                         </div>
 
                     </div>
@@ -70,7 +70,7 @@ function Chats({username, Logout}) {
 
                     <ChatMsgs msgs={MessageList}/>
 
-                    <Toolbox msgs={MessageList} setMessageList={setMessageList}/>
+                    <Toolbox user={user} msgs={MessageList} setMessageList={setMessageList}/>
 
                 </div>
             </div>

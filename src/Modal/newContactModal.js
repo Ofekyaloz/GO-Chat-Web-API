@@ -1,7 +1,7 @@
 import {useRef} from "react";
 import {myMap} from "../App";
 
-function NewContactModal({history, setContactsList, user}) {
+function NewContactModal({setContactsList, user}) {
     const newContact = useRef(null);
 
     const HandlePress = function (e) {
@@ -14,23 +14,19 @@ function NewContactModal({history, setContactsList, user}) {
         let friend = myMap.get(newContact.current.value);
         if (friend != null) {
             // check if already exists or if it's the logged username
-            if (friend.username === user.username || user.chats.includes(friend.username)) {
-                console.log(user.chats)
+            if (friend.username === user.username || user.friends.get(friend.username) != null) {
                 document.getElementById("CloseSearch").click();
                 return
             }
-            user.chats.push(friend.username);
-            // let lastmsg = user.messages.get(friend.nickname)[user.messages.get(friend.nickname).length - 1];
-            // console.log("lastmsg");
-            // console.log(lastmsg);
-            // console.log("lastmsg");
-            history.unshift({
-                photo: friend.img,
-                name: friend.nickname,
-                date: "timeSince(lastmsg.date)",
-                message: "lastmsg.content"
-            });
-            setContactsList(history.filter((c) => c))
+            user.friends.set(friend.username, []);
+            friend.friends.set(user.username, []);
+            // history.unshift({
+            //     photo: friend.img,
+            //     name: friend.nickname,
+            //     date: "timeSince(lastmsg.date)",
+            //     message: "lastmsg.content"
+            // });
+            setContactsList("")
             document.getElementById("CloseSearch").click()
         } else {
             document.getElementById("not-found").style.display = 'block';
@@ -56,9 +52,8 @@ function NewContactModal({history, setContactsList, user}) {
                                placeholder="Username" maxLength={35} onKeyPress={HandlePress}>
                         </input>
                         <div id="not-found" className="alert alert-danger align-items-center" role="alert">
-                            <i className="bi bi-exclamation-circle"/>
                             <div>
-                                Incorrect username, Please enter correct username.
+                                <i className="bi bi-exclamation-circle m-3"/> Incorrect username.
                             </div>
                         </div>
                     </div>

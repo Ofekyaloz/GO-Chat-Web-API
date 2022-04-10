@@ -4,7 +4,7 @@ import VideoModal from "../Modal/VideoModal";
 import RecordModal from "../Modal/RecordModal";
 import Message from "./Message";
 
-function Toolbox({msgs, setMessageList}) {
+function Toolbox({user, msgs, setMessageList}) {
 
     const messageBox = useRef(null);
 
