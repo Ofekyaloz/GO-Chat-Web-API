@@ -17,8 +17,7 @@ export class User {
         this.email = email;
         this.nickname = nickname;
         this.img = img;
-        this.messages = new Map();
-        this.chats = new Array();
+        this.friends = new Map();
     }
 }
 
@@ -31,9 +30,10 @@ function App() {
     myMap.set("noakirel", new User("noakirel", "111111", "noa@gmail.com", "noa", "img.jpg"));
     myMap.set("yonitlevi", new User("yonitlevi", "202020", "yonit@gmail.com", "yonit", "img.jpg"));
 
-    myMap.get("ofekyaloz").chats.push("giligutfeld");
-    const ofekandgili = myMap.get("ofekyaloz").messages;
-    ofekandgili.set("giligutfeld", new Message("abcd", true, new Date()));
+    const ofekandgili = myMap.get("ofekyaloz").friends;
+    ofekandgili.set("giligutfeld", []);
+    ofekandgili.get("giligutfeld").push(new Message("abcd", true, new Date()));
+    ofekandgili.get("giligutfeld").push(new Message("1234", true, new Date()));
 
     const [user, setUser] = useState({username: "", password: ""});
     const [error, setError] = useState("");
