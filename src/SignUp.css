@@ -126,8 +126,13 @@ form {
 }
 
 .errors {
+    margin-top: 10px;
     color: red;
     display: none;
+    max-width: 380px;
+    width: 100%;
+    text-align: center;
+    vertical-align: center;
 }
 
 .input-field input {

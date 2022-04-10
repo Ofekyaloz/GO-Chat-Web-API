@@ -30,8 +30,14 @@ function SignUp({Register}) {
                 <div className={"signin-signup"}>
                     <form onSubmit={submitHandler} className="g-3 paddingUp">
                         <h2 className={"title"}>Sign up to GoChat</h2>
-                        <h5 className={"errors"} id={'errorUsername'}>The username is already exist!</h5>
-                        <div className={"two-inputs"}>
+                        <div id="errorUsername" className="errors alert alert-danger align-items-center" role="alert">
+                            <div>
+                                <i className="bi bi-exclamation-circle m-2"/>
+                                The username is already exist!
+                            </div>
+                        </div>
+                        {/*<h5 className={"errors"} id={'errorUsername'}>The username is already exist!</h5>*/}
+                            <div className={"two-inputs"}>
                             <div className="input-field half-row">
                                 <i className="bi bi-person-fill"></i>
                                 <input type="text" className="form-control" placeholder={"Username"}
@@ -52,11 +58,36 @@ function SignUp({Register}) {
                                    required></input>
                         </div>
 
-                        <h5 className={"errors"} id={'errorLength'}>The password must be 8 characters or longer!</h5>
-                        <h5 className={"errors"} id={'errorPasswordAgain'}>The passwords are different!</h5>
-                        <h5 className={"errors"} id={'errorPasswordNumbers'}>The password must contain at least 1 numeric character!</h5>
-                        <h5 className={"errors"} id={'errorPasswordUppercase'}>The password must contain at least 1 uppercase character!</h5>
-                        <h5 className={"errors"} id={'errorPasswordLowercase'}>The password must contain at least 1 n lowercase character!</h5>
+                        <div id="errorLength" className="errors alert alert-danger align-items-center" role="alert">
+                            <div>
+                                <i className="bi bi-exclamation-circle m-2"/>
+                                The password must be 8 characters or longer!
+                            </div>
+                        </div>
+                        <div id="errorPasswordAgain" className="errors alert alert-danger align-items-center" role="alert">
+                            <div>
+                                <i className="bi bi-exclamation-circle m-2"/>
+                                The passwords are different!
+                            </div>
+                        </div>
+                        <div id="errorPasswordNumbers" className="errors alert alert-danger align-items-center" role="alert">
+                            <div>
+                                <i className="bi bi-exclamation-circle m-2"/>
+                                The password must contain at least 1 numeric character!
+                            </div>
+                        </div>
+                        <div id="errorPasswordUppercase" className="errors alert alert-danger align-items-center" role="alert">
+                            <div>
+                                <i className="bi bi-exclamation-circle m-2"/>
+                                The password must contain at least 1 uppercase character!
+                            </div>
+                        </div>
+                        <div id="errorPasswordLowercase" className="errors alert alert-danger align-items-center" role="alert">
+                            <div>
+                                <i className="bi bi-exclamation-circle m-2"/>
+                                The password must contain at least 1 n lowercase character!
+                            </div>
+                        </div>
 
                         <div className={"two-inputs"}>
                             <div className="input-field half-row">
