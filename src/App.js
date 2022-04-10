@@ -21,7 +21,6 @@ export class User {
     }
 }
 
-
 function App() {
 
     myMap.set("giligutfeld", new User("giligutfeld", "123456", "gili@gmail.com", "gili", defaultImage));
@@ -54,15 +53,45 @@ function App() {
     }
 
     const Register = details => {
-        console.log(details);
+
+        let errors = document.getElementsByClassName('errors');
+        for (let i = 0; i < errors.length; i++) {
+            errors[i].style.display = 'none';
+        }
 
         if (myMap.get(details.username)) {
-            console.log('The username is already exist!');
+            document.getElementById('errorUsername').style.display = 'block';
             return true;
-        } else {
-            myMap.set(details.username, new User(details.username, details.password, details.email, details.nickname, details.image));
-            return false;
         }
+
+        if (details.password !== details.passwordAgain) {
+            document.getElementById('errorPasswordAgain').style.display = 'block';
+            return true;
+        }
+
+        if (!/(?=.{8,})/.test(details.password)) {
+            document.getElementById('errorLength').style.display = 'block';
+            return true;
+        }
+
+        if (!/(?=.*[0-9])/.test(details.password)) {
+            document.getElementById('errorPasswordNumbers').style.display = 'block';
+            return true;
+        }
+
+        if (!/(?=.*[A-Z])/.test(details.password)) {
+            document.getElementById('errorPasswordUppercase').style.display = 'block';
+            return true;
+        }
+
+        if (!/(?=.*[a-z])/.test(details.password)) {
+            document.getElementById('errorPasswordLowercase').style.display = 'block';
+            return true;
+        }
+
+        myMap.set(details.username, new User(details.username, details.password, details.email, details.nickname, details.image));
+        return false;
+
     }
 
     const Logout = () => {

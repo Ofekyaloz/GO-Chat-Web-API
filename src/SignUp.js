@@ -30,6 +30,7 @@ function SignUp({Register}) {
                 <div className={"signin-signup"}>
                     <form onSubmit={submitHandler} className="g-3 paddingUp">
                         <h2 className={"title"}>Sign up to GoChat</h2>
+                        <h5 className={"errors"} id={'errorUsername'}>The username is already exist!</h5>
                         <div className={"two-inputs"}>
                             <div className="input-field half-row">
                                 <i className="bi bi-person-fill"></i>
@@ -50,6 +51,13 @@ function SignUp({Register}) {
                                    onChange={e => setDetails({...details, email: e.target.value})} value={details.email}
                                    required></input>
                         </div>
+
+                        <h5 className={"errors"} id={'errorLength'}>The password must be 8 characters or longer!</h5>
+                        <h5 className={"errors"} id={'errorPasswordAgain'}>The passwords are different!</h5>
+                        <h5 className={"errors"} id={'errorPasswordNumbers'}>The password must contain at least 1 numeric character!</h5>
+                        <h5 className={"errors"} id={'errorPasswordUppercase'}>The password must contain at least 1 uppercase character!</h5>
+                        <h5 className={"errors"} id={'errorPasswordLowercase'}>The password must contain at least 1 n lowercase character!</h5>
+
                         <div className={"two-inputs"}>
                             <div className="input-field half-row">
                                 <i className="bi bi-lock-fill"></i>

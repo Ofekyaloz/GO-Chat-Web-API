@@ -8,7 +8,8 @@
 }
 
 .paddingUp {
-    padding-top: 25px;
+    padding-top: 135px;
+    padding-bottom: 100px;
 }
 
 .fontSize {
@@ -124,6 +125,11 @@ form {
     font-size: 1.5rem;
 }
 
+.errors {
+    color: red;
+    display: none;
+}
+
 .input-field input {
     background: none;
     outline: none;
@@ -162,8 +168,8 @@ form {
 body {
     justify-content: center;
     align-items: center;
+    background: linear-gradient(#009688 0%, #18a413 50px, #FFFFFF 150px, #FFFFFF 100%);
     min-height: 100vh;
-    background: linear-gradient(#009688 0%, #009688 130px, #FFFFFF 130px, #FFFFFF 100%);
     display: flex;
 }
 
