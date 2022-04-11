@@ -1,6 +1,6 @@
 import {myMap} from "../App";
 
-function ChatHistory({chat, setMessageList, photo, name, date, message}) {
+function ChatHistory({chat, setFriendUsername, setMessageList, user, photo, name, date, message}) {
 
     const DisplayChat = function () {
         const bar = document.getElementById("ChatBar");
@@ -18,11 +18,11 @@ function ChatHistory({chat, setMessageList, photo, name, date, message}) {
             li.style.display = "block";
         }
         setMessageList(chat);
-        console.log(myMap);
+        setFriendUsername(myMap.get(user));
     }
 
     return (
-        <button className="list-group-item list-group-item-action" data-bs-toggle="list" onClick={DisplayChat}
+        <button className="list-group-item list-group-item-action" id={user} data-bs-toggle="list" onClick={DisplayChat}
            role="tab" aria-controls="list-home">
             <div>
                 <div className="row">

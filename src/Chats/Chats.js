@@ -1,52 +1,48 @@
 import './Chats.css';
 import ChatHistory from './ChatHistory.js'
-// import history from "./history";
 import LeftMenu from "./LeftMenu";
 import Toolbox from "./Toolbox";
 import {useState} from "react";
 import NewContactModal from "../Modal/newContactModal";
 import {myMap} from "../App";
+import ChatMsgs from "./ChatMsgs";
 
 function Chats({username, Logout}) {
 
     const user = myMap.get(username.username);
+    let [FriendUser, setFriendUser] = useState('');
 
-    let MessagesArray = [];
-
-    const [MessageList, setMessageList] = useState(MessagesArray);
+    const [MessageList, setMessageList] = useState([]);
 
     const handelAddMessage = (newMessage) => {
+        user.friends.get(FriendUser.username).push({message : newMessage});
         setMessageList((prevMessages) => [
             ...prevMessages, {message: newMessage}
         ]);
+        // let friendMessage = new Message(newMessage.content, false, newMessage.date);
+        // console.log(FriendUser.friends.get(username))
+        // console.log(myMap);
+        // FriendUser.friends.get(username).push({messages : friendMessage});
     }
-    console.log("MessageList=",MessageList, MessageList);
+    // console.log("MessageList=", MessageList);
 
-    let contactsHistory = [];
-
-    const [ContactsList, setContactsList] = useState(contactsHistory);
+    const [ContactsList, setContactsList] = useState([]);
+    // setContactsList(user.friends.keys());
 
     const HistoryList = (Array.from(user.friends.keys()).reverse()).map((name, key) => {
-        // console.log("contactlist=", ContactsList);
-        // console.log("name=", name)
         const chat = user.friends.get(name);
-        // console.log("chat=", chat)
         const friend = myMap.get(name);
-        // console.log("friend=", friend)
         if (chat === undefined || chat.length === 0) {
-            // console.log("chat empty")
-            return <ChatHistory chat={chat} setMessageList={setMessageList} photo={friend.img} message={" "} date={" "}
+            return <ChatHistory setFriendUsername={setFriendUser} chat={chat} setMessageList={setMessageList}
+                                photo={friend.img} message={" "} date={" "} user={friend.username}
                                 name={friend.nickname} frienUserName={friend.username} key={key}/>
         }
-        // console.log("chat not empty")
         let last_message = chat.at(chat.length - 1);
-        let x = last_message.message.date.getMinutes() < 10 ? '0' : '' + last_message.message.date.getMinutes().toString();
-        return <ChatHistory setMessageList={setMessageList} photo={friend.img} chat={chat}
-                            message={last_message.message.content} name={friend.nickname} key={key}
-                            date={last_message.message.date.getHours().toString() + ":" + x}/>
-
+        let x = last_message.message.date.getMinutes() < 10 ? '0' : ''+last_message.message.date.getMinutes().toString();
+        return <ChatHistory setMessageList={setMessageList} photo={friend.img} chat={chat} user={friend.username}
+                            setFriendUsername={setFriendUser} message={last_message.message.content} key={key}
+                            name={friend.nickname} date={last_message.message.date.getHours().toString() + ":" + x}/>
     });
-
 
     return (
         <div className={"container-fluid"}>
@@ -60,7 +56,7 @@ function Chats({username, Logout}) {
                         <div className="col-7 m-2 ContactName" id="UserName">
                             <span className="m-3"> {user.nickname} </span>
                             <LeftMenu Logout={Logout}/>
-                            <NewContactModal setContactsList={setContactsList} user={user} history={contactsHistory}/>
+                            <NewContactModal setContactsList={setContactsList} user={user}/>
                         </div>
 
                     </div>
@@ -79,17 +75,7 @@ function Chats({username, Logout}) {
                         </div>
                     </div>
 
-                    <ul id="chat-msgs" className="Chat">
-                        {MessageList.map((msg, key) => (
-                            <li className={msg.message.myMsg ? "right" : "left"} key={key}>
-                                <div>{msg.message.content} </div>
-                                <div className="msg-date">
-                                    {msg.message.date.getHours()}:{msg.message.date.getMinutes() < 10 ? '0' : ''}
-                                    {msg.message.date.getMinutes()}
-                                </div>
-                            </li>
-                        ))}
-                    </ul>
+                    <ChatMsgs MessageList={MessageList} />
 
                     <Toolbox user={user} MessageList={MessageList} handelAddMessage={handelAddMessage}/>
 

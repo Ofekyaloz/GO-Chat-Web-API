@@ -36,7 +36,10 @@ function App() {
 
     const [user, setUser] = useState({username: "", password: ""});
     const [error, setError] = useState("");
-
+    let friendslist
+    let setFriendsList = function (username) {
+        friendslist = myMap.get(username).friends.keys();
+    }
     const Login = details => {
         console.log(details);
 
@@ -46,6 +49,7 @@ function App() {
                 username: details.username,
                 password: details.password
             });
+            setFriendsList(details.username);
             return true;
         } else {
             return false;
@@ -104,7 +108,7 @@ function App() {
         <div className={"center"}>
             <Router>
                 <Routes>
-                    <Route path={"/Chats"} element={<Chats username={user} Logout={Logout}/>}></Route>
+                    <Route path={"/Chats"} element={<Chats username={user} friendslist={friendslist} Logout={Logout}/>}></Route>
                     <Route path={"/"} element={<SignIn Login={Login} error={error}/>}></Route>
                     <Route path={"/SignUp"} element={<SignUp Register={Register}/>}></Route>
                 </Routes>

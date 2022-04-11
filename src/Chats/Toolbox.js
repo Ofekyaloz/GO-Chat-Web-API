@@ -14,17 +14,18 @@ function Toolbox({MessageList, handelAddMessage}) {
         }
     };
 
-    // const scrollChat = function (msg) {
-    //     document.getElementsByClassName('Chat')[0].scrollTop = document.getElementsByClassName('Chat')[0].scrollHeight;
-    // }
+    const scrollChat = function () {
+        document.getElementsByClassName('Chat')[0].scrollTop = document.getElementsByClassName('Chat')[0].scrollHeight;
+    }
 
     const addMessage = function () {
         if (messageBox.current.value === '') {
             return;
         }
-        handelAddMessage(new Message(messageBox.current.value, true, new Date()));
+        const content = messageBox.current.value;
         document.getElementById("Text-input").value = '';
-        // scrollChat();
+        handelAddMessage(new Message(content, true, new Date()));
+        scrollChat();
     };
 
 
@@ -56,7 +57,7 @@ function Toolbox({MessageList, handelAddMessage}) {
                 </ul>
 
                 <input ref={messageBox} type="text" className="form-control" placeholder="Type a message..."
-                       maxLength={80} id="Text-input" onKeyPress={HandlePress} autoComplete="off">
+                       maxLength={50} id="Text-input" onKeyPress={HandlePress} autoComplete="off">
                 </input>
 
                 <button className="btn btn-primary" type="button" id="send-button" onClick={addMessage}>

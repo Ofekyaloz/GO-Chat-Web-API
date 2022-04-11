@@ -1,7 +1,7 @@
 import {useRef} from "react";
 import {myMap} from "../App";
 
-function NewContactModal({setContactsList, user, history}) {
+function NewContactModal({setContactsList, user}) {
     const newContact = useRef(null);
 
     const HandlePress = function (e) {
@@ -20,16 +20,20 @@ function NewContactModal({setContactsList, user, history}) {
             }
             if (user.friends.get(friend.username) == null) {
                 user.friends.set(friend.username, []);
+                console.log("new contact")
             }
             if (friend.friends.get(user.username) == null) {
+                console.log("new contact2")
                 friend.friends.set(user.username, []);
             }
 
-            setContactsList(history.filter((tmp) => tmp))
+            setContactsList(() => {
+
+            })
             // setContactsList(details => {
             //     return {...details, key: {newContact}}
             // })
-            document.getElementById("CloseSearch").click()
+            document.getElementById("CloseSearch").click();
         } else {
             document.getElementById("not-found").style.display = 'block';
         }
