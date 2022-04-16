@@ -27,12 +27,9 @@ function NewContactModal({setContactsList, user}) {
                 friend.friends.set(user.username, []);
             }
 
-            setContactsList(() => {
-
+            setContactsList(details => {
+                return {...details, key: {newContact}}
             })
-            // setContactsList(details => {
-            //     return {...details, key: {newContact}}
-            // })
             document.getElementById("CloseSearch").click();
         } else {
             document.getElementById("not-found").style.display = 'block';

@@ -1,4 +1,4 @@
-async function record({setRecord}) {
+async function record() {
 
     let stream = await navigator.mediaDevices.getUserMedia({audio: true})
     let rec = new MediaRecorder(stream);
@@ -8,7 +8,7 @@ async function record({setRecord}) {
         audioChunks.push(e.data);
     }
 
-    let record = document.getElementById("record");
+    let record = document.getElementById("startRecord");
     let stopRecord = document.getElementById("stopRecord");
 
     record.onclick = e => {
@@ -27,7 +27,6 @@ async function record({setRecord}) {
         let blob = new Blob(audioChunks, {type: 'audio/mp3'});
         let recordedAudio = document.getElementById("recordedAudio");
         recordedAudio.src = URL.createObjectURL(blob);
-        setRecord("")
         recordedAudio.controls = true;
         recordedAudio.autoplay = true;
         rec.then(recorder => {

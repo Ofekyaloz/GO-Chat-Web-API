@@ -9,7 +9,7 @@ function Toolbox({MessageList, handelAddMessage}) {
     const messageBox = useRef(null);
 
     const HandlePress = function (e) {
-        if (e.key === "Enter" && messageBox.current.value !== '') {
+        if (e.key === "Enter") {
             addMessage();
         }
     };

@@ -1,12 +1,18 @@
 import {useRef, useState} from "react";
 import record from "../Chats/record";
+import Message from "../Chats/Message";
 
-function RecordModal() {
+function RecordModal(handelAddMessage) {
 
     const SendRecord = function () {
-        // if () {
-        //     return;
-        // }
+        if (document.getElementById("recordedAudio").src === '') {
+            return;
+        }
+        handelAddMessage(new Message(<audio controls>
+            <source src={document.getElementById("recordedAudio").src} className="Chat-Audio"/></audio>,
+            true, new Date()));
+        console.log("sent")
+        console.log(document.getElementById("recordedAudio").src)
 
         Close();
     }
@@ -29,12 +35,12 @@ function RecordModal() {
                     <div className="modal-body">
 
                         <p>
-                            <button type="button" id="record" onClick={() => record(setRecord)}>Record</button>
+                            <button type="button" id="startRecord" onClick={record}>Record</button>
                             <button type="button" id="stopRecord" disabled>Stop</button>
                         </p>
                         <p>
                             <audio controls>
-                                    <source id="recordedAudio"/>
+                                    <source src="" id="recordedAudio"/>
                             </audio>
                         </p>
 

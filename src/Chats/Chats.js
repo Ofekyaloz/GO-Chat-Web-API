@@ -6,30 +6,30 @@ import {useState} from "react";
 import NewContactModal from "../Modal/newContactModal";
 import {myMap} from "../App";
 import ChatMsgs from "./ChatMsgs";
+import Message from "./Message";
 
 function Chats({username, Logout}) {
 
     const user = myMap.get(username.username);
     let [FriendUser, setFriendUser] = useState('');
 
-    const [MessageList, setMessageList] = useState([]);
+    let chat = user.friends.get(FriendUser.username);
+    if (chat === undefined) {
+        chat = []
+    }
+    const [MessageList, setMessageList] = useState(chat);
 
     const handelAddMessage = (newMessage) => {
-        user.friends.get(FriendUser.username).push({message : newMessage});
-        setMessageList((prevMessages) => [
-            ...prevMessages, {message: newMessage}
-        ]);
-        // let friendMessage = new Message(newMessage.content, false, newMessage.date);
-        // console.log(FriendUser.friends.get(username))
-        // console.log(myMap);
-        // FriendUser.friends.get(username).push({messages : friendMessage});
+        chat.push({message : newMessage});
+        setMessageList((chat).filter((msg) => msg));
+        let friendMessage = new Message(newMessage.content, false, newMessage.date);
+        FriendUser.friends.get(username).push({messages : friendMessage});
     }
-    // console.log("MessageList=", MessageList);
 
-    const [ContactsList, setContactsList] = useState([]);
-    // setContactsList(user.friends.keys());
+    let contacts = user.friends.keys();
+    const [ContactsList, setContactsList] = useState(contacts);
 
-    const HistoryList = (Array.from(user.friends.keys()).reverse()).map((name, key) => {
+    const HistoryList = (Array.from(contacts).reverse()).map((name, key) => {
         const chat = user.friends.get(name);
         const friend = myMap.get(name);
         if (chat === undefined || chat.length === 0) {

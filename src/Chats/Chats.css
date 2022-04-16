@@ -51,6 +51,7 @@
     position: absolute;
     top: 80px;
     left: 0;
+    z-index: 0;
     background: ghostwhite;
     width: 97%;
     height: calc(100vh - 105px);
@@ -125,14 +126,13 @@
     overflow: auto;
 }
 
-.left {
+.left-msg {
     text-align: left;
-    float: left;
 }
-.right {
-    /*text-align: right;*/
-    position: relative;
-    flex-flow: column;
+.Chat .right-msg {
+    text-align: right;
+    left: 90%;
+    background: #20dbc2;
 }
 
 #chat-msgs {

@@ -32,6 +32,8 @@ function App() {
     const ofekandgili = myMap.get("ofekyaloz").friends;
     ofekandgili.set("giligutfeld", []);
     ofekandgili.get("giligutfeld").push({message : new Message("abcd", true, new Date())});
+    ofekandgili.get("giligutfeld").push({message : new Message("abcd", false, new Date())});
+    ofekandgili.get("giligutfeld").push({message : new Message("abcd", false, new Date())});
     ofekandgili.get("giligutfeld").push({message : new Message("1234", true, new Date())});
 
     const [user, setUser] = useState({username: "", password: ""});
