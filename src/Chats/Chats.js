@@ -49,15 +49,15 @@ function Chats({username, Logout}) {
             <div className={"row"}>
                 <div className={"col-4 d-flex LeftSide"}>
 
-                    <div className={"d-flex col-12"} id={"UserInfo"}>
-                        <div className="col-2">
+                    <div className={"d-flex"} id={"UserInfo"}>
+                        <div className="">
                             <img className="UserImage" src={user.img}/>
                         </div>
-                        <div className="col-7 m-2 ContactName" id="UserName">
-                            <span className="m-3"> {user.nickname} </span>
-                            <LeftMenu Logout={Logout}/>
-                            <NewContactModal setContactsList={setContactsList} user={user}/>
+                        <div className="ContactName" id="UserName">
+                            <span id={"DisplayName"}> {user.nickname} </span>
                         </div>
+                        <LeftMenu Logout={Logout}/>
+                        <NewContactModal setContactsList={setContactsList} user={user}/>
 
                     </div>
 
@@ -69,10 +69,8 @@ function Chats({username, Logout}) {
                 <div className={"col-8 d-flex"} id={"ChatBlock"}>
 
                     <div id="ChatBar">
-                        <div className="m-1">
                             <img className="UserImage" id="BarImage"/>
                             <span className="ContactName" id={"BarName"}/>
-                        </div>
                     </div>
 
                     <ChatMsgs MessageList={MessageList} />

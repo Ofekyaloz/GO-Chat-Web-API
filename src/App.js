@@ -2,6 +2,9 @@ import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import Chats from "./Chats/Chats"
 import defaultImage from "./Pictures/icon-user-default.png"
+import cat from  "./Pictures/cat.jpg"
+import panda from  "./Pictures/panda.jpg"
+import squirrel from  "./Pictures/squirrel.jpg"
 
 import './App.css';
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
@@ -23,18 +26,26 @@ export class User {
 
 function App() {
 
-    myMap.set("giligutfeld", new User("giligutfeld", "123456", "gili@gmail.com", "gili", defaultImage));
-    myMap.set("ofekyaloz", new User("ofekyaloz", "234567", "ofek@gmail.com", "ofek", defaultImage));
+    myMap.set("giligutfeld", new User("giligutfeld", "123456", "gili@gmail.com", "gili", cat));
+    myMap.set("ofekyaloz", new User("ofekyaloz", "234567", "ofek@gmail.com", "ofek", panda));
     myMap.set("leomessi", new User("leomessi", "101010", "leo@gmail.com", "leo", defaultImage));
-    myMap.set("noakirel", new User("noakirel", "111111", "noa@gmail.com", "noa", defaultImage));
+    myMap.set("noakirel", new User("noakirel", "111111", "noa@gmail.com", "noa", squirrel));
     myMap.set("yonitlevi", new User("yonitlevi", "202020", "yonit@gmail.com", "yonit", defaultImage));
 
     const ofekandgili = myMap.get("ofekyaloz").friends;
     ofekandgili.set("giligutfeld", []);
-    ofekandgili.get("giligutfeld").push({message : new Message("abcd", true, new Date())});
-    ofekandgili.get("giligutfeld").push({message : new Message("abcd", false, new Date())});
-    ofekandgili.get("giligutfeld").push({message : new Message("abcd", false, new Date())});
-    ofekandgili.get("giligutfeld").push({message : new Message("1234", true, new Date())});
+    ofekandgili.get("giligutfeld").push({message : new Message("aaaa", true, new Date())});
+    ofekandgili.get("giligutfeld").push({message : new Message("bbbb", false, new Date())});
+    ofekandgili.get("giligutfeld").push({message : new Message("cccc", false, new Date())});
+    ofekandgili.get("giligutfeld").push({message : new Message("dddd", true, new Date())});
+    ofekandgili.get("giligutfeld").push({message : new Message("eeee", true, new Date())});
+    ofekandgili.get("giligutfeld").push({message : new Message("eeee", true, new Date())});
+    ofekandgili.get("giligutfeld").push({message : new Message("eeee", true, new Date())});
+    ofekandgili.get("giligutfeld").push({message : new Message("eeee", true, new Date())});
+    ofekandgili.get("giligutfeld").push({message : new Message("1234", false, new Date())});
+    ofekandgili.get("giligutfeld").push({message : new Message("1234", false, new Date())});
+    ofekandgili.get("giligutfeld").push({message : new Message("1234", false, new Date())});
+    ofekandgili.get("giligutfeld").push({message : new Message("1234", false, new Date())});
 
     const [user, setUser] = useState({username: "", password: ""});
     const [error, setError] = useState("");
