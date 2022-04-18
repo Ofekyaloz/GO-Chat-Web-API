@@ -13,7 +13,6 @@
 #UserName {
     position: relative;
     font-size: xx-large;
-    padding-top: 7px;
 }
 
 .SideMenu {
@@ -38,7 +37,6 @@
     margin-bottom: 0px;
     font-size: large;
 }
-
 
 .LeftSide {
     position: absolute;
@@ -108,7 +106,7 @@
     height: 80px;
     width: 100%;
     left: 0;
-    padding-top: 3px;
+    padding-left: 20px;
     background: #63d2c5;
     border-width: 1px;
     border-style: solid;
@@ -116,7 +114,7 @@
 }
 
 #BarName {
-    margin-left: 15px;
+    margin-left: 30px;
     font-weight: 550;
     font-size: 30px;
 }
@@ -135,6 +133,7 @@
     float: left;
     background: #b3fd6c;
 }
+
 .Chat .right-msg {
     text-align: right;
     float: right;
@@ -157,14 +156,17 @@
     margin-right: 1rem;
     margin-left: 1rem;
     position: relative;
-    display: block;
-    padding: 14px;
     width: max-content;
     height: max-content;
+    max-width: 700px;
+    max-height: 400px;
     border-width: 1px;
     border-style: solid;
     border-radius: 10px;
     font-size: larger;
+    font-weight: bold;
+    display: block;
+    padding: 14px;
 }
 
 .msg-date {
@@ -174,10 +176,6 @@
 
 .mini-menu > .list-item {
     width: max-content;
-}
-
-.modal-body {
-
 }
 
 .Chat-Image {
@@ -200,32 +198,8 @@
     padding: 10px;
 }
 
-#dropdownMenu {
-    float: right;
-    padding-top: 20px;
-    padding-left: 420px;
-}
-
-#DisplayName {
-    padding-left: 15px;
-    text-align: center;
-}
-
-#profile-picture-friend {
-    float: left;
-    margin-right: 10px;
-}
-
-#nickname-friend {
-    margin-top: 8px;
-    font-weight: 600;
-    font-size: 1.1em;
-    position: relative;
-}
-
 #date-friend {
     margin-top: 8px;
-    font-size: 0.75em;
     color: #aaa;
 }
 
@@ -240,20 +214,4 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-#friend-name-message {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
-}
-
-#friend-details {
-    position: relative;
-    width: 100%;
-}
-
-.select-friend:active {
-    background-color: #aaaaaa;
-    border-color: #aaaaaa;
 }

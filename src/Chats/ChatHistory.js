@@ -22,17 +22,17 @@ function ChatHistory({chat, setFriendUsername, setMessageList, user, photo, name
     }
 
     return (
-        <button className="list-group-item list-group-item-action select-friend" id={user} data-bs-toggle="list" onClick={DisplayChat}
+        <button className="list-group-item list-group-item-action" id={user} data-bs-toggle="list" onClick={DisplayChat}
                 role="tab" aria-controls="list-home">
             <div>
-                <div>
-                    <div id={"profile-picture-friend"}>
+                <div className="row">
+                    <div className="col-3" id={"profile-picture-friend"}>
                         <img className="UserImage" src={photo}/>
                     </div>
-                    <div id={"friend-details"}>
-                        <div id={"friend-name-message"}>
-                            <div id={"nickname-friend"}> {name} </div>
-                            <div id={"date-friend"}> {date}</div>
+                    <div className="col-9" id={"friend-details"}>
+                        <div className="row">
+                            <div className="col-8 d-flex ContactName" id={"nickname-friend"}> {name} </div>
+                            <div className="col-4" id={"date-friend"}> {date}</div>
                         </div>
                         <div className="history-message" id={"message-friend"}> {message} </div>
                     </div>

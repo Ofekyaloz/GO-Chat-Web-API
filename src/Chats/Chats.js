@@ -7,6 +7,7 @@ import NewContactModal from "../Modal/newContactModal";
 import {myMap} from "../App";
 import ChatMsgs from "./ChatMsgs";
 import Message from "./Message";
+import defaultImg from "src/Pictures/icon-user-default.png";
 
 function Chats({username, Logout}) {
 
@@ -20,10 +21,10 @@ function Chats({username, Logout}) {
     const [MessageList, setMessageList] = useState(chat);
 
     const handelAddMessage = (newMessage) => {
-        chat.push({message : newMessage});
+        chat.push({message: newMessage});
         setMessageList((chat).filter((msg) => msg));
         let friendMessage = new Message(newMessage.content, false, newMessage.date);
-        FriendUser.friends.get(username).push({messages : friendMessage});
+        FriendUser.friends.get(username).push({message: friendMessage});
     }
 
     let contacts = user.friends.keys();
@@ -38,10 +39,12 @@ function Chats({username, Logout}) {
                                 name={friend.nickname} frienUserName={friend.username} key={key}/>
         }
         let last_message = chat.at(chat.length - 1);
-        let x = last_message.message.date.getMinutes() < 10 ? '0' : ''+last_message.message.date.getMinutes().toString();
+        let x = last_message.message.date.getMinutes() < 10 ? '0' : '';
+        console.log(x);
         return <ChatHistory setMessageList={setMessageList} photo={friend.img} chat={chat} user={friend.username}
                             setFriendUsername={setFriendUser} message={last_message.message.content} key={key}
-                            name={friend.nickname} date={last_message.message.date.getHours().toString() + ":" + x}/>
+                            name={friend.nickname}
+                            date={last_message.message.date.getHours().toString() + ":" + x + last_message.message.date.getMinutes().toString()}/>
     });
 
     return (
@@ -49,15 +52,15 @@ function Chats({username, Logout}) {
             <div className={"row"}>
                 <div className={"col-4 d-flex LeftSide"}>
 
-                    <div className={"d-flex"} id={"UserInfo"}>
-                        <div className="">
-                            <img className="UserImage" src={user.img}/>
+                    <div className={"d-flex col-12"} id={"UserInfo"}>
+                        <div className="col-2">
+                            <img className="UserImage" src={user.img} alt={defaultImg}/>
                         </div>
-                        <div className="ContactName" id="UserName">
-                            <span id={"DisplayName"}> {user.nickname} </span>
+                        <div className="col-7 m-2 ContactName" id="UserName">
+                            <span className="m-3"> {user.nickname} </span>
+                            <LeftMenu Logout={Logout}/>
+                            <NewContactModal setContactsList={setContactsList} user={user}/>
                         </div>
-                        <LeftMenu Logout={Logout}/>
-                        <NewContactModal setContactsList={setContactsList} user={user}/>
 
                     </div>
 
@@ -69,11 +72,13 @@ function Chats({username, Logout}) {
                 <div className={"col-8 d-flex"} id={"ChatBlock"}>
 
                     <div id="ChatBar">
-                            <img className="UserImage" id="BarImage"/>
+                        <div className="m-1">
+                            <img className="UserImage" id="BarImage" alt={defaultImg}/>
                             <span className="ContactName" id={"BarName"}/>
+                        </div>
                     </div>
 
-                    <ChatMsgs MessageList={MessageList} />
+                    <ChatMsgs MessageList={MessageList}/>
 
                     <Toolbox user={user} MessageList={MessageList} handelAddMessage={handelAddMessage}/>
 
