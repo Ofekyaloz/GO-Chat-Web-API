@@ -24,7 +24,7 @@ function Toolbox({MessageList, handelAddMessage}) {
         }
         const content = messageBox.current.value;
         document.getElementById("Text-input").value = '';
-        handelAddMessage(new Message(content, true, new Date()));
+        handelAddMessage(new Message(content, true, new Date(), "text"));
         scrollChat();
     };
 
@@ -70,7 +70,7 @@ function Toolbox({MessageList, handelAddMessage}) {
                     {/*mic icon*/}
                     <i className="bi bi-mic"/>
                 </button>
-                <PhotoModal msgs={MessageList} handelAddMessage={handelAddMessage}/>
+                <PhotoModal handelAddMessage={handelAddMessage}/>
                 <VideoModal msgs={MessageList} handelAddMessage={handelAddMessage}/>
                 <RecordModal/>
             </div>

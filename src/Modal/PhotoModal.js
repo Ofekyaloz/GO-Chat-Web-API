@@ -1,7 +1,7 @@
 import {useRef} from "react";
 import Message from "../Chats/Message";
 
-function PhotoModal({msgs, handelAddMessage}) {
+function PhotoModal({handelAddMessage}) {
     const photo = useRef(null);
 
     const AddPhoto = function () {
@@ -10,7 +10,7 @@ function PhotoModal({msgs, handelAddMessage}) {
         }
         var Photoreader = new FileReader();
         Photoreader.onload = function () {
-            handelAddMessage(new Message(<img src={Photoreader.result} className={"Chat-Image"}/>, true, new Date()));
+            handelAddMessage(new Message(<img src={Photoreader.result} className={"Chat-Image"}/>, true, new Date(), "photo"));
         };
         Photoreader.readAsDataURL(photo.current.files[0]);
         Close();

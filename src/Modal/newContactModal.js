@@ -20,10 +20,8 @@ function NewContactModal({setContactsList, user}) {
             }
             if (user.friends.get(friend.username) == null) {
                 user.friends.set(friend.username, []);
-                console.log("new contact")
             }
             if (friend.friends.get(user.username) == null) {
-                console.log("new contact2")
                 friend.friends.set(user.username, []);
             }
 

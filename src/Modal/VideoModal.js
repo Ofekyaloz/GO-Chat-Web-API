@@ -10,8 +10,8 @@ function VideoModal({msgs, handelAddMessage}) {
         }
         var media = URL.createObjectURL(video.current.files[0]);
         handelAddMessage(new Message(<video className="Chat-Video" controls>
-            <source className="Chat-Video" src={media} id={msgs.length + 1} type="video/mp4"/>
-        </video>, true, new Date()));
+            <source className="Chat-Video" src={media} type="video/mp4"/>
+        </video>, true, new Date(), "video"));
         Close();
     };
 

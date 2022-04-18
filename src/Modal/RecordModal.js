@@ -10,7 +10,7 @@ function RecordModal(handelAddMessage) {
         }
         handelAddMessage(new Message(<audio controls>
             <source src={document.getElementById("recordedAudio").src} className="Chat-Audio"/></audio>,
-            true, new Date()));
+            true, new Date(), "record"));
         console.log("sent")
         console.log(document.getElementById("recordedAudio").src)
 

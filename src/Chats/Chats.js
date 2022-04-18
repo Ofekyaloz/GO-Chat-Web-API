@@ -12,19 +12,12 @@ function Chats({username, Logout}) {
 
     const user = myMap.get(username.username);
     let [FriendUser, setFriendUser] = useState('');
-
     let chat = user.friends.get(FriendUser.username);
     if (chat === undefined) {
         chat = []
     }
     const [MessageList, setMessageList] = useState(chat);
 
-    const handelAddMessage = (newMessage) => {
-        chat.push({message : newMessage});
-        setMessageList((chat).filter((msg) => msg));
-        let friendMessage = new Message(newMessage.content, false, newMessage.date);
-        FriendUser.friends.get(username).push({message : friendMessage});
-    }
 
     let contacts = user.friends.keys();
     const [ContactsList, setContactsList] = useState(contacts);
@@ -37,12 +30,41 @@ function Chats({username, Logout}) {
                                 photo={friend.img} message={" "} date={" "} user={friend.username}
                                 name={friend.nickname} frienUserName={friend.username} key={key}/>
         }
-        let last_message = chat.at(chat.length - 1);
-        let x = last_message.message.date.getMinutes() < 10 ? '0' : '';
+        console.log(chat);
+        let last_message = chat.at(chat.length - 1).message;
+        let content = last_message.type;
+        if (content === "text") {
+            content = last_message.content;
+        } else if (content === "photo") {
+            content = <>
+                <i className="bi bi-image"/>
+                <span className="m-3"> photo </span>
+            </>;
+        } else if (content === "video") {
+            content = <>
+                <i className="bi bi-camera-video"/>
+                <span className="m-3"> video </span>
+            </>;
+        } else if (content === "audio") {
+            content = <>
+                <i className="bi bi-file-earmark-music"/>
+                <span className="m-3"> audio </span>
+            </>;
+        }
+        let x = last_message.date.getMinutes() < 10 ? '0' : '';
         return <ChatHistory setMessageList={setMessageList} photo={friend.img} chat={chat} user={friend.username}
-                            setFriendUsername={setFriendUser} message={last_message.message.content} key={key}
-                            name={friend.nickname} date={last_message.message.date.getHours().toString() + ":" + x +  last_message.message.date.getMinutes().toString()}/>
+                            setFriendUsername={setFriendUser} message={content} key={key}
+                            name={friend.nickname}
+                            date={last_message.date.getHours().toString() + ":" + x + last_message.date.getMinutes().toString()}/>
     });
+
+    const handelAddMessage = (newMessage) => {
+        chat.push({message: newMessage});
+        setMessageList((chat).filter((msg) => msg));
+        let friendMessage = new Message(newMessage.content, false, newMessage.date, newMessage.type);
+        FriendUser.friends.get(user.username).push({message: friendMessage});
+    }
+
 
     return (
         <div className={"container-fluid"}>
@@ -75,9 +97,9 @@ function Chats({username, Logout}) {
                         </div>
                     </div>
 
-                    <ChatMsgs MessageList={MessageList} />
+                    <ChatMsgs MessageList={MessageList}/>
 
-                    <Toolbox user={user} MessageList={MessageList} handelAddMessage={handelAddMessage}/>
+                    <Toolbox MessageList={MessageList} handelAddMessage={handelAddMessage}/>
 
                 </div>
             </div>
