@@ -18,7 +18,6 @@ function Chats({username, Logout}) {
     }
     const [MessageList, setMessageList] = useState(chat);
 
-
     let contacts = user.friends.keys();
     const [ContactsList, setContactsList] = useState(contacts);
 
@@ -30,7 +29,6 @@ function Chats({username, Logout}) {
                                 photo={friend.img} message={" "} date={" "} user={friend.username}
                                 name={friend.nickname} frienUserName={friend.username} key={key}/>
         }
-        console.log(chat);
         let last_message = chat.at(chat.length - 1).message;
         let content = last_message.type;
         if (content === "text") {
@@ -53,8 +51,7 @@ function Chats({username, Logout}) {
         }
         let x = last_message.date.getMinutes() < 10 ? '0' : '';
         return <ChatHistory setMessageList={setMessageList} photo={friend.img} chat={chat} user={friend.username}
-                            setFriendUsername={setFriendUser} message={content} key={key}
-                            name={friend.nickname}
+                            setFriendUsername={setFriendUser} message={content} key={key} name={friend.nickname}
                             date={last_message.date.getHours().toString() + ":" + x + last_message.date.getMinutes().toString()}/>
     });
 
@@ -63,6 +60,7 @@ function Chats({username, Logout}) {
         setMessageList((chat).filter((msg) => msg));
         let friendMessage = new Message(newMessage.content, false, newMessage.date, newMessage.type);
         FriendUser.friends.get(user.username).push({message: friendMessage});
+        setContactsList(user.friends.keys());
     }
 
 
@@ -75,7 +73,7 @@ function Chats({username, Logout}) {
                         <div className="col-2">
                             <img className="UserImage" src={user.img}/>
                         </div>
-                        <div className="col-7 m-2 ContactName" id="UserName">
+                        <div className="col-8 m-2 ContactName" id="UserName">
                             <span className="m-3"> {user.nickname} </span>
                             <LeftMenu Logout={Logout}/>
                             <NewContactModal setContactsList={setContactsList} user={user}/>

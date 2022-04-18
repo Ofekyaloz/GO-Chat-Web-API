@@ -1,4 +1,3 @@
-import {useRef, useState} from "react";
 import record from "../Chats/record";
 import Message from "../Chats/Message";
 
@@ -20,8 +19,6 @@ function RecordModal(handelAddMessage) {
     const Close = function () {
         document.getElementById("SearchUser").value = '';
     }
-
-    const [getRecord, setRecord] = useState('');
 
     return (
         <div className="modal fade" id="Modal-new-record" tabIndex="-1" aria-labelledby="add-file"

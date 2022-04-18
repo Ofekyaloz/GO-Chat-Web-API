@@ -5,11 +5,13 @@ import defaultImage from "./Pictures/icon-user-default.png"
 import cat from "./Pictures/cat.jpg"
 import panda from "./Pictures/panda.jpg"
 import squirrel from "./Pictures/squirrel.jpg"
-
 import './App.css';
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import {useState} from 'react';
 import Message from "./Chats/Message";
+import bibi from "./Pictures/Benjamin Netanyahu.jpg";
+import eden from "./Pictures/Eden Hason.jpg";
+import omer from "./Pictures/Omer Adam.webp";
 
 export const myMap = new Map();
 
@@ -27,10 +29,13 @@ export class User {
 function App() {
 
     myMap.set("giligutfeld", new User("giligutfeld", "123456", "gili@gmail.com", "gili", cat));
-    myMap.set("ofekyaloz", new User("ofekyaloz", "234567", "ofek@gmail.com", "ofek", panda));
+    myMap.set("ofekyaloz", new User("ofekyaloz", "234567", "ofek@gmail.com", "Ofek", panda));
+    myMap.set("benjaminnetanyahu", new User("benjaminnetanyahu", "rekbibi", "bibihamelch.gov.il", "BiBi", bibi));
+    myMap.set("edenhason", new User("edenhason", "shemishoyatoroti", "edenh@gmail.com", "Eden", eden));
+    myMap.set("omeradam", new User("omeradam", "shigramefoert", "omeradam@walla.com", "Omer", omer));
+
     myMap.set("leomessi", new User("leomessi", "101010", "leo@gmail.com", "leo", defaultImage));
-    myMap.set("noakirel", new User("noakirel", "111111", "noa@gmail.com", "noa", squirrel));
-    myMap.set("yonitlevi", new User("yonitlevi", "202020", "yonit@gmail.com", "yonit", defaultImage));
+    myMap.set("noakirel", new User("noakirel", "111111", "noa@gmail.com", "Noa", squirrel));
 
     const ofekandgili = myMap.get("ofekyaloz").friends;
     ofekandgili.set("giligutfeld", []);
