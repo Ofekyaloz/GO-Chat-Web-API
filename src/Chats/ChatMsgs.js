@@ -21,7 +21,7 @@ function ChatMsgs({MessageList}) {
                         </div>
                     </li>
                     <br/><br/><br/>
-                    {adding(msg)}
+                    {/*{adding(msg)}*/}
                 </>
             ))}
         </ul>

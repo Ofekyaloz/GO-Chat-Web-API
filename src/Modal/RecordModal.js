@@ -1,23 +1,45 @@
 import record from "../Chats/record";
 import Message from "../Chats/Message";
 
-function RecordModal(handelAddMessage) {
+function RecordModal({handelAddMessage}) {
+    let rec;
+
+    function startRecord() {
+        rec = record();
+        let stopRecord = document.getElementById("stopRecord");
+        let recordButton = document.getElementById("startRecord");
+        recordButton.disabled = true;
+        document.getElementById("closeAudio").disabled = true;
+        // recordButton.style.backgroundColor = "blue"
+        stopRecord.disabled = false;
+        rec.then(record => {
+            record.start()
+        });
+    }
+
+    function stopRecord(){
+        let stopRecord = document.getElementById("stopRecord");
+        let recordButton = document.getElementById("startRecord");
+        recordButton.disabled = false;
+        stopRecord.disabled = true;
+        // recordButton.style.backgroundColor = "red"
+        rec.then(record => {
+            record.stop();
+        });
+        document.getElementById("sendAudio").disabled = false;
+        document.getElementById("closeAudio").disabled = false;
+    }
 
     const SendRecord = function () {
-        if (document.getElementById("recordedAudio").src === '') {
-            return;
-        }
         handelAddMessage(new Message(<audio controls>
             <source src={document.getElementById("recordedAudio").src} className="Chat-Audio"/></audio>,
-            true, new Date(), "record"));
-        console.log("sent")
-        console.log(document.getElementById("recordedAudio").src)
+            true, new Date(), "audio"));
 
         Close();
     }
 
     const Close = function () {
-        document.getElementById("SearchUser").value = '';
+        document.getElementById("sendAudio").disabled = true;
     }
 
     return (
@@ -31,23 +53,28 @@ function RecordModal(handelAddMessage) {
                     </div>
                     <div className="modal-body">
 
-                        <p>
-                            <button type="button" id="startRecord" onClick={record}>Record</button>
-                            <button type="button" id="stopRecord" disabled>Stop</button>
-                        </p>
-                        <p>
+                        <div className="m-2 d-flex" id="recordButtons">
+                            <button type="button" className="btn btn-danger" id="startRecord" onClick={startRecord}>
+                                <i className="bi bi-record-circle"/> Record
+                            </button>
+
+                            <button type="button" id="stopRecord" className="btn btn-primary" onClick={stopRecord}>
+                                <i className="bi bi-stop-circle"/> Stop
+                            </button>
+                        </div>
+                        <p id={"temp"}>
                             <audio controls>
-                                    <source src="" id="recordedAudio"/>
+                                    <source id="recordedAudio"/>
                             </audio>
                         </p>
 
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-danger" data-bs-dismiss="modal" id="CloseSearch"
+                        <button type="button" className="btn btn-danger" data-bs-dismiss="modal" id="closeAudio"
                                 onClick={Close}>
                             Close
                         </button>
-                        <button type="button" className="btn btn-primary ms-auto" data-bs-dismiss="modal"
+                        <button type="button" className="btn btn-primary ms-auto" data-bs-dismiss="modal" id={"sendAudio"}
                                 onClick={SendRecord}>
                             Send
                         </button>

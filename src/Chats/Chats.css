@@ -128,16 +128,17 @@
     overflow: auto;
 }
 
-.left-msg {
+.Chat .left-msg {
     text-align: left;
     float: left;
     background: #b3fd6c;
+    /*justify-content: flex-end !important;*/
 }
 
 .Chat .right-msg {
     text-align: right;
     float: right;
-    justify-content: flex-end;
+    /*justify-content: flex-start !important;*/
     background: #20dbc2;
     max-width: 65%;
 }
@@ -146,6 +147,10 @@
     display: block;
     padding-left: 0rem;
     scroll-snap-align: end;
+    text-align: right;
+    list-style-position: inside;
+    float: right;
+    clear: both;
 }
 
 #toolbox {
@@ -219,4 +224,8 @@
 #chat-msgs .space {
     height: 38%;
     border-width: 0;
+}
+
+#temp {
+    display: none;
 }

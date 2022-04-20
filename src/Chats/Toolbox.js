@@ -1,4 +1,4 @@
-import {useRef} from "react";
+import {useRef, useState} from "react";
 import PhotoModal from "../Modal/PhotoModal";
 import VideoModal from "../Modal/VideoModal";
 import RecordModal from "../Modal/RecordModal";
@@ -66,13 +66,15 @@ function Toolbox({MessageList, handelAddMessage}) {
                 </button>
 
                 <button className="btn btn-danger" type="button" id="mic-button" data-bs-toggle="modal"
-                        data-bs-target="#Modal-new-record">
+                        data-bs-target="#Modal-new-record" onClick={() => {document.getElementById("sendAudio").disabled = true;}}>
                     {/*mic icon*/}
                     <i className="bi bi-mic"/>
                 </button>
+
                 <PhotoModal handelAddMessage={handelAddMessage}/>
                 <VideoModal msgs={MessageList} handelAddMessage={handelAddMessage}/>
-                <RecordModal/>
+                <RecordModal handelAddMessage={handelAddMessage}/>
+
             </div>
         </div>
     );
