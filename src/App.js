@@ -30,7 +30,7 @@ function App() {
 
     myMap.set("giligutfeld", new User("giligutfeld", "123456", "gili@gmail.com", "gili", cat));
     myMap.set("ofekyaloz", new User("ofekyaloz", "234567", "ofek@gmail.com", "Ofek", panda));
-    myMap.set("benjaminnetanyahu", new User("benjaminnetanyahu", "rakbibi", "bibihamelch.gov.il", "BiBi", bibi));
+    myMap.set("bibinetanyahu", new User("bibinetanyahu", "rakbibi", "bibihamelch.gov.il", "BiBi", bibi));
     myMap.set("edenhason", new User("edenhason", "shemishoyatoroti", "edenh@gmail.com", "Eden", eden));
     myMap.set("omeradam", new User("omeradam", "shigramefoert", "omeradam@walla.com", "Omer", omer));
 

@@ -18,7 +18,6 @@
 .SideMenu {
     position: relative;
     left: 0;
-    height: 40px;
     font-size: smaller;
     background: white;
     height: 100%;
@@ -34,7 +33,7 @@
 #not-found {
     display: none;
     margin-top: 10px;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     font-size: large;
 }
 
@@ -81,7 +80,7 @@
     font-style: italic;
     font-weight: bolder;
     padding-bottom: 4px;
-    font-family: none;
+    font-family: none, serif;
 }
 
 #ChatBlock {
@@ -89,7 +88,6 @@
     right: 10px;
     top: 10px;
     bottom: 10px;
-    background: cornsilk;
     background-image: url("../Pictures/chat-background.png");
     border-width: 3px;
     border-style: solid;
@@ -145,7 +143,7 @@
 
 #chat-msgs {
     display: block;
-    padding-left: 0rem;
+    padding-left: 0;
     scroll-snap-align: end;
     text-align: right;
     list-style-position: inside;
@@ -187,8 +185,8 @@
     vertical-align: middle;
     width: 100%;
     height: 100%;
-    max-height: 400px;
-    max-width: 400px;
+    max-height: 350px;
+    max-width: 350px;
     object-fit: cover;
     padding: 10px;
 }

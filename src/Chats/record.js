@@ -11,8 +11,7 @@ async function record() {
         rec.addEventListener("stop", () => {
             let blob = new Blob(audioChunks);
             let recordedAudio = document.getElementById("recordedAudio");
-            let url = URL.createObjectURL(blob);
-            recordedAudio.src = url;
+            recordedAudio.src = URL.createObjectURL(blob);
             stream.getTracks().forEach(track => {
                 track.stop()
             });

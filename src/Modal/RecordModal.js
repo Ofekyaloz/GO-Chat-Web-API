@@ -17,7 +17,7 @@ function RecordModal({handelAddMessage}) {
         });
     }
 
-    function stopRecord(){
+    function stopRecord() {
         let stopRecord = document.getElementById("stopRecord");
         let recordButton = document.getElementById("startRecord");
         recordButton.disabled = false;
@@ -32,7 +32,8 @@ function RecordModal({handelAddMessage}) {
 
     const SendRecord = function () {
         handelAddMessage(new Message(<audio controls>
-            <source src={document.getElementById("recordedAudio").src} className="Chat-Audio"/></audio>,
+                <source src={document.getElementById("recordedAudio").src} className="Chat-Audio"/>
+            </audio>,
             true, new Date(), "audio"));
 
         Close();
@@ -64,7 +65,7 @@ function RecordModal({handelAddMessage}) {
                         </div>
                         <p id={"temp"}>
                             <audio controls>
-                                    <source id="recordedAudio"/>
+                                <source id="recordedAudio"/>
                             </audio>
                         </p>
 
@@ -74,7 +75,8 @@ function RecordModal({handelAddMessage}) {
                                 onClick={Close}>
                             Close
                         </button>
-                        <button type="button" className="btn btn-primary ms-auto" data-bs-dismiss="modal" id={"sendAudio"}
+                        <button type="button" className="btn btn-primary ms-auto" data-bs-dismiss="modal"
+                                id={"sendAudio"}
                                 onClick={SendRecord}>
                             Send
                         </button>

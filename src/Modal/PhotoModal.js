@@ -8,11 +8,18 @@ function PhotoModal({handelAddMessage}) {
         if (photo.current.value === '') {
             return;
         }
-        var Photoreader = new FileReader();
-        Photoreader.onload = function () {
-            handelAddMessage(new Message(<img src={Photoreader.result} className={"Chat-Image"}/>, true, new Date(), "photo"));
-        };
-        Photoreader.readAsDataURL(photo.current.files[0]);
+        let photoReader = new FileReader();
+        const fileName = document.getElementById("add-file-photo").value;
+        const idxDot = fileName.lastIndexOf(".") + 1;
+        const extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+        if (extFile === "jpg" || extFile === "jpeg" || extFile === "png" || extFile === "bmp") {
+            photoReader.onload = function () {
+                handelAddMessage(new Message(<img src={photoReader.result}
+                                                  className={"Chat-Image"}/>, true, new Date(), "photo"));
+            };
+            photoReader.readAsDataURL(photo.current.files[0]);
+        }
+
         Close();
     };
 
@@ -33,6 +40,10 @@ function PhotoModal({handelAddMessage}) {
                     <div className="modal-body">
                         <input ref={photo} accept="image/*" id="add-file-photo" type={"file"}
                                className={"form-control upload-box"}/>
+                        <br/>
+                        <div className="alert alert-secondary" role="alert">
+                            * Accepts only: jpg,jpeg,png,bmp *
+                        </div>
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-danger" data-bs-dismiss="modal"
@@ -47,6 +58,6 @@ function PhotoModal({handelAddMessage}) {
             </div>
         </div>
     );
-};
+}
 
 export default PhotoModal;

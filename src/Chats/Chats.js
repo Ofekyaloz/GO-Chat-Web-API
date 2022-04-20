@@ -97,7 +97,7 @@ function Chats({username, Logout}) {
 
                     <ChatMsgs MessageList={MessageList}/>
 
-                    <Toolbox MessageList={MessageList} handelAddMessage={handelAddMessage}/>
+                    <Toolbox handelAddMessage={handelAddMessage}/>
 
                 </div>
             </div>

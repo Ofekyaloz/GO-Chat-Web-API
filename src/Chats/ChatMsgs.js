@@ -3,9 +3,9 @@ function ChatMsgs({MessageList}) {
     function adding(msg) {
         if (msg.message.type === "photo" || msg.message.type === "video") {
             return (
-              <>
-                  <li className={"space"}/>
-              </>
+                <>
+                    <li className={"space"}/>
+                </>
             );
         }
     }
