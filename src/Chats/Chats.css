@@ -61,8 +61,7 @@
 .history-message {
     overflow: hidden;
     text-overflow: clip;
-    max-width: 100px;
-    max-height: 100px;
+    max-width: 70%;
 }
 
 .UserImage {
@@ -127,41 +126,59 @@
 }
 
 .Chat .left-msg {
+    position: relative;
     text-align: left;
+    padding: 40px;
+}
+
+.Chat .left-content {
+    position: absolute;
     float: left;
+    text-align: left;
     background: #b3fd6c;
-    /*justify-content: flex-end !important;*/
+    justify-content: flex-start;
+    left: 0;
+    top: 0;
+    max-width: max-content;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 .Chat .right-msg {
-    text-align: right;
+    position: relative;
+    justify-content: flex-end;
+    padding: 40px;
+}
+
+.Chat .right-content {
+    position: absolute;
     float: right;
-    /*justify-content: flex-start !important;*/
+    text-align: right;
     background: #20dbc2;
-    max-width: 65%;
+    justify-content: flex-end;
+    right: 10px;
+    top: 0;
+    max-width: max-content;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 #chat-msgs {
     display: block;
     padding-left: 0;
     scroll-snap-align: end;
-    text-align: right;
-    list-style-position: inside;
-    float: right;
-    clear: both;
 }
 
 #toolbox {
     display: none;
 }
 
+
 .Chat li {
-    margin-right: 1rem;
-    margin-left: 1rem;
-    position: relative;
-    width: max-content;
-    height: max-content;
-    max-width: 700px;
     max-height: 400px;
     border-width: 1px;
     border-style: solid;
@@ -169,7 +186,7 @@
     font-size: larger;
     font-weight: bold;
     display: block;
-    padding: 14px;
+    block-size: fit-content;
 }
 
 .msg-date {
@@ -220,8 +237,8 @@
 }
 
 #chat-msgs .space {
-    height: 38%;
-    border-width: 0;
+    /*height: 38%;*/
+    /*border-width: 0;*/
 }
 
 #temp {
