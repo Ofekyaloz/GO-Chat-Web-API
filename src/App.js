@@ -39,18 +39,18 @@ function App() {
 
     const ofekandgili = myMap.get("ofekyaloz").friends;
     ofekandgili.set("giligutfeld", []);
-    ofekandgili.get("giligutfeld").push({message: new Message("aaaa", true, new Date(), "text")});
-    ofekandgili.get("giligutfeld").push({message: new Message("bbbb", false, new Date(), "text")});
-    ofekandgili.get("giligutfeld").push({message: new Message("cccc", false, new Date(), "text")});
-    ofekandgili.get("giligutfeld").push({message: new Message("dddd", true, new Date(), "text")});
-    ofekandgili.get("giligutfeld").push({message: new Message("eeee", true, new Date(), "text")});
-    ofekandgili.get("giligutfeld").push({message: new Message("eeee", true, new Date(), "text")});
-    ofekandgili.get("giligutfeld").push({message: new Message("eeee", true, new Date(), "text")});
-    ofekandgili.get("giligutfeld").push({message: new Message("eeee", true, new Date(), "text")});
-    ofekandgili.get("giligutfeld").push({message: new Message("1234", false, new Date(), "text")});
-    ofekandgili.get("giligutfeld").push({message: new Message("1234", false, new Date(), "text")});
-    ofekandgili.get("giligutfeld").push({message: new Message("1234", false, new Date(), "text")});
-    ofekandgili.get("giligutfeld").push({message: new Message("1234", false, new Date(), "text")});
+    ofekandgili.get("giligutfeld").push({message: new Message("aaaa", true, new Date(), "text", "")});
+    ofekandgili.get("giligutfeld").push({message: new Message("bbbb", false, new Date(), "text", "")});
+    ofekandgili.get("giligutfeld").push({message: new Message("cccc", false, new Date(), "text", "")});
+    ofekandgili.get("giligutfeld").push({message: new Message("dddd", true, new Date(), "text", "")});
+    ofekandgili.get("giligutfeld").push({message: new Message("eeee", true, new Date(), "text", "")});
+    ofekandgili.get("giligutfeld").push({message: new Message("eeee", true, new Date(), "text", "")});
+    ofekandgili.get("giligutfeld").push({message: new Message("eeee", true, new Date(), "text", "")});
+    ofekandgili.get("giligutfeld").push({message: new Message("eeee", true, new Date(), "text", "")});
+    ofekandgili.get("giligutfeld").push({message: new Message("1234", false, new Date(), "text", "")});
+    ofekandgili.get("giligutfeld").push({message: new Message("1234", false, new Date(), "text", "")});
+    ofekandgili.get("giligutfeld").push({message: new Message("1234", false, new Date(), "text", "")});
+    ofekandgili.get("giligutfeld").push({message: new Message("1234", false, new Date(), "text", "")});
 
     const giliandofek = myMap.get("giligutfeld").friends;
     giliandofek.set("ofekyaloz", []);

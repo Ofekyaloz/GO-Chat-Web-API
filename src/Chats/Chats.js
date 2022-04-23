@@ -58,7 +58,7 @@ function Chats({username, Logout}) {
     const handelAddMessage = (newMessage) => {
         chat.push({message: newMessage});
         setMessageList((chat).filter((msg) => msg));
-        let friendMessage = new Message(newMessage.content, false, newMessage.date, newMessage.type);
+        let friendMessage = new Message(newMessage.content, false, newMessage.date, newMessage.type, newMessage.size);
         FriendUser.friends.get(user.username).push({message: friendMessage});
         setContactsList(user.friends.keys());
     }

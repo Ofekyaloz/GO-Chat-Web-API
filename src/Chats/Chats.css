@@ -167,9 +167,6 @@
 
 .Chat li {
     max-height: 400px;
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 10px;
     font-size: larger;
     font-weight: bold;
     display: block;
@@ -198,7 +195,7 @@
 .Chat-Image {
     vertical-align: middle;
     width: 100%;
-    max-height: 230px;
+    max-height: 220px;
     object-fit: cover;
     padding: 4px;
 }

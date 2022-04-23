@@ -1,5 +1,6 @@
 import {useRef} from "react";
 import Message from "../Chats/Message";
+import {wait} from "@testing-library/user-event/dist/utils";
 
 function PhotoModal({handelAddMessage}) {
     const photo = useRef(null);
@@ -14,8 +15,13 @@ function PhotoModal({handelAddMessage}) {
         const extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
         if (extFile === "jpg" || extFile === "jpeg" || extFile === "png" || extFile === "bmp") {
             photoReader.onload = function () {
-                handelAddMessage(new Message(<img src={photoReader.result}
-                                                  className={"Chat-Image"}/>, true, new Date(), "photo"));
+                var img = new Image();
+                img.src = photoReader.result;
+                wait(1500)
+                let h = img.height > 300 ? "350px" : (50+img.height)+"px";
+                console.log(h)
+                handelAddMessage(new Message(<img src={img.src}
+                                                  className={"Chat-Image"}/>, true, new Date(), "photo", h));
             };
             photoReader.readAsDataURL(photo.current.files[0]);
         }
