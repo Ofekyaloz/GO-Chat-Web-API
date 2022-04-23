@@ -7,13 +7,11 @@ function ChatMsgs({MessageList}) {
         return size;
     }
 
-
     return (
         <ul id="chat-msgs" className="Chat">
             {MessageList.map((msg, key) => (
                 <li className={msg.message.myMsg ? "right-msg" : "left-msg"} key={key}
-                    style={msg.message.type === "photo" || msg.message.type === "video" ? {height: setSize(msg.message.size)} : {height: "auto"}}>
-                    {console.log(msg)}
+                    style={msg.message.type === "text" ? {} : {height: setSize(msg.message.size)}}>
                     <div className={msg.message.myMsg ? "right-content" : "left-content"} key={key}>
                         <div>
                             {msg.message.content}

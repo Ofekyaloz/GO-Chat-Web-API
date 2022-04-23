@@ -31,10 +31,10 @@ function RecordModal({handelAddMessage}) {
     }
 
     const SendRecord = function () {
-        handelAddMessage(new Message(<audio controls>
-                <source src={document.getElementById("recordedAudio").src} className="Chat-Audio"/>
+        handelAddMessage(new Message(<audio controls className="Chat-Audio">
+                <source src={document.getElementById("recordedAudio").src}/>
             </audio>,
-            true, new Date(), "audio"));
+            true, new Date(), "audio", "80px"));
 
         Close();
     }
