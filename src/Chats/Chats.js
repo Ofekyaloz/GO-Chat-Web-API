@@ -55,12 +55,17 @@ function Chats({username, Logout}) {
                             date={last_message.date.getHours().toString() + ":" + x + last_message.date.getMinutes().toString()}/>
     });
 
+    const scrollChat = function () {
+        document.getElementsByClassName('Chat')[0].scrollTop = document.getElementsByClassName('Chat')[0].scrollHeight;
+    }
+
     const handelAddMessage = (newMessage) => {
         chat.push({message: newMessage});
         setMessageList((chat).filter((msg) => msg));
-        let friendMessage = new Message(newMessage.content, false, newMessage.date, newMessage.type);
+        let friendMessage = new Message(newMessage.content, false, newMessage.date, newMessage.type, newMessage.size);
         FriendUser.friends.get(user.username).push({message: friendMessage});
         setContactsList(user.friends.keys());
+        scrollChat();
     }
 
 
@@ -78,7 +83,6 @@ function Chats({username, Logout}) {
                             <LeftMenu Logout={Logout}/>
                             <NewContactModal setContactsList={setContactsList} user={user}/>
                         </div>
-
                     </div>
 
                     <div className="list-group ChatHistory" id="list-tab" role="tablist">
@@ -87,7 +91,6 @@ function Chats({username, Logout}) {
                 </div>
 
                 <div className={"col-8 d-flex"} id={"ChatBlock"}>
-
                     <div id="ChatBar">
                         <div className="m-1">
                             <img className="UserImage" id="BarImage"/>
@@ -97,7 +100,7 @@ function Chats({username, Logout}) {
 
                     <ChatMsgs MessageList={MessageList}/>
 
-                    <Toolbox MessageList={MessageList} handelAddMessage={handelAddMessage}/>
+                    <Toolbox handelAddMessage={handelAddMessage}/>
 
                 </div>
             </div>

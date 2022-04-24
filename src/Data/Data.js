@@ -21,18 +21,18 @@ function Data({myMap}) {
 
     const ofekandgili = myMap.get("ofekyaloz").friends;
     ofekandgili.set("giligutfeld", []);
-    ofekandgili.get("giligutfeld").push({message: new Message("aaaa", true, new Date(), "text")});
-    ofekandgili.get("giligutfeld").push({message: new Message("bbbb", false, new Date(), "text")});
-    ofekandgili.get("giligutfeld").push({message: new Message("cccc", false, new Date(), "text")});
-    ofekandgili.get("giligutfeld").push({message: new Message("dddd", true, new Date(), "text")});
-    ofekandgili.get("giligutfeld").push({message: new Message("eeee", true, new Date(), "text")});
-    ofekandgili.get("giligutfeld").push({message: new Message("eeee", true, new Date(), "text")});
-    ofekandgili.get("giligutfeld").push({message: new Message("eeee", true, new Date(), "text")});
-    ofekandgili.get("giligutfeld").push({message: new Message("eeee", true, new Date(), "text")});
-    ofekandgili.get("giligutfeld").push({message: new Message("1234", false, new Date(), "text")});
-    ofekandgili.get("giligutfeld").push({message: new Message("1234", false, new Date(), "text")});
-    ofekandgili.get("giligutfeld").push({message: new Message("1234", false, new Date(), "text")});
-    ofekandgili.get("giligutfeld").push({message: new Message("1234", false, new Date(), "text")});
+    ofekandgili.get("giligutfeld").push({message: new Message("aaaa", true, new Date(), "text", "")});
+    ofekandgili.get("giligutfeld").push({message: new Message("bbbb", false, new Date(), "text", "")});
+    ofekandgili.get("giligutfeld").push({message: new Message("cccc", false, new Date(), "text", "")});
+    ofekandgili.get("giligutfeld").push({message: new Message("dddd", true, new Date(), "text", "")});
+    ofekandgili.get("giligutfeld").push({message: new Message("eeee", true, new Date(), "text", "")});
+    ofekandgili.get("giligutfeld").push({message: new Message("eeee", true, new Date(), "text", "")});
+    ofekandgili.get("giligutfeld").push({message: new Message("eeee", true, new Date(), "text", "")});
+    ofekandgili.get("giligutfeld").push({message: new Message("eeee", true, new Date(), "text", "")});
+    ofekandgili.get("giligutfeld").push({message: new Message("1234", false, new Date(), "text", "")});
+    ofekandgili.get("giligutfeld").push({message: new Message("1234", false, new Date(), "text", "")});
+    ofekandgili.get("giligutfeld").push({message: new Message("1234", false, new Date(), "text", "")});
+    ofekandgili.get("giligutfeld").push({message: new Message("1234", false, new Date(), "text", "")});
 
     const giliandofek = myMap.get("giligutfeld").friends;
     giliandofek.set("ofekyaloz", []);
@@ -41,18 +41,18 @@ function Data({myMap}) {
 
     // const giliandofek = myMap.getgid("giligutfeld").friends;
     // giliandofek.set("ofekyaloz", []);
-    // giliandofek.get("ofekyaloz").push({message: new Message("aaaa", false, new Date(), "text")});
-    // giliandofek.get("ofekyaloz").push({message: new Message("bbbb", true, new Date(), "text")});
-    // giliandofek.get("ofekyaloz").push({message: new Message("cccc", true, new Date(), "text")});
-    // giliandofek.get("ofekyaloz").push({message: new Message("dddd", false, new Date(), "text")});
-    // giliandofek.get("ofekyaloz").push({message: new Message("eeee", false, new Date(), "text")});
-    // giliandofek.get("ofekyaloz").push({message: new Message("eeee", false, new Date(), "text")});
-    // giliandofek.get("ofekyaloz").push({message: new Message("eeee", false, new Date(), "text")});
-    // giliandofek.get("ofekyaloz").push({message: new Message("eeee", false, new Date(), "text")});
-    // giliandofek.get("ofekyaloz").push({message: new Message("1234", true, new Date(), "text")});
-    // giliandofek.get("ofekyaloz").push({message: new Message("1234", true, new Date(), "text")});
-    // giliandofek.get("ofekyaloz").push({message: new Message("1234", true, new Date(), "text")});
-    // giliandofek.get("ofekyaloz").push({message: new Message("1234", true, new Date(), "text")});
+    // giliandofek.get("ofekyaloz").push({message: new Message("aaaa", false, new Date(), "text", "")});
+    // giliandofek.get("ofekyaloz").push({message: new Message("bbbb", true, new Date(), "text", "")});
+    // giliandofek.get("ofekyaloz").push({message: new Message("cccc", true, new Date(), "text", "")});
+    // giliandofek.get("ofekyaloz").push({message: new Message("dddd", false, new Date(), "text", "")});
+    // giliandofek.get("ofekyaloz").push({message: new Message("eeee", false, new Date(), "text", "")});
+    // giliandofek.get("ofekyaloz").push({message: new Message("eeee", false, new Date(), "text", "")});
+    // giliandofek.get("ofekyaloz").push({message: new Message("eeee", false, new Date(), "text", "")});
+    // giliandofek.get("ofekyaloz").push({message: new Message("eeee", false, new Date(), "text", "")});
+    // giliandofek.get("ofekyaloz").push({message: new Message("1234", true, new Date(), "text", "")});
+    // giliandofek.get("ofekyaloz").push({message: new Message("1234", true, new Date(), "text", "")});
+    // giliandofek.get("ofekyaloz").push({message: new Message("1234", true, new Date(), "text", "")});
+    // giliandofek.get("ofekyaloz").push({message: new Message("1234", true, new Date(), "text", "")});
 
 }
 

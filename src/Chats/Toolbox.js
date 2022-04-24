@@ -4,7 +4,7 @@ import VideoModal from "../Modal/VideoModal";
 import RecordModal from "../Modal/RecordModal";
 import Message from "./Message";
 
-function Toolbox({MessageList, handelAddMessage}) {
+function Toolbox({handelAddMessage}) {
 
     const messageBox = useRef(null);
 
@@ -14,10 +14,6 @@ function Toolbox({MessageList, handelAddMessage}) {
         }
     };
 
-    const scrollChat = function () {
-        document.getElementsByClassName('Chat')[0].scrollTop = document.getElementsByClassName('Chat')[0].scrollHeight;
-    }
-
     const addMessage = function () {
         if (messageBox.current.value === '') {
             return;
@@ -25,7 +21,6 @@ function Toolbox({MessageList, handelAddMessage}) {
         const content = messageBox.current.value;
         document.getElementById("Text-input").value = '';
         handelAddMessage(new Message(content, true, new Date(), "text"));
-        scrollChat();
     };
 
 
@@ -66,13 +61,17 @@ function Toolbox({MessageList, handelAddMessage}) {
                 </button>
 
                 <button className="btn btn-danger" type="button" id="mic-button" data-bs-toggle="modal"
-                        data-bs-target="#Modal-new-record">
+                        data-bs-target="#Modal-new-record" onClick={() => {
+                    document.getElementById("sendAudio").disabled = true;
+                }}>
                     {/*mic icon*/}
                     <i className="bi bi-mic"/>
                 </button>
+
                 <PhotoModal handelAddMessage={handelAddMessage}/>
-                <VideoModal msgs={MessageList} handelAddMessage={handelAddMessage}/>
-                <RecordModal/>
+                <VideoModal handelAddMessage={handelAddMessage}/>
+                <RecordModal handelAddMessage={handelAddMessage}/>
+
             </div>
         </div>
     );

@@ -18,7 +18,6 @@
 .SideMenu {
     position: relative;
     left: 0;
-    height: 40px;
     font-size: smaller;
     background: white;
     height: 100%;
@@ -34,7 +33,7 @@
 #not-found {
     display: none;
     margin-top: 10px;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     font-size: large;
 }
 
@@ -62,8 +61,7 @@
 .history-message {
     overflow: hidden;
     text-overflow: clip;
-    max-width: 100px;
-    max-height: 100px;
+    max-width: 70%;
 }
 
 .UserImage {
@@ -81,7 +79,7 @@
     font-style: italic;
     font-weight: bolder;
     padding-bottom: 4px;
-    font-family: none;
+    font-family: none, serif;
 }
 
 #ChatBlock {
@@ -89,7 +87,6 @@
     right: 10px;
     top: 10px;
     bottom: 10px;
-    background: cornsilk;
     background-image: url("../Pictures/chat-background.png");
     border-width: 3px;
     border-style: solid;
@@ -128,23 +125,56 @@
     overflow: auto;
 }
 
-.left-msg {
-    text-align: left;
+.Chat .left-msg {
+    position: relative;
+    padding: 40px;
+}
+
+.Chat .left-content {
+    position: absolute;
     float: left;
+    text-align: left;
     background: #b3fd6c;
+    justify-content: flex-start;
+    left: 0;
+    top: 0;
+    max-width: max-content;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 .Chat .right-msg {
-    text-align: right;
+    position: relative;
+    padding: 40px;
+}
+
+.Chat .right-content {
+    position: absolute;
     float: right;
-    justify-content: flex-end;
+    text-align: right;
     background: #20dbc2;
-    max-width: 65%;
+    justify-content: flex-end;
+    right: 10px;
+    top: 0;
+    max-width: max-content;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.Chat li {
+    max-height: 400px;
+    font-size: larger;
+    font-weight: bold;
+    display: block;
 }
 
 #chat-msgs {
     display: block;
-    padding-left: 0rem;
+    padding-left: 0;
     scroll-snap-align: end;
 }
 
@@ -152,22 +182,6 @@
     display: none;
 }
 
-.Chat li {
-    margin-right: 1rem;
-    margin-left: 1rem;
-    position: relative;
-    width: max-content;
-    height: max-content;
-    max-width: 700px;
-    max-height: 400px;
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 10px;
-    font-size: larger;
-    font-weight: bold;
-    display: block;
-    padding: 14px;
-}
 
 .msg-date {
     color: gray;
@@ -181,21 +195,23 @@
 .Chat-Image {
     vertical-align: middle;
     width: 100%;
-    height: 100%;
-    max-height: 400px;
-    max-width: 400px;
+    max-height: 220px;
     object-fit: cover;
-    padding: 10px;
+    padding: 4px;
 }
 
 .Chat-Video {
     vertical-align: middle;
-    width: 300px;
-    height: 300px;
+    width: 100%;
+    height: 230px;
     max-width: border-box;
     max-height: border-box;
     object-fit: cover;
-    padding: 10px;
+    padding: 5px;
+}
+
+.Chat-Audio {
+    height: 30px;
 }
 
 #date-friend {
@@ -217,6 +233,10 @@
 }
 
 #chat-msgs .space {
-    height: 38%;
-    border-width: 0;
+    /*height: 38%;*/
+    /*border-width: 0;*/
+}
+
+#temp {
+    display: none;
 }

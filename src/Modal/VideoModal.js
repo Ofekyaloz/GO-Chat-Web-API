@@ -1,17 +1,23 @@
 import {useRef} from "react";
 import Message from "../Chats/Message";
 
-function VideoModal({msgs, handelAddMessage}) {
+function VideoModal({handelAddMessage}) {
     const video = useRef(null);
 
     const AddVideo = function () {
         if (video.current.value === '') {
             return;
         }
-        var media = URL.createObjectURL(video.current.files[0]);
-        handelAddMessage(new Message(<video className="Chat-Video" controls>
-            <source className="Chat-Video" src={media} type="video/mp4"/>
-        </video>, true, new Date(), "video"));
+        const fileName = document.getElementById("add-file-video").value;
+        const idxDot = fileName.lastIndexOf(".") + 1;
+        const extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+        if (extFile === "video" || extFile === "mp4" || extFile === "x-m4v" || extFile === "mp3") {
+            const media = URL.createObjectURL(video.current.files[0]);
+            handelAddMessage(new Message(<video className="Chat-Video" controls>
+                <source className="Chat-Video" src={media} type="video/mp4"/>
+            </video>, true, new Date(), "video", "280px"));
+        }
+
         Close();
     };
 
@@ -32,6 +38,10 @@ function VideoModal({msgs, handelAddMessage}) {
                     <div className="modal-body">
                         <input ref={video} accept="video/mp4,video/x-m4v,video/*" id="add-file-video" type={"file"}
                                className={"form-control upload-box"}/>
+                        <br/>
+                        <div className="alert alert-secondary" role="alert">
+                            * Accepts only: video,mp4,mp3,x-m4v *
+                        </div>
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-danger" data-bs-dismiss="modal"

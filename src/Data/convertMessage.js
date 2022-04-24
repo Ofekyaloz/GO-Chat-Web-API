@@ -5,7 +5,7 @@ function convertMessage({fromUser, toUser, chat}) {
     tmpChat.set(fromUser.username, []);
     const newChat = tmpChat.get(fromUser.username);
     chat.map((msg, key) => {
-        newChat.push({message : new Message(msg.content, !msg.amISend, msg.date, msg.type)});
+        newChat.push({message : new Message(msg.content, !msg.amISend, msg.date, msg.type, msg.size)});
     });
 }
 
