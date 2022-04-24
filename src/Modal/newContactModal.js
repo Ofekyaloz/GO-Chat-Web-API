@@ -1,5 +1,7 @@
 import {useRef} from "react";
 import {myMap} from "../App";
+import {wait} from "@testing-library/user-event/dist/utils";
+import {click} from "@testing-library/user-event/dist/click";
 
 function NewContactModal({setContactsList, user}) {
     const newContact = useRef(null);
@@ -27,6 +29,7 @@ function NewContactModal({setContactsList, user}) {
 
             setContactsList(user.friends.keys())
             document.getElementById("CloseSearch").click();
+            wait(100).then(() => click(document.getElementById(friend.username)));
         } else {
             document.getElementById("not-found").style.display = 'block';
         }

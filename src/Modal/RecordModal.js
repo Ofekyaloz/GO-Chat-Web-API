@@ -32,7 +32,7 @@ function RecordModal({handelAddMessage}) {
         handelAddMessage(new Message(<audio controls className="Chat-Audio">
                 <source src={document.getElementById("recordedAudio").src}/>
             </audio>,
-            true, new Date(), "audio", "80px"));
+            true, new Date(), "audio"));
 
         Close();
     }

@@ -158,10 +158,10 @@
 }
 
 .Chat li {
-    max-height: 400px;
     font-size: larger;
     font-weight: bold;
     display: block;
+    padding-bottom: 4px;
 }
 
 #chat-msgs {
@@ -200,7 +200,7 @@
 }
 
 .Chat-Audio {
-    height: 30px;
+    height: 35px;
 }
 
 #date-friend {
@@ -219,11 +219,6 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-#chat-msgs .space {
-    /*height: 38%;*/
-    /*border-width: 0;*/
 }
 
 #temp {
