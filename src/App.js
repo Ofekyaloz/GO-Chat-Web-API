@@ -63,21 +63,15 @@ function App() {
     ofekchat.get("omeradam").push({message: new Message("Ok, this is so worthy! I'll take it", true, new Date(), "text")});
 
     const [user, setUser] = useState({username: "", password: ""});
-    const [error, setError] = useState("");
-    let friendslist;
-    let setFriendsList = function (username) {
-        friendslist = myMap.get(username).friends.keys();
-    }
     const Login = details => {
-        console.log(details);
-
+        if(myMap.get(details.username) === undefined)
+            return false;
         if (myMap.get(details.username).password === details.password) {
             console.log('Logged in');
             setUser({
                 username: details.username,
                 password: details.password
             });
-            setFriendsList(details.username);
             return true;
         } else {
             return false;
@@ -130,18 +124,15 @@ function App() {
     }
 
     const Logout = () => {
-        console.log("Logout");
         setUser({username: '', password: ''});
-
     }
 
     return (
         <div className={"center"}>
             <Router>
                 <Routes>
-                    <Route path={"/Chats"}
-                           element={<Chats username={user} friendslist={friendslist} Logout={Logout}/>}/>
-                    <Route path={"/"} element={<SignIn Login={Login} error={error}/>}/>
+                    <Route path={"/Chats"} element={<Chats username={user} Logout={Logout}/>}/>
+                    <Route path={"/"} element={<SignIn Login={Login}/>}/>
                     <Route path={"/SignUp"} element={<SignUp Register={Register}/>}/>
                 </Routes>
             </Router>

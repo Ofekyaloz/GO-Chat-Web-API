@@ -36,7 +36,6 @@ function SignUp({Register}) {
                                 The username is already exist!
                             </div>
                         </div>
-                        {/*<h5 className={"errors"} id={'errorUsername'}>The username is already exist!</h5>*/}
                         <div className={"two-inputs"}>
                             <div className="input-field half-row">
                                 <i className="bi bi-person-fill"/>
