@@ -114,9 +114,12 @@ function App() {
             return true;
         }
 
+        if (details.image === "") {
+            details.image = defaultImage;
+        }
+
         myMap.set(details.username, new User(details.username, details.password, details.email, details.nickname, details.image));
         return false;
-
     }
 
     const Logout = () => {
