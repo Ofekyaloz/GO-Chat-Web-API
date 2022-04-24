@@ -1,4 +1,4 @@
-import {useState} from "react";
+import React, {useState} from "react";
 import {useHistory, useNavigate} from "react-router-dom";
 import './SignUp.css';
 import logo from "./Pictures/logo.png";
@@ -61,10 +61,10 @@ function SignIn({Login, error}) {
                         </form>
                     </div>
                 </div>
+                <img src={logo} id={"logo"}></img>
             </div>
         </>
     )
-
 }
 
 export default SignIn;
