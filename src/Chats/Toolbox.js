@@ -52,7 +52,7 @@ function Toolbox({handelAddMessage}) {
                 </ul>
 
                 <input ref={messageBox} type="text" className="form-control" placeholder="Type a message..."
-                       maxLength={50} id="Text-input" onKeyPress={HandlePress} autoComplete="off">
+                       maxLength={33} id="Text-input" onKeyPress={HandlePress} autoComplete="off">
                 </input>
 
                 <button className="btn btn-primary" type="button" id="send-button" onClick={addMessage}>

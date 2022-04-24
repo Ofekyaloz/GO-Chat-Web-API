@@ -10,7 +10,6 @@ function RecordModal({handelAddMessage}) {
         let recordButton = document.getElementById("startRecord");
         recordButton.disabled = true;
         document.getElementById("closeAudio").disabled = true;
-        // recordButton.style.backgroundColor = "blue"
         stopRecord.disabled = false;
         rec.then(record => {
             record.start()
@@ -22,7 +21,6 @@ function RecordModal({handelAddMessage}) {
         let recordButton = document.getElementById("startRecord");
         recordButton.disabled = false;
         stopRecord.disabled = true;
-        // recordButton.style.backgroundColor = "red"
         rec.then(record => {
             record.stop();
         });

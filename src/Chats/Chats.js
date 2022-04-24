@@ -55,9 +55,6 @@ function Chats({username, Logout}) {
                             date={last_message.date.getHours().toString() + ":" + x + last_message.date.getMinutes().toString()}/>
     });
 
-    const scrollChat = function () {
-        document.getElementsByClassName('Chat')[0].scrollTop = document.getElementsByClassName('Chat')[0].scrollHeight;
-    }
 
     const handelAddMessage = (newMessage) => {
         chat.push({message: newMessage});
@@ -65,7 +62,8 @@ function Chats({username, Logout}) {
         let friendMessage = new Message(newMessage.content, false, newMessage.date, newMessage.type, newMessage.size);
         FriendUser.friends.get(user.username).push({message: friendMessage});
         setContactsList(user.friends.keys());
-        scrollChat();
+        document.getElementsByClassName('Chat')[0].scrollTop = document.getElementsByClassName('Chat')[0].scrollHeight;
+
     }
 
 
