@@ -1,6 +1,5 @@
 import './SignUp.css';
 import logo from "./Pictures/logo.png";
-import {myMap} from "./App";
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
@@ -131,7 +130,7 @@ function SignUp({Register}) {
                     </form>
                 </div>
             </div>
-            <img src={logo} id={"logo"}></img>
+            <img src={logo} id={"logo"}/>
         </div>
     );
 }

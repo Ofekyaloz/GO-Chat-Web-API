@@ -1,3 +1,5 @@
+import {Link} from "react-router-dom";
+
 function LeftMenu({Logout}) {
     return (
         <span>
@@ -23,11 +25,11 @@ function LeftMenu({Logout}) {
                 {/*    </button>*/}
                 {/*</li>*/}
                 <li>
-                    <a className="btn btn-light SideMenu" type="button" id="LogOutButton" onClick={Logout} href="/">
+                    <Link className="btn btn-light SideMenu" type="button" id="LogOutButton" onClick={Logout} to={"/"}>
                         <span className="m-3"> LogOut </span>
                         {/*logout icon*/}
                         <i className="bi bi-box-arrow-right"/>
-                    </a>
+                    </Link>
                 </li>
             </ul>
         </span>

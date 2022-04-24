@@ -9,7 +9,6 @@ import ChatMsgs from "./ChatMsgs";
 import Message from "./Message";
 
 function Chats({username, Logout}) {
-
     const user = myMap.get(username.username);
     let [FriendUser, setFriendUser] = useState('');
     let chat = user.friends.get(FriendUser.username);

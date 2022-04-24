@@ -17,7 +17,6 @@ function VideoModal({handelAddMessage}) {
                 <source className="Chat-Video" src={media} type="video/mp4"/>
             </video>, true, new Date(), "video"));
         }
-
         Close();
     };
 
@@ -56,6 +55,6 @@ function VideoModal({handelAddMessage}) {
             </div>
         </div>
     );
-};
+}
 
 export default VideoModal;

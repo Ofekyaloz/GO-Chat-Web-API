@@ -16,7 +16,6 @@ async function record() {
                 track.stop()
             });
         })
-
         return rec;
 
     } catch (error) {

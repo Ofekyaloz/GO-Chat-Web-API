@@ -3,7 +3,8 @@ function ChatMsgs({MessageList}) {
     return (
         <ul id="chat-msgs" className="Chat">
             {MessageList.map((msg, key) => (
-                <li className={msg.message.myMsg ? "d-flex justify-content-end right-msg" : "d-flex justify-content-start"} key={key}>
+                <li className={msg.message.myMsg ? "d-flex justify-content-end right-msg" : "d-flex justify-content-start"}
+                    key={key}>
                     <div className={msg.message.myMsg ? "right-content" : "left-content"} key={key}>
                         <div>
                             {msg.message.content}

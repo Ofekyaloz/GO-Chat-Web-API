@@ -1,5 +1,4 @@
 class Message {
-
     constructor(content, amISend, date, type) {
         this.content = content;
         this.myMsg = amISend;

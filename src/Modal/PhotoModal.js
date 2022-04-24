@@ -1,6 +1,5 @@
 import {useRef} from "react";
 import Message from "../Chats/Message";
-import {wait} from "@testing-library/user-event/dist/utils";
 
 function PhotoModal({handelAddMessage}) {
     const photo = useRef(null);
@@ -22,7 +21,6 @@ function PhotoModal({handelAddMessage}) {
             };
             photoReader.readAsDataURL(photo.current.files[0]);
         }
-
         Close();
     };
 
