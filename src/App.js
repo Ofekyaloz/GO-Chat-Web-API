@@ -54,6 +54,18 @@ function App() {
 
     const gilichat = myMap.get("giligutfeld").friends;
     gilichat.set("ofekyaloz", []);
+    gilichat.get("ofekyaloz").push({message: new Message("Hi Ofek!", false, new Date(), "text")});
+    gilichat.get("ofekyaloz").push({message: new Message("How are you?", false, new Date(), "text")});
+    gilichat.get("ofekyaloz").push({message: new Message("I'm great, Thanks!", true, new Date(), "text")});
+    gilichat.get("ofekyaloz").push({message: new Message("And how are you?", true, new Date(), "text")});
+    gilichat.get("ofekyaloz").push({message: new Message("Me too", false, new Date(), "text")});
+    gilichat.get("ofekyaloz").push({message: new Message("I like this chat, its an amazing website and designed as well", false, new Date(), "text")});
+    gilichat.get("ofekyaloz").push({message: new Message("Yep, I think its the best chat I ever used", true, new Date(), "text")});
+    gilichat.get("ofekyaloz").push({message: new Message("Its like whatsapp but even better", true, new Date(), "text")});
+    gilichat.get("ofekyaloz").push({message: new Message("See my new cat", false, new Date(), "text", "")});
+    gilichat.get("ofekyaloz").push({message: new Message(<img src={cat} className={"Chat-Image"}/> , false, new Date(), "photo")});
+    gilichat.get("ofekyaloz").push({message: new Message("Wow! he is so cute", true, new Date(), "text")});
+    gilichat.get("ofekyaloz").push({message: new Message(":)", false, new Date(), "text")});
 
     ofekchat.set("omeradam", []);
     ofekchat.get("omeradam").push({message: new Message("Hi Omer! I want to buy tickets to your show.", true, new Date(), "text")});
@@ -61,6 +73,14 @@ function App() {
     ofekchat.get("omeradam").push({message: new Message("You can buy 2 tickets in only 800$", false, new Date(), "text")});
     ofekchat.get("omeradam").push({message: new Message(<audio controls className={"Chat-Audio"}><source src={song}></source></audio>, true, new Date(), "text")});
     ofekchat.get("omeradam").push({message: new Message("Ok, this is so worthy! I'll take it", true, new Date(), "text")});
+
+    const omerchat = myMap.get("omeradam").friends;
+    omerchat.set("ofekyaloz", []);
+    omerchat.get("ofekyaloz").push({message: new Message("Hi Omer! I want to buy tickets to your show.", false, new Date(), "text")});
+    omerchat.get("ofekyaloz").push({message: new Message("Hi Ofek, because I like you, I will do it for you in sale", true, new Date(), "text")});
+    omerchat.get("ofekyaloz").push({message: new Message("You can buy 2 tickets in only 800$", true, new Date(), "text")});
+    omerchat.get("ofekyaloz").push({message: new Message(<audio controls className={"Chat-Audio"}><source src={song}></source></audio>, false, new Date(), "text")});
+    omerchat.get("ofekyaloz").push({message: new Message("Ok, this is so worthy! I'll take it", false, new Date(), "text")});
 
     const [user, setUser] = useState({username: "", password: ""});
     const Login = details => {
