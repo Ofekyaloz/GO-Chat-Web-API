@@ -203,3 +203,11 @@ label {
 .logo-container {
     float: left;
 }
+
+#logo {
+    position: fixed;
+    top: 245px;
+    left: 60px;
+    width: 450px;
+    height: 250px;
+}
