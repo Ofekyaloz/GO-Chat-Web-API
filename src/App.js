@@ -56,7 +56,7 @@ function App() {
     gilichat.set("ofekyaloz", []);
 
     ofekchat.set("omeradam", []);
-    ofekchat.get("omeradam").push({message: new Message("Hi Omer! I want to buy tickets to your show", true, new Date(), "text")});
+    ofekchat.get("omeradam").push({message: new Message("Hi Omer! I want to buy tickets to your show.", true, new Date(), "text")});
     ofekchat.get("omeradam").push({message: new Message("Hi Ofek, because I like you, I will do it for you in sale", false, new Date(), "text")});
     ofekchat.get("omeradam").push({message: new Message("You can buy 2 tickets in only 800$", false, new Date(), "text")});
     ofekchat.get("omeradam").push({message: new Message(<audio controls className={"Chat-Audio"}><source src={song}></source></audio>, true, new Date(), "text")});
