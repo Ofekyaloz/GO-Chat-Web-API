@@ -14,10 +14,6 @@ function Toolbox({handelAddMessage}) {
         }
     };
 
-    const scrollChat = function () {
-        document.getElementsByClassName('Chat')[0].scrollTop = document.getElementsByClassName('Chat')[0].scrollHeight;
-    }
-
     const addMessage = function () {
         if (messageBox.current.value === '') {
             return;
@@ -25,7 +21,6 @@ function Toolbox({handelAddMessage}) {
         const content = messageBox.current.value;
         document.getElementById("Text-input").value = '';
         handelAddMessage(new Message(content, true, new Date(), "text"));
-        scrollChat();
     };
 
 
