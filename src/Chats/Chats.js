@@ -59,7 +59,7 @@ function Chats({username, Logout}) {
     const handelAddMessage = (newMessage) => {
         chat.push({message: newMessage});
         setMessageList((chat).filter((msg) => msg));
-        let friendMessage = new Message(newMessage.content, false, newMessage.date, newMessage.type, newMessage.size);
+        let friendMessage = new Message(newMessage.content, false, newMessage.date, newMessage.type);
         FriendUser.friends.get(user.username).push({message: friendMessage});
         setContactsList(user.friends.keys());
         document.getElementsByClassName('Chat')[0].scrollTop = document.getElementsByClassName('Chat')[0].scrollHeight;

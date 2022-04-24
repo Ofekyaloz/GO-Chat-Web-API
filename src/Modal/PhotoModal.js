@@ -17,10 +17,8 @@ function PhotoModal({handelAddMessage}) {
             photoReader.onload = function () {
                 var img = new Image();
                 img.src = photoReader.result;
-                wait(1500)
-                let h = img.height > 300 ? "350px" : (50 + img.height) + "px";
                 handelAddMessage(new Message(<img src={img.src}
-                                                  className={"Chat-Image"}/>, true, new Date(), "photo", h));
+                                                  className={"Chat-Image"}/>, true, new Date(), "photo"));
             };
             photoReader.readAsDataURL(photo.current.files[0]);
         }
