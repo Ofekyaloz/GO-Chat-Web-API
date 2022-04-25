@@ -79,16 +79,16 @@ function App() {
         ofekchat.set("omeradam", []);
         ofekchat.get("omeradam").push({message: new Message("Hi Omer! I want to buy tickets to your show.", true, new Date(), "text")});
         ofekchat.get("omeradam").push({message: new Message("Hi Ofek, because I like you, I will do it for you in sale", false, new Date(), "text")});
+        ofekchat.get("omeradam").push({
+            message: new Message(<video className="Chat-Video" controls>
+                <source className="Chat-Video" src={video} type="video/mp4"/>
+            </video>, false, new Date(), "video")
+        });
         ofekchat.get("omeradam").push({message: new Message("You can buy 2 tickets in only 800$", false, new Date(), "text")});
         ofekchat.get("omeradam").push({
             message: new Message(<audio controls className={"Chat-Audio"}>
                 <source src={song}/>
             </audio>, true, new Date(), "audio")
-        });
-        ofekchat.get("omeradam").push({
-            message: new Message(<video className="Chat-Video" controls>
-                <source className="Chat-Video" src={video} type="video/mp4"/>
-            </video>, true, new Date(), "video")
         });
 
         ofekchat.get("omeradam").push({message: new Message("Ok, this is so worthy! I'll take it", true, new Date(), "text")});
@@ -97,16 +97,16 @@ function App() {
         omerchat.set("ofekyaloz", []);
         omerchat.get("ofekyaloz").push({message: new Message("Hi Omer! I want to buy tickets to your show.", false, new Date(), "text")});
         omerchat.get("ofekyaloz").push({message: new Message("Hi Ofek, because I like you, I will do it for you in sale", true, new Date(), "text")});
+        omerchat.get("ofekyaloz").push({
+            message: new Message(<video className="Chat-Video" controls>
+                <source className="Chat-Video" src={video} type="video/mp4"/>
+            </video>, true, new Date(), "video")
+        });
         omerchat.get("ofekyaloz").push({message: new Message("You can buy 2 tickets in only 800$", true, new Date(), "text")});
         omerchat.get("ofekyaloz").push({
             message: new Message(<audio controls className={"Chat-Audio"}>
                 <source src={song}/>
             </audio>, false, new Date(), "audio")
-        });
-        omerchat.get("ofekyaloz").push({
-            message: new Message(<video className="Chat-Video" controls>
-                <source className="Chat-Video" src={video} type="video/mp4"/>
-            </video>, false, new Date(), "video")
         });
         omerchat.get("ofekyaloz").push({message: new Message("Ok, this is so worthy! I'll take it", false, new Date(), "text")});
 

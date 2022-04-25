@@ -7,6 +7,7 @@ import NewContactModal from "../Modal/newContactModal";
 import {myMap} from "../App";
 import ChatMsgs from "./ChatMsgs";
 import Message from "./Message";
+import {wait} from "@testing-library/user-event/dist/utils";
 
 function Chats({username, Logout}) {
     const user = myMap.get(username.username);
@@ -23,13 +24,17 @@ function Chats({username, Logout}) {
     const HistoryList = (Array.from(contacts).reverse()).map((name, key) => {
         const chat = user.friends.get(name);
         const friend = myMap.get(name);
+        // if the chat is undefined or has no message.
         if (chat === undefined || chat.length === 0) {
             return <ChatHistory setFriendUsername={setFriendUser} chat={chat} setMessageList={setMessageList}
                                 photo={friend.img} message={" "} date={" "} user={friend.username}
                                 name={friend.nickname} frienUserName={friend.username} key={key}/>
         }
+        // get the last message to present it in the history
         let last_message = chat.at(chat.length - 1).message;
         let content = last_message.type;
+
+        // if the message is text presents the content else just the type of the message.
         if (content === "text") {
             content = last_message.content;
         } else if (content === "photo") {
@@ -54,14 +59,14 @@ function Chats({username, Logout}) {
                             date={last_message.date.getHours().toString() + ":" + x + last_message.date.getMinutes().toString()}/>
     });
 
-
+    // Add the new message to the user and his friend and scroll down the chat.
     const handelAddMessage = (newMessage) => {
         chat.push({message: newMessage});
         setMessageList((chat).filter((msg) => msg));
         let friendMessage = new Message(newMessage.content, false, newMessage.date, newMessage.type);
         FriendUser.friends.get(user.username).push({message: friendMessage});
         setContactsList(user.friends.keys());
-        document.getElementsByClassName('Chat')[0].scrollTop = document.getElementsByClassName('Chat')[0].scrollHeight;
+        wait(100).then(() =>  document.getElementsByClassName('Chat')[0].scrollTop = document.getElementsByClassName('Chat')[0].scrollHeight)
     }
 
 

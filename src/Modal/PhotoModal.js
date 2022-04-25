@@ -12,9 +12,11 @@ function PhotoModal({handelAddMessage}) {
         const fileName = document.getElementById("add-file-photo").value;
         const idxDot = fileName.lastIndexOf(".") + 1;
         const extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+
+        // checking the file's type
         if (extFile === "jpg" || extFile === "jpeg" || extFile === "png" || extFile === "bmp") {
             photoReader.onload = function () {
-                var img = new Image();
+                const img = new Image();
                 img.src = photoReader.result;
                 handelAddMessage(new Message(<img src={img.src}
                                                   className={"Chat-Image"}/>, true, new Date(), "photo"));
