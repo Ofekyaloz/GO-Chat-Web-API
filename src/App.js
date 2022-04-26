@@ -170,6 +170,12 @@ function App() {
         }
 
         myMap.set(details.username, new User(details.username, details.password, details.email, details.nickname, details.image));
+
+        setUser({
+            username: details.username,
+            password: details.password
+        });
+        
         return false;
     }
 

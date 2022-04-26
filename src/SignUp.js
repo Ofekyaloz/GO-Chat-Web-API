@@ -20,7 +20,7 @@ function SignUp({Register}) {
 
         let isExist = Register(details);
         if (!isExist)
-            navigate("/");
+            navigate("/Chats");
     }
 
     return (
