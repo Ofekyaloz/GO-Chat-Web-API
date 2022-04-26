@@ -21,3 +21,5 @@ Username - ofekyaloz
 Password - 234567
 
 You can see there a chat with Gili and Omer (Adam). When you add a new friend you have to click on button in the top-left side and put in his username. Then, a new chat conversation will add to your chat-box but with his nickname.
+
+![GoChat](https://github.com/giligutfeld/Arkanoid/blob/38c8a2a72698a56118babbad119d8e23964d5f3b/Final_four.png)
