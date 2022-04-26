@@ -162,7 +162,7 @@
 
 .chat-bubble {
     padding: 10px 14px;
-    margin: 0 30px;
+    margin: 4px 30px;
     border-radius: 9px;
     position: relative;
     animation: fadeIn 1s ease-in;
