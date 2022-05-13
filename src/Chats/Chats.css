@@ -24,10 +24,11 @@
     width: 100%;
 }
 
-#SearchUser {
+.SearchContact {
     font-weight: 800;
     background: aliceblue;
     display: flex;
+    margin-bottom: 5px;
 }
 
 #not-found {

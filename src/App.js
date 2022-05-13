@@ -1,5 +1,5 @@
-import SignIn from "./SignIn";
-import SignUp from "./SignUp";
+import SignIn from "./User/SignIn";
+import SignUp from "./User/SignUp";
 import Chats from "./Chats/Chats"
 import defaultImage from "./Pictures/icon-user-default.png"
 import cat from "./Pictures/cat.jpg"

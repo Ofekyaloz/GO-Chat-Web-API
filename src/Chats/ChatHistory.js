@@ -1,13 +1,14 @@
 import {myMap} from "../App";
+import {useEffect} from "react";
 
-function ChatHistory({chat, setFriendUsername, setMessageList, user, photo, name, date, message}) {
+function ChatHistory({setFriendUsername, setMessageList, friendUser, photo, friendNickname, date, message, key}) {
 
     const DisplayChat = function () {
         const bar = document.getElementById("ChatBar");
         if (bar.style.display !== "none") {
             bar.style.display = "block";
             document.getElementById("BarImage").src = photo;
-            document.getElementById("BarName").innerText = name;
+            document.getElementById("BarName").innerText = friendNickname;
         }
         const toolbox = document.getElementById("toolbox");
         if (toolbox.style.display !== "none") {
@@ -17,12 +18,17 @@ function ChatHistory({chat, setFriendUsername, setMessageList, user, photo, name
         if (li.style.display !== "none") {
             li.style.display = "block";
         }
-        setMessageList(chat);
-        setFriendUsername(myMap.get(user));
+        useEffect(async () => {
+            const res = await fetch('https://localhost:7200/api/contacts/' + friendUser + 'messages')
+            const data = await res.json()
+            setMessageList(data);
+        })
+
+        setFriendUsername(friendUser);
     }
 
     return (
-        <button className="list-group-item list-group-item-action" id={user} data-bs-toggle="list" onClick={DisplayChat}
+        <button className="list-group-item list-group-item-action" id={friendUser} data-bs-toggle="list" onClick={DisplayChat}
                 role="tab" aria-controls="list-home">
             <div>
                 <div className="row">
@@ -31,7 +37,7 @@ function ChatHistory({chat, setFriendUsername, setMessageList, user, photo, name
                     </div>
                     <div className="col-9" id={"friend-details"}>
                         <div className="row">
-                            <div className="col-8 d-flex ContactName" id={"nickname-friend"}> {name} </div>
+                            <div className="col-8 d-flex ContactName" id={"nickname-friend"}> {friendNickname} </div>
                             <div className="col-4" id={"date-friend"}> {date}</div>
                         </div>
                         <div className="history-message" id={"message-friend"}> {message} </div>

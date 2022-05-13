@@ -1,5 +1,5 @@
 import './SignUp.css';
-import logo from "./Pictures/logo.png";
+import logo from "../Pictures/logo.png";
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 

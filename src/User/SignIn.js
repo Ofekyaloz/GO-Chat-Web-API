@@ -1,11 +1,19 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import './SignUp.css';
-import logo from "./Pictures/logo.png";
+import logo from "../Pictures/logo.png";
 
 function SignIn({Login}) {
     const [details, setDetails] = useState({username: "", password: ""});
     let navigate = useNavigate();
+
+    // const [list, setlist] = useState([])
+    // useEffect(async() => {
+    //     const res = await fetch('http://localhost:7265/api/contacts');
+    //     const data = await res.json()
+    //     setlist(data);
+    //     },[setlist])
+
 
     const submitHandler = e => {
         e.preventDefault();
@@ -45,6 +53,13 @@ function SignIn({Login}) {
                                        onChange={e => setDetails({...details, password: e.target.value})}
                                        value={details.password} required/>
                             </div>
+                            {/*{list.map((value, index) => {*/}
+                            {/*    return <li>*/}
+                            {/*        {value.id}*/}
+                            {/*    </li>*/}
+                            {/*})*/}
+
+                            {/*}*/}
                             <div className="checkbox">
                                 <input type={"checkbox"} value={"remember-me"} id={"CheckRemember"}/>
                                 <label className={"littlePaddingFromLeft fontSize"} id={"Remember"}>Remember me</label>
