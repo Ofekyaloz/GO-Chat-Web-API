@@ -1,6 +1,5 @@
 function ChatMsgs({MessageList}) {
     function showMessages() {
-        console.log(MessageList);
         if (MessageList === undefined || MessageList === null || MessageList === '') {
             return <></>;
         }else {

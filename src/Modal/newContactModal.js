@@ -1,5 +1,4 @@
 import {useRef} from "react";
-import {myMap} from "../App";
 import {wait} from "@testing-library/user-event/dist/utils";
 import {click} from "@testing-library/user-event/dist/click";
 

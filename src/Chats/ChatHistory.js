@@ -1,5 +1,5 @@
-import {myMap} from "../App";
 import {useEffect} from "react";
+import {localhost} from "../App";
 
 function ChatHistory({setFriendUsername, setMessageList, friendUser, photo, friendNickname, date, message, key}) {
 
@@ -19,7 +19,7 @@ function ChatHistory({setFriendUsername, setMessageList, friendUser, photo, frie
             li.style.display = "block";
         }
         useEffect(async () => {
-            const res = await fetch('https://localhost:7200/api/contacts/' + friendUser + 'messages')
+            const res = await fetch(localhost + 'api/contacts/' + friendUser + 'messages')
             const data = await res.json()
             setMessageList(data);
         })

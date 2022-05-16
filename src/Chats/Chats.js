@@ -4,19 +4,12 @@ import LeftMenu from "./LeftMenu";
 import Toolbox from "./Toolbox";
 import {useEffect, useState} from "react";
 import NewContactModal from "../Modal/newContactModal";
-import {myMap} from "../App";
+import {localhost, myMap} from "../App";
 import ChatMsgs from "./ChatMsgs";
 import Message from "./Message";
 import {wait} from "@testing-library/user-event/dist/utils";
 
-async function Chats({username, Logout}) {
-    // const user = myMap.get(username.username);
-
-    ///////////////////// adding
-    const user = await fetch('https://localhost:7200/User/username').then(
-        async res => await res.json()
-    )
-
+function Chats({username, nickname, Logout}) {
 
     let [FriendUser, setFriendUser] = useState('');
 
@@ -27,26 +20,47 @@ async function Chats({username, Logout}) {
 
     const [MessageList, setMessageList] = useState('');
 
-    useEffect(async () => {
-        const res = await fetch('https://localhost:7200/api/contacts/' + FriendUser + '/messages')
-        if (res.ok) {
-            const data = await res.json()
-            setMessageList(data);
-        }
-    }, []);
+    // useEffect(async () => {
+    //     const res = await fetch(localhost + 'api/contacts/' + FriendUser + '/messages')
+    //     if (res.ok) {
+    //         const data = await res.json()
+    //         setMessageList(data);
+    //     }
+    // }, []);
 
 
     // let contacts = user.friends.keys();
     const [ContactsList, setContactsList] = useState([]);
-    useEffect(async () => {
-        const res = await fetch('https://localhost:7200/api/contacts/')
-        const data = await res.json()
-        setContactsList(data)
-    })
+    useEffect(() =>
+        async () => {
+            try {
+                // const res = await fetch(localhost + 'api/contacts/')
+                const res = await fetch(`https://api.randomuser.me/`);
+                const data = await res.json()
+                setContactsList(data)
+            } catch (e) {
+            }
+        }, [])
+
+    // useEffect(() => {
+    //     (async function() {
+    //         try {
+    //             const response = await fetch(
+    //                 `https://api.randomuser.me/`
+    //             );
+    //             const json = await response.json();
+    //             console.log(json.results[0].name.title)
+    //             setContactsList(json);
+    //         } catch (e) {
+    //             console.error(e);
+    //         }
+    //     })();
+    // }, []);
 
     const HistoryList = (Array.from(ContactsList).reverse()).map(async (name, key) => {
+        console.log("inn")
         // const chat = user.friends.get(name);
-        const chat = await fetch('http://localhost:7200/api/contacts/' + name + 'messages/').then(
+        const chat = await fetch(localhost + 'api/contacts/' + name + 'messages/').then(
             async res => {
                 if (res.ok)
                     return await res.json();
@@ -55,7 +69,7 @@ async function Chats({username, Logout}) {
             })
 
         // const friend = myMap.get(name);
-        const friend = await fetch('http://localhost:7200/api/contacts/' + name).then(
+        const friend = await fetch(localhost + 'api/contacts/' + name).then(
             async res => await res.json()
         )
 
@@ -97,7 +111,8 @@ async function Chats({username, Logout}) {
         // }
 
         return <ChatHistory setMessageList={setMessageList} photo={" "} chat={chat} friendUser={friend.username}
-                            setFriendUsername={setFriendUser} message={friend.last} key={key} friendNickname={friend.nickname}
+                            setFriendUsername={setFriendUser} message={friend.last} key={key}
+                            friendNickname={friend.nickname}
                             date={friend.lastdate}/>
 
 
@@ -115,7 +130,7 @@ async function Chats({username, Logout}) {
             }]
         };
 
-        fetch('http://localhost:7200/api/contacts' + FriendUser + '/messages/', {  // Enter your IP address here
+        fetch(localhost + 'api/contacts' + FriendUser + '/messages/', {  // Enter your IP address here
             method: 'POST',
             mode: 'cors',
             body: JSON.stringify(jsonData) // body data type must match "Content-Type" header
@@ -139,12 +154,12 @@ async function Chats({username, Logout}) {
 
                     <div className={"d-flex col-12"} id={"UserInfo"}>
                         <div className="col-2">
-                            <img className="UserImage" src={user.photo}/>
+                            {/*<img className="UserImage" src={user.photo}/>*/}
                         </div>
                         <div className="col-8 m-2 ContactName" id="UserName">
-                            <span className="m-3"> {user.nickname} </span>
+                            <span className="m-3"> {nickname} </span>
                             <LeftMenu Logout={Logout}/>
-                            <NewContactModal setContactsList={setContactsList} user={user} myiD={username}/>
+                            <NewContactModal setContactsList={setContactsList} user={username} myiD={username}/>
                         </div>
                     </div>
 

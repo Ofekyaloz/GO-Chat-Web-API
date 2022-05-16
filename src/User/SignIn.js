@@ -2,27 +2,67 @@ import React, {useEffect, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import './SignUp.css';
 import logo from "../Pictures/logo.png";
+import {localhost} from "../App";
 
-function SignIn({Login}) {
+function SignIn({setNickname, setUsername}) {
     const [details, setDetails] = useState({username: "", password: ""});
     let navigate = useNavigate();
 
     // const [list, setlist] = useState([])
-    // useEffect(async() => {
-    //     const res = await fetch('http://localhost:7265/api/contacts');
-    //     const data = await res.json()
-    //     setlist(data);
-    //     },[setlist])
+    //
+    // const [posts, setPosts] = useState([]);
+    // useEffect(() => {
+    //     (async function () {
+    //         try {
+    //             const res = await fetch(localhost + 'ofekyaloz', {mode: "no-cors"});
+    //             const json = await res.json();
+    //             setPosts(json.data);
+    //         } catch (e) {
+    //             console.error("error    " + e);
+    //         }
+    //     })();
+    // }, [setPosts]);
+
+
+    // useEffect(
+    //     async () => {
+    //         const res = await fetch('https://www.reddit.com/r/reactjs.json');
+    //         const json = await res.json();
+    //         setPosts(json.data.children.map(c => c.data));
+    //     },[setPosts]// add here
+    // );
 
 
     const submitHandler = e => {
         e.preventDefault();
-        let isLoggedIn = Login(details);
-        if (isLoggedIn)
-            navigate("/Chats");
-        else {
-            document.getElementById('errorInSignIn').style.display = 'block';
-        }
+
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "Username": details.username,
+                "Password": details.password
+            })
+        };
+        fetch(localhost + 'Users/Login', requestOptions).then(async r => {
+            console.log(r);
+            if (r.ok) {
+                setUsername({
+                    username: details.username,
+                    password: details.password
+                });
+                await r.json().then(async data => {
+                    setNickname(data.value)
+                    navigate("/Chats");
+                });
+            } else {
+                document.getElementById('errorInSignIn').style.display = 'block';
+            }
+        })
+
     }
 
     return (
@@ -53,13 +93,13 @@ function SignIn({Login}) {
                                        onChange={e => setDetails({...details, password: e.target.value})}
                                        value={details.password} required/>
                             </div>
-                            {/*{list.map((value, index) => {*/}
-                            {/*    return <li>*/}
+
+                            {/*{posts.map((value, index) => {*/}
+                            {/*    return <li id={index}>*/}
                             {/*        {value.id}*/}
                             {/*    </li>*/}
-                            {/*})*/}
+                            {/*})}*/}
 
-                            {/*}*/}
                             <div className="checkbox">
                                 <input type={"checkbox"} value={"remember-me"} id={"CheckRemember"}/>
                                 <label className={"littlePaddingFromLeft fontSize"} id={"Remember"}>Remember me</label>
