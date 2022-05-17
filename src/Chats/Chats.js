@@ -10,7 +10,7 @@ import Message from "./Message";
 import {wait} from "@testing-library/user-event/dist/utils";
 
 function Chats({username, nickname, Logout}) {
-
+    console.log(username.username,nickname)
     let [FriendUser, setFriendUser] = useState('');
 
     // let chat = user.friends.get(FriendUser.username);

@@ -1,9 +1,11 @@
 import './SignUp.css';
 import logo from "../Pictures/logo.png";
-import React, {useState} from "react";
+import React, {useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import defaultImage from "../Pictures/icon-user-default.png";
+import {localhost} from "../App";
 
-function SignUp({Register}) {
+function SignUp({setNickname, setUsername}) {
 
     const [details, setDetails] = useState({
         username: "",
@@ -13,14 +15,76 @@ function SignUp({Register}) {
         image: "",
         passwordAgain: ""
     });
+
+    const photo = useRef("")
+
     let navigate = useNavigate();
 
     const submitHandler = e => {
         e.preventDefault();
 
-        let isExist = Register(details);
-        if (!isExist)
-            navigate("/Chats");
+        let errors = document.getElementsByClassName('errors');
+        for (let i = 0; i < errors.length; i++) {
+            errors[i].style.display = 'none';
+        }
+
+        if (details.password !== details.passwordAgain) {
+            document.getElementById('errorPasswordAgain').style.display = 'block';
+            return true;
+        }
+
+        if (!/(?=.{8,})/.test(details.password)) {
+            document.getElementById('errorLength').style.display = 'block';
+            return true;
+        }
+
+        if (!/(?=.*[0-9])/.test(details.password)) {
+            document.getElementById('errorPasswordNumbers').style.display = 'block';
+            return true;
+        }
+
+        if (!/(?=.*[A-Z])/.test(details.password)) {
+            document.getElementById('errorPasswordUppercase').style.display = 'block';
+            return true;
+        }
+
+        if (!/(?=.*[a-z])/.test(details.password)) {
+            document.getElementById('errorPasswordLowercase').style.display = 'block';
+            return true;
+        }
+
+        details.image = photo.current.value;
+        if (details.image === "") {
+            details.image = defaultImage;
+        }
+
+
+        fetch(localhost + 'Users/register', {  // Enter your IP address here
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                Username: details.username,
+                Password: details.password,
+                Email: details.email,
+                Nickname: details.nickname,
+                // Photo: details.image //to string
+            }) // body data type must match "Content-Type" header
+        }).then(res => {
+            if (res.ok) {
+                setUsername({
+                    username: details.username,
+                    password: details.password
+                });
+                setNickname(details.nickname);
+                console.log(details.nickname, details.username)
+                navigate("/Chats");
+            } else {
+                document.getElementById('errorUsername').style.display = 'block';
+            }
+        })
     }
 
     return (
@@ -53,7 +117,7 @@ function SignUp({Register}) {
                             <i className="bi bi-envelope-fill"/>
                             <input type="email" className="form-control" placeholder={"Email"}
                                    onChange={e => setDetails({...details, email: e.target.value})} value={details.email}
-                                   required/>
+                                   ref={photo} required/>
                         </div>
 
                         <div id="errorLength" className="errors alert alert-danger align-items-center" role="alert">
@@ -109,7 +173,7 @@ function SignUp({Register}) {
                             <i className="bi bi-person-circle"/>
                             <input type={"file"} className={"form-control upload-box"}
                                    onChange={e => setDetails({...details, image: e.target.value})}
-                                   value={details.image}/></div>
+                            /></div>
                         <button type="submit" className="btn btn-forms">Sign up</button>
                         <a href={"/"} className="link-primary fontSize">One of us? Log in here</a>
                         <p className={"social-text"}>Or sign up with social media</p>
