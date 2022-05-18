@@ -3,7 +3,7 @@ import logo from "../Pictures/logo.png";
 import React, {useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import defaultImage from "../Pictures/icon-user-default.png";
-import {localhost} from "../App";
+import axios from "axios";
 
 function SignUp({setNickname, setUsername}) {
 
@@ -20,7 +20,7 @@ function SignUp({setNickname, setUsername}) {
 
     let navigate = useNavigate();
 
-    const submitHandler = e => {
+    const submitHandler = async e => {
         e.preventDefault();
 
         let errors = document.getElementsByClassName('errors');
@@ -58,32 +58,39 @@ function SignUp({setNickname, setUsername}) {
             details.image = defaultImage;
         }
 
+        // await fetch('https://localhost:7265/api/Users/Register',
+        //     {
+        //         method: 'POST',
+        //         mode: 'no-cors',
+        //         headers: {'Content-Type': 'application/json'},
+        //         body: JSON.stringify({
+        //             Username: details.username,
+        //             Password: details.password,
+        //             Email: details.email,
+        //             Nickname: details.nickname,
+        //             Photo: " ",
+        //             Contacts: null
+        //         })
+        //
+        //     })
 
-        fetch(localhost + 'Users/register', {  // Enter your IP address here
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
+        await axios.post('https://localhost:7265/api/Users/Register',
+            {
                 Username: details.username,
                 Password: details.password,
                 Email: details.email,
                 Nickname: details.nickname,
-                // Photo: details.image //to string
-            }) // body data type must match "Content-Type" header
-        }).then(res => {
-            if (res.ok) {
-                setUsername({
-                    username: details.username,
-                    password: details.password
-                });
-                setNickname(details.nickname);
-                console.log(details.nickname, details.username)
-                navigate("/Chats");
-            } else {
-                document.getElementById('errorUsername').style.display = 'block';
-            }
+                Photo: " ",
+                Contacts: null
+            }).then(res=> {
+            setUsername({
+                username: details.username,
+                password: details.password
+            });
+            setNickname(res.data)
+            navigate("/Chats");
+        }).catch(e=> {
+            document.getElementById('errorUsername').style.display = 'block';
         })
     }
 

@@ -1,20 +1,21 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import './SignUp.css';
 import logo from "../Pictures/logo.png";
 import {localhost} from "../App";
+import axios from "axios";
 
 function SignIn({setNickname, setUsername}) {
     const [details, setDetails] = useState({username: "", password: ""});
     let navigate = useNavigate();
 
-    // const [list, setlist] = useState([])
-    //
+    const [list, setlist] = useState([])
+
     // const [posts, setPosts] = useState([]);
     // useEffect(() => {
     //     (async function () {
     //         try {
-    //             const res = await fetch(localhost + 'ofekyaloz', {mode: "no-cors"});
+    //             const res = await fetch('https://localhost:7265/api/Users/giligutfeld', {mode: "no-cors"});
     //             const json = await res.json();
     //             setPosts(json.data);
     //         } catch (e) {
@@ -33,36 +34,23 @@ function SignIn({setNickname, setUsername}) {
     // );
 
 
-    const submitHandler = e => {
+    const submitHandler = async e => {
         e.preventDefault();
 
-        const requestOptions = {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                "Username": details.username,
-                "Password": details.password
-            })
-        };
-        fetch(localhost + 'Users/Login', requestOptions).then(async r => {
-            console.log(r);
-            if (r.ok) {
-                setUsername({
-                    username: details.username,
-                    password: details.password
-                });
-                await r.json().then(async data => {
-                    setNickname(data.value)
-                    navigate("/Chats");
-                });
-            } else {
-                document.getElementById('errorInSignIn').style.display = 'block';
-            }
+        await axios.post('https://localhost:7265/api/Users/Login',
+            {
+                username: details.username,
+                password: details.password,
+            }).then(res=> {
+            setUsername({
+                username: details.username,
+                password: details.password
+            });
+            setNickname(res.data.nickname)
+            navigate("/Chats");
+        }).catch(e=> {
+            document.getElementById('errorInSignIn').style.display = 'block';
         })
-
     }
 
     return (

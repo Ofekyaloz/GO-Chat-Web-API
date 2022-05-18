@@ -2,15 +2,14 @@ import './Chats.css';
 import ChatHistory from './ChatHistory.js'
 import LeftMenu from "./LeftMenu";
 import Toolbox from "./Toolbox";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import NewContactModal from "../Modal/newContactModal";
-import {localhost, myMap} from "../App";
+import {localhost} from "../App";
 import ChatMsgs from "./ChatMsgs";
-import Message from "./Message";
 import {wait} from "@testing-library/user-event/dist/utils";
+import axios from "axios";
 
 function Chats({username, nickname, Logout}) {
-    console.log(username.username,nickname)
     let [FriendUser, setFriendUser] = useState('');
 
     // let chat = user.friends.get(FriendUser.username);
@@ -19,6 +18,8 @@ function Chats({username, nickname, Logout}) {
     // }
 
     const [MessageList, setMessageList] = useState('');
+
+
 
     // useEffect(async () => {
     //     const res = await fetch(localhost + 'api/contacts/' + FriendUser + '/messages')
@@ -30,23 +31,30 @@ function Chats({username, nickname, Logout}) {
 
 
     // let contacts = user.friends.keys();
-    const [ContactsList, setContactsList] = useState([]);
-    useEffect(() =>
-        async () => {
-            try {
-                // const res = await fetch(localhost + 'api/contacts/')
-                const res = await fetch(`https://api.randomuser.me/`);
-                const data = await res.json()
-                setContactsList(data)
-            } catch (e) {
-            }
-        }, [])
+    const [ContactsList, setContactsList] = useState(async () => {
+        try {
+            // const res = await fetch(localhost + 'api/contacts/')
+            const res = await fetch(`https://api.randomuser.me/`);
+            const data = await res.json()
+            console.log("in",res,data.results)
+            setContactsList(data.results)
+        } catch (e) {
+            return [];
+        }
+    });
+
+    console.log("out",ContactsList);
+
+    axios.get('https://localhost:7265/api/Contacts',
+        {withCredentials: true}).then(res =>
+        console.log("contactsssssssss",res.data)
+    )
 
     // useEffect(() => {
     //     (async function() {
     //         try {
     //             const response = await fetch(
-    //                 `https://api.randomuser.me/`
+    //                 `https://localhost:7265/api/Contacts`
     //             );
     //             const json = await response.json();
     //             console.log(json.results[0].name.title)
@@ -57,19 +65,18 @@ function Chats({username, nickname, Logout}) {
     //     })();
     // }, []);
 
-    const HistoryList = (Array.from(ContactsList).reverse()).map(async (name, key) => {
-        console.log("inn")
-        // const chat = user.friends.get(name);
-        const chat = await fetch(localhost + 'api/contacts/' + name + 'messages/').then(
+    const HistoryList = (Array.from(ContactsList).reverse()).map( (name, key) => {
+        console.log("innnnnn")
+        const url1 = localhost + 'api/contacts/' + name + 'messages/'
+        const chat =  fetch(url1).then(
             async res => {
                 if (res.ok)
                     return await res.json();
                 else
                     return undefined;
             })
-
-        // const friend = myMap.get(name);
-        const friend = await fetch(localhost + 'api/contacts/' + name).then(
+        const url2 = localhost + 'api/contacts/' + name;
+        const friend =  fetch(url2).then(
             async res => await res.json()
         )
 
@@ -124,16 +131,20 @@ function Chats({username, nickname, Logout}) {
 
     // Add the new message to the user and his friend and scroll down the chat.
     const handelAddMessage = (newMessage) => {
+        const url = localhost + 'api/contacts' + FriendUser + '/messages/';
+        axios.post(url,
+            {
+                Content: newMessage.content
+            })
+
         const jsonData = {
-            "Message": [{
-                "content": newMessage.content
-            }]
+            Content: newMessage.content
         };
 
-        fetch(localhost + 'api/contacts' + FriendUser + '/messages/', {  // Enter your IP address here
+        fetch(url, {  
             method: 'POST',
-            mode: 'cors',
-            body: JSON.stringify(jsonData) // body data type must match "Content-Type" header
+            mode: 'no-cors',
+            body: JSON.stringify(jsonData) 
         });
 
         // chat.push({message: newMessage});
