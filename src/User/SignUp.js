@@ -5,7 +5,7 @@ import {useNavigate} from "react-router-dom";
 import defaultImage from "../Pictures/icon-user-default.png";
 import axios from "axios";
 
-function SignUp({setNickname, setUsername}) {
+function SignUp({setNickname, setUsername, setPhoto}) {
 
     const [details, setDetails] = useState({
         username: "",

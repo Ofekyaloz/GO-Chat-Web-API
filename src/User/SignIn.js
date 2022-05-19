@@ -5,7 +5,7 @@ import logo from "../Pictures/logo.png";
 import {localhost} from "../App";
 import axios from "axios";
 
-function SignIn({setNickname, setUsername}) {
+function SignIn({setNickname, setUsername, setPhoto}) {
     const [details, setDetails] = useState({username: "", password: ""});
     let navigate = useNavigate();
 
@@ -47,6 +47,7 @@ function SignIn({setNickname, setUsername}) {
                 password: details.password
             });
             setNickname(res.data.nickname)
+            setPhoto(res.data.photo)
             navigate("/Chats");
         }).catch(e=> {
             document.getElementById('errorInSignIn').style.display = 'block';

@@ -1,15 +1,19 @@
-import {useEffect} from "react";
-import {localhost} from "../App";
+import defaultImage from "../Pictures/icon-user-default.png"
 
-function ChatHistory({setFriendUsername, setMessageList, friendUser, photo, friendNickname, date, message, key}) {
+function ChatHistory({setFriendUsername, friendUser, photo, friendNickname, date, message}) {
 
     const DisplayChat = function () {
         const bar = document.getElementById("ChatBar");
         if (bar.style.display !== "none") {
             bar.style.display = "block";
-            document.getElementById("BarImage").src = photo;
+            if (photo === " " || photo === "") {
+                document.getElementById("BarImage").src = defaultImage;
+            } else {
+                document.getElementById("BarImage").src = photo;
+            }
             document.getElementById("BarName").innerText = friendNickname;
         }
+
         const toolbox = document.getElementById("toolbox");
         if (toolbox.style.display !== "none") {
             toolbox.style.display = "block";
@@ -18,22 +22,17 @@ function ChatHistory({setFriendUsername, setMessageList, friendUser, photo, frie
         if (li.style.display !== "none") {
             li.style.display = "block";
         }
-        useEffect(async () => {
-            const res = await fetch(localhost + 'api/contacts/' + friendUser + 'messages')
-            const data = await res.json()
-            setMessageList(data);
-        })
-
         setFriendUsername(friendUser);
     }
 
     return (
-        <button className="list-group-item list-group-item-action" id={friendUser} data-bs-toggle="list" onClick={DisplayChat}
+        <button className="list-group-item list-group-item-action" id={friendUser} data-bs-toggle="list"
+                onClick={DisplayChat}
                 role="tab" aria-controls="list-home">
             <div>
                 <div className="row">
                     <div className="col-3" id={"profile-picture-friend"}>
-                        <img className="UserImage" src={photo}/>
+                        <img className="UserImage" src={photo} srcSet={defaultImage}/>
                     </div>
                     <div className="col-9" id={"friend-details"}>
                         <div className="row">
