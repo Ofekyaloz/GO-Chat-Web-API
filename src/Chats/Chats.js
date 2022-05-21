@@ -11,12 +11,12 @@ import axios from "axios";
 import defaultImage from "../Pictures/icon-user-default.png"
 
 function Chats({username, nickname, photo, Logout}) {
-    let [FriendUser, setFriendUser] = useState('');
+    let [Friend, setFriend] = useState({username: '', server: ''});
 
     const [MessageList, setMessageList] = useState([]);
 
     // useEffect(async () => {
-    //     const res = await fetch(localhost + 'api/contacts/' + FriendUser + '/messages')
+    //     const res = await fetch(localhost + 'api/contacts/' + Friend + '/messages')
     //     if (res.ok) {
     //         const data = await res.json()
     //         setMessageList(data);
@@ -27,28 +27,26 @@ function Chats({username, nickname, photo, Logout}) {
     useEffect(() => {
         (async function () {
             try {
-                const url = 'https://localhost:7265/api/Contacts/' + FriendUser + '/messages'
+                const url = 'https://localhost:7265/api/Contacts/' + Friend.username + '/messages'
                 console.log("url=", url)
-                axios.get(url,
+                axios.get(url, {withCredentials: true}
                 ).then(res => {
-                    console.log("msgssssss", res.data); // {withCredentials: true}
+                    console.log("msgssssss", res.data); //
                     setMessageList(res.data);
                 })
             } catch (e) {
                 console.error(e);
             }
         })();
-    }, [FriendUser]);
+    }, [Friend.username]);
 
 
     const [ContactsList, setContactsList] = useState([]);
 
-    console.log("out", ContactsList);
-
     useEffect(() => {
         (async function () {
             try {
-                axios.get('https://localhost:7265/api/Contacts',
+                axios.get('https://localhost:7265/api/Contacts', {withCredentials: true}
                 ).then(res => {
                     console.log("contactsssssssss", res.data); // {withCredentials: true}
                     setContactsList(res.data);
@@ -65,7 +63,7 @@ function Chats({username, nickname, photo, Logout}) {
 
         // if the chat is undefined or has no message.
         if (last === undefined || last === '') {
-            return <ChatHistory setFriendUsername={setFriendUser}
+            return <ChatHistory setFriend={setFriend} server={contact.server}
                                 message={" "} date={" "} friendUser={contact.id} photo={" "}
                                 friendNickname={contact.name}/>
         }
@@ -93,36 +91,24 @@ function Chats({username, nickname, photo, Logout}) {
         //     </>;
         // }
 
-        return <ChatHistory photo={" "} friendUser={contact.id}
-                            setFriendUsername={setFriendUser} message={contact.last}
+        return <ChatHistory photo={" "} friendUser={contact.id} server={contact.server}
+                            setFriend={setFriend} message={contact.last}
                             friendNickname={contact.name} date={contact.lastdate}/>
     });
 
     // Add the new message to the user and his friend and scroll down the chat.
     const handelAddMessage = (newMessage) => {
-        const url = localhost + 'api/Contacts/' + FriendUser + '/Messages';
+        const url = localhost + 'api/Contacts/' + Friend.username + '/Messages';
         axios.post(url,
             {
-                Content: newMessage.content
-            })
+                content: newMessage.content
+            }).then(axios.get(url).then(async res => setMessageList(await res.data)))
 
-        // const jsonData = {
-        //     Content: newMessage.content
-        // };
-        //
-        // fetch(url, {
-        //     method: 'POST',
-        //     mode: 'no-cors',
-        //     body: JSON.stringify(jsonData)
-        // });
+        // transfer
+        const url2 = Friend.server.endsWith('/') ? Friend.server + 'api/transfer' : Friend.server + '/api/transfer';
+        axios.post(url2,
+            {from: username, to: Friend.username, content: newMessage.content})
 
-        // chat.push({message: newMessage});
-        // setMessageList((chat).filter((msg) => msg));
-        // let friendMessage = new Message(newMessage.content, false, newMessage.date, newMessage.type);
-        // FriendUser.friends.get(user.username).push({message: friendMessage});
-        // setContactsList(user.friends.keys());
-
-        setMessageList(v => v);
         wait(100).then(() => document.getElementsByClassName('Chat')[0].scrollTop = document.getElementsByClassName('Chat')[0].scrollHeight)
     }
 
@@ -139,7 +125,7 @@ function Chats({username, nickname, photo, Logout}) {
                         <div className="col-8 m-2 ContactName" id="UserName">
                             <span className="m-3"> {nickname} </span>
                             <LeftMenu Logout={Logout}/>
-                            <NewContactModal setContactsList={setContactsList} user={username} myiD={username}/>
+                            <NewContactModal setContactsList={setContactsList} thisUser={username}/>
                         </div>
                     </div>
 

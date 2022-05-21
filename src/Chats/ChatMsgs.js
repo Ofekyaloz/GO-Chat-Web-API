@@ -1,14 +1,13 @@
 function ChatMsgs({MessageList}) {
-    function showMessages() {
-        if (MessageList === undefined || MessageList === null || MessageList === '') {
-            return <></>;
-        } else {
-            MessageList.map((msg, key) => (
+
+    return (
+        <ul id="chat-msgs" className="Chat">
+            { MessageList.map((msg, key) => (
                 <>
-                    <li className={msg.sent ? "d-flex justify-content-end right-msg" : "d-flex justify-content-start"}
+                    <li className={"d-flex justify-content-end right-msg"}
                         key={key}>
                         <div
-                            className={msg.sent ? "right-content chat-bubble chat-bubble-right" : "left-content chat-bubble chat-bubble-left"}
+                            className={"right-content chat-bubble chat-bubble-right"}
                             key={key}>
                             <div>
                                 {msg.content}
@@ -20,13 +19,7 @@ function ChatMsgs({MessageList}) {
                         </div>
                     </li>
                 </>
-            ))
-        }
-    }
-
-    return (
-        <ul id="chat-msgs" className="Chat">
-            {showMessages()}
+            ))}
         </ul>
     )
 }

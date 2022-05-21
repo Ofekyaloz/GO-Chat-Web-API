@@ -1,6 +1,6 @@
 import defaultImage from "../Pictures/icon-user-default.png"
 
-function ChatHistory({setFriendUsername, friendUser, photo, friendNickname, date, message}) {
+function ChatHistory({setFriend, friendUser, photo, friendNickname, date, message, server}) {
 
     const DisplayChat = function () {
         const bar = document.getElementById("ChatBar");
@@ -22,7 +22,7 @@ function ChatHistory({setFriendUsername, friendUser, photo, friendNickname, date
         if (li.style.display !== "none") {
             li.style.display = "block";
         }
-        setFriendUsername(friendUser);
+        setFriend({username: friendUser, server: server});
     }
 
     return (

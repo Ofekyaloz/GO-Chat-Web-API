@@ -2,8 +2,9 @@ import {useRef} from "react";
 import {wait} from "@testing-library/user-event/dist/utils";
 import {click} from "@testing-library/user-event/dist/click";
 import axios from "axios";
+import {localhost} from "../App";
 
-function NewContactModal({setContactsList, user, myiD}) {
+function NewContactModal({setContactsList, thisUser}) {
     const newContactUsername = useRef(null);
     const newContactNickname = useRef(null);
     const newContactServer = useRef(null);
@@ -13,14 +14,6 @@ function NewContactModal({setContactsList, user, myiD}) {
             newContactNickname.current.value !== '' && newContactServer.current.value !== '') {
             AddContact();
         }
-    }
-
-    async function find(name) {
-        const res = await fetch(newContactServer + '/api/contacts/' + name)
-        if (res.ok) {
-            return await res.json();
-        } else
-            return undefined
     }
 
     const AddContact = function () {
@@ -34,8 +27,8 @@ function NewContactModal({setContactsList, user, myiD}) {
                 id: id,
                 name: name,
                 server: server
-            }).then(res => {
-            setContactsList(res.data);
+            }).then(async res => {
+            setContactsList(await res.data);
             document.getElementById("CloseSearch").click();
             wait(100).then(() => click(document.getElementById(id)));
         }).catch(e => {
@@ -44,6 +37,8 @@ function NewContactModal({setContactsList, user, myiD}) {
 
 
         //invite
+        const url = server.endsWith('/') ? server + 'api/invitations ' : server + '/api/invitations ';
+        axios.post(url, {from: thisUser, to: id, server: localhost})
         // const jsonData2 = {
         //     "from": myiD,
         //     "to": friend.id,
