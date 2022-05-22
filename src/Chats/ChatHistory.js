@@ -1,6 +1,6 @@
 import defaultImage from "../Pictures/icon-user-default.png"
 
-function ChatHistory({setFriend, friendUser, photo, friendNickname, date, message, server}) {
+function ChatHistory({setFriend, friendUser, photo, friendNickname, date, message, server, key}) {
 
     const DisplayChat = function () {
         const bar = document.getElementById("ChatBar");
@@ -27,8 +27,7 @@ function ChatHistory({setFriend, friendUser, photo, friendNickname, date, messag
 
     return (
         <button className="list-group-item list-group-item-action" id={friendUser} data-bs-toggle="list"
-                onClick={DisplayChat}
-                role="tab" aria-controls="list-home">
+                onClick={DisplayChat} role="tab" aria-controls="list-home" key={key}>
             <div>
                 <div className="row">
                     <div className="col-3" id={"profile-picture-friend"}>

@@ -9,107 +9,99 @@ import ChatMsgs from "./ChatMsgs";
 import {wait} from "@testing-library/user-event/dist/utils";
 import axios from "axios";
 import defaultImage from "../Pictures/icon-user-default.png"
+import $ from "jquery";
 
-function Chats({username, nickname, photo, Logout}) {
+function Chats({username, nickname, photo, token, Logout}) {
     let [Friend, setFriend] = useState({username: '', server: ''});
-
-    const [MessageList, setMessageList] = useState([]);
-
-    // useEffect(async () => {
-    //     const res = await fetch(localhost + 'api/contacts/' + Friend + '/messages')
-    //     if (res.ok) {
-    //         const data = await res.json()
-    //         setMessageList(data);
-    //     }
-    // }, []);
-
-
-    useEffect(() => {
-        (async function () {
-            try {
-                const url = 'https://localhost:7265/api/Contacts/' + Friend.username + '/messages'
-                console.log("url=", url)
-                axios.get(url, {withCredentials: true}
-                ).then(res => {
-                    console.log("msgssssss", res.data); //
-                    setMessageList(res.data);
-                })
-            } catch (e) {
-                console.error(e);
-            }
-        })();
-    }, [Friend.username]);
-
 
     const [ContactsList, setContactsList] = useState([]);
 
     useEffect(() => {
         (async function () {
-            try {
-                axios.get('https://localhost:7265/api/Contacts', {withCredentials: true}
-                ).then(res => {
-                    console.log("contactsssssssss", res.data); // {withCredentials: true}
-                    setContactsList(res.data);
-                })
-            } catch (e) {
-                console.error(e);
-            }
+
+            const data = await $.ajax({
+                url: 'https://localhost:7265/api/Contacts',
+                type: 'GET',
+                contentType: "application/json",
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + token)
+                }
+            })
+            setContactsList(data);
         })();
     }, []);
 
+    const [MessageList, setMessageList] = useState([]);
+
+    useEffect(() => {
+        (async function () {
+            if (Friend.username === '') {
+                return;
+            }
+            const url = 'https://localhost:7265/api/Contacts/' + Friend.username + '/messages'
+            const data = await $.ajax({
+                url: url,
+                type: 'GET',
+                contentType: "application/json",
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + token)
+                }
+            })
+            setMessageList(data);
+        })();
+    }, [Friend.username]);
 
     const HistoryList = (Array.from(ContactsList).reverse()).map((contact, key) => {
         const last = contact.last;
-
         // if the chat is undefined or has no message.
         if (last === undefined || last === '') {
-            return <ChatHistory setFriend={setFriend} server={contact.server}
-                                message={" "} date={" "} friendUser={contact.id} photo={" "}
-                                friendNickname={contact.name}/>
+            return <ChatHistory setFriend={setFriend} server={contact.server} message={" "} date={" "} key={key}
+                                friendUser={contact.id} photo={" "} friendNickname={contact.name}/>
         }
 
-
-        // let content = last_message.type;
-        //
-        // // if the message is text presents the content else just the type of the message.
-        // if (content === "text") {
-        //     content = last_message.content;
-        // } else if (content === "photo") {
-        //     content = <>
-        //         <i className="bi bi-image"/>
-        //         <span className="m-3"> photo </span>
-        //     </>;
-        // } else if (content === "video") {
-        //     content = <>
-        //         <i className="bi bi-camera-video"/>
-        //         <span className="m-3"> video </span>
-        //     </>;
-        // } else if (content === "audio") {
-        //     content = <>
-        //         <i className="bi bi-file-earmark-music"/>
-        //         <span className="m-3"> audio </span>
-        //     </>;
-        // }
-
-        return <ChatHistory photo={" "} friendUser={contact.id} server={contact.server}
-                            setFriend={setFriend} message={contact.last}
-                            friendNickname={contact.name} date={contact.lastdate}/>
+        return <ChatHistory photo={" "} friendUser={contact.id} server={contact.server} setFriend={setFriend} key={key}
+                            message={contact.last} friendNickname={contact.name} date={contact.lastdate}/>
     });
 
     // Add the new message to the user and his friend and scroll down the chat.
     const handelAddMessage = (newMessage) => {
         const url = localhost + 'api/Contacts/' + Friend.username + '/Messages';
-        axios.post(url,
-            {
-                content: newMessage.content
-            }).then(axios.get(url).then(async res => setMessageList(await res.data)))
+        console.log("content =", newMessage.content);
+        $.ajax({
+            url: url,
+            type: 'POST',
+            contentType: "application/json",
+            data: JSON.stringify({content: newMessage.content}),
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Bearer ' + token)
+            },
+            success: function () {
+                $.ajax({
+                    url: url, type: 'GET', contentType: "application/json",
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader('Authorization', 'Bearer ' + token)
+                    },
+                    success: async function (data) {
+                        console.log(data)
+                        setMessageList(await data)
+                    }
+                })
+            },
+            error: function (e) {
+                console.log(e)
+            }
+        })
 
         // transfer
         const url2 = Friend.server.endsWith('/') ? Friend.server + 'api/transfer' : Friend.server + '/api/transfer';
-        axios.post(url2,
-            {from: username, to: Friend.username, content: newMessage.content})
+        $.ajax({
+            url: url2, type: 'POST', contentType: "application/json", dataType: JSON.stringify({
+                from: username, to: Friend.username, content: newMessage.content
+            }),
+        })
 
-        wait(100).then(() => document.getElementsByClassName('Chat')[0].scrollTop = document.getElementsByClassName('Chat')[0].scrollHeight)
+        wait(
+            100).then(() => document.getElementsByClassName('Chat')[0].scrollTop = document.getElementsByClassName('Chat')[0].scrollHeight)
     }
 
 
@@ -125,7 +117,7 @@ function Chats({username, nickname, photo, Logout}) {
                         <div className="col-8 m-2 ContactName" id="UserName">
                             <span className="m-3"> {nickname} </span>
                             <LeftMenu Logout={Logout}/>
-                            <NewContactModal setContactsList={setContactsList} thisUser={username}/>
+                            <NewContactModal setContactsList={setContactsList} thisUser={username} token={token}/>
                         </div>
                     </div>
 

@@ -4,8 +4,9 @@ import './SignUp.css';
 import logo from "../Pictures/logo.png";
 import {localhost} from "../App";
 import axios from "axios";
+import $ from "jquery";
 
-function SignIn({setNickname, setUsername, setPhoto}) {
+function SignIn({setNickname, setUsername, setPhoto, setToken}) {
     const [details, setDetails] = useState({username: "", password: ""});
     let navigate = useNavigate();
 
@@ -34,23 +35,30 @@ function SignIn({setNickname, setUsername, setPhoto}) {
     // );
 
 
-    const submitHandler = async e => {
+    const submitHandler = e => {
         e.preventDefault();
 
-        await axios.post('https://localhost:7265/api/Users/Login',
-            {
-                username: details.username,
-                password: details.password,
-            }).then(res=> {
-            setUsername({
-                username: details.username,
-                password: details.password
-            });
-            setNickname(res.data.nickname)
-            setPhoto(res.data.photo)
-            navigate("/Chats");
-        }).catch(e=> {
-            document.getElementById('errorInSignIn').style.display = 'block';
+        $.ajax({
+            url: 'https://localhost:7265/api/Users/Login',
+            type: 'POST',
+            contentType: "application/json",
+            data: JSON.stringify({username: details.username,
+                password: details.password}),
+            success: function (data) {
+                let tmp = data.split(" ");
+                console.log(tmp)
+                setToken(tmp[0])
+                setNickname(tmp[1])
+                setPhoto(tmp[2])
+                setUsername({
+                    username: details.username,
+                    password: details.password
+                });
+                navigate("/Chats");
+            },
+            error: function () {
+                document.getElementById('errorInSignIn').style.display = 'block';
+            }
         })
     }
 

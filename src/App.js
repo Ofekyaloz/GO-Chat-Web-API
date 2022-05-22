@@ -5,7 +5,7 @@ import './App.css';
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import {useState} from 'react';
 
-export const localhost = 'http://localhost:7265/'
+export const localhost = 'https://localhost:7265/'
 
 
 function App() {
@@ -13,6 +13,7 @@ function App() {
     const [username, setUsername] = useState({username: "", password: ""});
     const [nickname, setNickname] = useState("");
     const [photo, setPhoto] = useState("");
+    const [token, setToken] = useState("");
 
     async function find(name) {
         const res = await fetch(localhost + 'api/contacts/' + name)
@@ -29,11 +30,11 @@ function App() {
             <Router>
                 <Routes>
                     <Route path={"/Chats"}
-                           element={<Chats username={username.username} nickname={nickname} photo={photo} Logout={Logout}/>}/>
+                           element={<Chats username={username.username} nickname={nickname} photo={photo} token={token} Logout={Logout}/>}/>
                     <Route path={"/"}
-                           element={<SignIn setNickname={setNickname} setUsername={setUsername} setPhoto={setPhoto}/>}/>
+                           element={<SignIn setNickname={setNickname} setUsername={setUsername} setToken={setToken} setPhoto={setPhoto}/>}/>
                     <Route path={"/SignUp"}
-                           element={<SignUp setNickname={setNickname} setUsername={setUsername} setPhoto={setPhoto}/>}/>
+                           element={<SignUp setNickname={setNickname} setUsername={setUsername} setToken={setToken} setPhoto={setPhoto}/>}/>
                 </Routes>
             </Router>
         </div>

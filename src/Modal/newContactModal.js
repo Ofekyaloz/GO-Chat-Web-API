@@ -4,7 +4,7 @@ import {click} from "@testing-library/user-event/dist/click";
 import axios from "axios";
 import {localhost} from "../App";
 
-function NewContactModal({setContactsList, thisUser}) {
+function NewContactModal({setContactsList, thisUser, token}) {
     const newContactUsername = useRef(null);
     const newContactNickname = useRef(null);
     const newContactServer = useRef(null);
@@ -22,35 +22,34 @@ function NewContactModal({setContactsList, thisUser}) {
         let name = newContactNickname.current.value;
         let server = newContactServer.current.value;
 
-        axios.post('http://localhost:7265/api/contacts/',
-            {
+        $.ajax({
+            url: 'http://localhost:7265/api/Contacts', type: 'POST', contentType: "application/json", dataType: JSON.stringify({
                 id: id,
                 name: name,
                 server: server
-            }).then(async res => {
-            setContactsList(await res.data);
-            document.getElementById("CloseSearch").click();
-            wait(100).then(() => click(document.getElementById(id)));
-        }).catch(e => {
-            document.getElementById("not-found").style.display = 'block';
+            }),
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Bearer ' + token)
+            },
+            success: async function (data) {
+                setContactsList(await data)
+                document.getElementById("CloseSearch").click();
+                wait(100).then(() => click(document.getElementById(id)));
+            },
+            error: function (e) {
+                document.getElementById("not-found").style.display = 'block';
+            }
         })
 
 
         //invite
         const url = server.endsWith('/') ? server + 'api/invitations ' : server + '/api/invitations ';
-        axios.post(url, {from: thisUser, to: id, server: localhost})
-        // const jsonData2 = {
-        //     "from": myiD,
-        //     "to": friend.id,
-        //     "server": 'http://localhost:7265'
-        // };
-        //
-        // fetch('http://localhost:7265/contacts/', {  // Enter your IP address here
-        //     method: 'POST',
-        //     mode: 'cors',
-        //     body: JSON.stringify(jsonData2) // body data type must match "Content-Type" header
-        // });
-
+        $.ajax({
+            url: url,
+            type: 'POST',
+            contentType: "application/json",
+            dataType: JSON.stringify({from: thisUser, to: id, server: localhost})
+        })
     }
 
     const Close = function () {
@@ -67,7 +66,7 @@ function NewContactModal({setContactsList, thisUser}) {
                 <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title"> New Chat </h5>
-                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"/>
+                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={Close}/>
                     </div>
                     <div className="modal-body">
                         <input ref={newContactUsername} type="text" className="form-control SearchContact"
@@ -77,7 +76,7 @@ function NewContactModal({setContactsList, thisUser}) {
 
                         <input ref={newContactNickname} type="text" className="form-control SearchContact"
                                autoComplete="off"
-                               id="newContactUser" placeholder="Nickname" maxLength={35} onKeyPress={HandlePress}>
+                               id="newContactNickname" placeholder="Nickname" maxLength={35} onKeyPress={HandlePress}>
                         </input>
 
                         <input ref={newContactServer} type="text" className="form-control SearchContact"

@@ -4,8 +4,9 @@ import React, {useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import defaultImage from "../Pictures/icon-user-default.png";
 import axios from "axios";
+import $ from "jquery";
 
-function SignUp({setNickname, setUsername, setPhoto}) {
+function SignUp({setNickname, setUsername, setPhoto, setToken}) {
 
     const [details, setDetails] = useState({
         username: "",
@@ -74,24 +75,52 @@ function SignUp({setNickname, setUsername, setPhoto}) {
         //
         //     })
 
-        await axios.post('https://localhost:7265/api/Users/Register',
-            {
-                Username: details.username,
+
+
+        $.ajax({
+            url: 'https://localhost:7265/api/Users/Register',
+            type: 'POST',
+            contentType: "application/json",
+            data: JSON.stringify({ Username: details.username,
                 Password: details.password,
                 Email: details.email,
                 Nickname: details.nickname,
                 Photo: " ",
-                Contacts: null
-            }).then(res=> {
-            setUsername({
-                username: details.username,
-                password: details.password
-            });
-            setNickname(res.data)
-            navigate("/Chats");
-        }).catch(e=> {
-            document.getElementById('errorUsername').style.display = 'block';
+                Contacts: null}),
+            success: function (data) {
+                let tmp = data.split(" ");
+                setToken(tmp[0])
+                setNickname(tmp[1])
+                setPhoto(tmp[2])
+                setUsername({
+                    username: details.username,
+                    password: details.password
+                });
+                navigate("/Chats");
+            },
+            error: function () {
+                document.getElementById('errorUsername').style.display = 'block';
+            }
         })
+
+        // await axios.post('https://localhost:7265/api/Users/Register',
+        //     {
+        //         Username: details.username,
+        //         Password: details.password,
+        //         Email: details.email,
+        //         Nickname: details.nickname,
+        //         Photo: " ",
+        //         Contacts: null
+        //     }).then(res=> {
+        //     setUsername({
+        //         username: details.username,
+        //         password: details.password
+        //     });
+        //     setNickname(res.data)
+        //     navigate("/Chats");
+        // }).catch(e=> {
+        //     document.getElementById('errorUsername').style.display = 'block';
+        // })
     }
 
     return (
