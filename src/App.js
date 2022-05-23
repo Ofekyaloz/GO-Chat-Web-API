@@ -15,12 +15,6 @@ function App() {
     const [photo, setPhoto] = useState("");
     const [token, setToken] = useState("");
 
-    async function find(name) {
-        const res = await fetch(localhost + 'api/contacts/' + name)
-        return res.ok;
-    }
-
-
     const Logout = () => {
         setUsername({username: '', password: ''});
     }
@@ -30,11 +24,14 @@ function App() {
             <Router>
                 <Routes>
                     <Route path={"/Chats"}
-                           element={<Chats username={username.username} nickname={nickname} photo={photo} token={token} Logout={Logout}/>}/>
+                           element={<Chats username={username.username} nickname={nickname} photo={photo} token={token}
+                                           Logout={Logout}/>}/>
                     <Route path={"/"}
-                           element={<SignIn setNickname={setNickname} setUsername={setUsername} setToken={setToken} setPhoto={setPhoto}/>}/>
+                           element={<SignIn setNickname={setNickname} setUsername={setUsername} setToken={setToken}
+                                            setPhoto={setPhoto}/>}/>
                     <Route path={"/SignUp"}
-                           element={<SignUp setNickname={setNickname} setUsername={setUsername} setToken={setToken} setPhoto={setPhoto}/>}/>
+                           element={<SignUp setNickname={setNickname} setUsername={setUsername} setToken={setToken}
+                                            setPhoto={setPhoto}/>}/>
                 </Routes>
             </Router>
         </div>

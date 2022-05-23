@@ -1,8 +1,8 @@
 import {useRef} from "react";
 import {wait} from "@testing-library/user-event/dist/utils";
 import {click} from "@testing-library/user-event/dist/click";
-import axios from "axios";
 import {localhost} from "../App";
+import $ from "jquery";
 
 function NewContactModal({setContactsList, thisUser, token}) {
     const newContactUsername = useRef(null);
@@ -23,7 +23,10 @@ function NewContactModal({setContactsList, thisUser, token}) {
         let server = newContactServer.current.value;
 
         $.ajax({
-            url: 'http://localhost:7265/api/Contacts', type: 'POST', contentType: "application/json", dataType: JSON.stringify({
+            url: 'https://localhost:7265/api/Contacts',
+            type: 'POST',
+            contentType: "application/json",
+            dataType: JSON.stringify({
                 id: id,
                 name: name,
                 server: server
@@ -36,7 +39,7 @@ function NewContactModal({setContactsList, thisUser, token}) {
                 document.getElementById("CloseSearch").click();
                 wait(100).then(() => click(document.getElementById(id)));
             },
-            error: function (e) {
+            error: function () {
                 document.getElementById("not-found").style.display = 'block';
             }
         })
@@ -66,7 +69,8 @@ function NewContactModal({setContactsList, thisUser, token}) {
                 <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title"> New Chat </h5>
-                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={Close}/>
+                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                                onClick={Close}/>
                     </div>
                     <div className="modal-body">
                         <input ref={newContactUsername} type="text" className="form-control SearchContact"

@@ -7,7 +7,6 @@ import NewContactModal from "../Modal/newContactModal";
 import {localhost} from "../App";
 import ChatMsgs from "./ChatMsgs";
 import {wait} from "@testing-library/user-event/dist/utils";
-import axios from "axios";
 import defaultImage from "../Pictures/icon-user-default.png"
 import $ from "jquery";
 
