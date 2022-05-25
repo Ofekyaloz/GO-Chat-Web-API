@@ -205,3 +205,8 @@ label {
     height: 30%;
     left: 0;
 }
+
+.GeneralButtons {
+    border-radius: 48px;
+    margin-bottom: 10px;
+}

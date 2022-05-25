@@ -5,7 +5,6 @@ import {useEffect, useState} from "react";
 import NewContactModal from "../Modal/newContactModal";
 import {localhost} from "../App";
 import ChatMsgs from "./ChatMsgs";
-import {wait} from "@testing-library/user-event/dist/utils";
 import defaultImage from "../Pictures/icon-user-default.png"
 import $ from "jquery";
 import {HubConnectionBuilder} from "@microsoft/signalr";
@@ -19,6 +18,7 @@ function Chats({username, nickname, photo, token, Logout}) {
     const [connectionId, setConnectionId] = useState('');
     const [newUpdate, setNewUpdate] = useState(0);
 
+    // set the connectionId and get updates
     useEffect(() => {
         (async function () {
             const connection = new HubConnectionBuilder()
@@ -36,7 +36,6 @@ function Chats({username, nickname, photo, token, Logout}) {
                         setConnectionId(connectionId)
                     })
                 })
-                .catch(e => console.log('Connection failed: ', e))
         })();
     }, [])
 
@@ -52,8 +51,7 @@ function Chats({username, nickname, photo, token, Logout}) {
         })
     }, [connectionId])
 
-
-    // Get the contacts
+    // Get contacts
     useEffect(() => {
         (async function () {
 
@@ -72,11 +70,9 @@ function Chats({username, nickname, photo, token, Logout}) {
     // Get messages
     useEffect(() => {
         (async function () {
-            console.log("sss")
             if (Friend.username === '') {
                 return;
             }
-            console.log("bbb")
             const url = 'https://localhost:7265/api/Contacts/' + Friend.username + '/messages'
             const data = await $.ajax({
                 url: url,
@@ -87,17 +83,13 @@ function Chats({username, nickname, photo, token, Logout}) {
                 }
             })
             setMessageList(data);
-            console.log(data)
+            document.getElementsByClassName('Chat')[0].scrollTop = document.getElementsByClassName('Chat')[0].scrollHeight
         })();
     }, [Friend.username, newUpdate]);
 
-    // const HistoryList = (Array.from(ContactsList).reverse()).map((contact, key) => {
-    //     return <ChatHistory photo={" "} friendUser={contact.id} server={contact.server} setFriend={setFriend}
-    //                         message={contact.last} friendNickname={contact.name} date={contact.lastdate}/>
-    // });
 
-
-    const HistoryList = (Array.from(ContactsList).reverse()).map((contact, key) => {
+    const HistoryList =  ContactsList === [] || ContactsList === undefined ? "" :
+        (Array.from(ContactsList).reverse()).map((contact, key) => {
         return (
             <button className="list-group-item list-group-item-action" id={contact.id} data-bs-toggle="list"
                     onClick={() => DisplayChat(setFriend, contact.id, " ", contact.name, contact.server)} role="tab"
@@ -120,7 +112,6 @@ function Chats({username, nickname, photo, token, Logout}) {
         )
     });
 
-
     // Add the new message to the user and his friend and scroll down the chat.
     const handelAddMessage = async (newMessage) => {
         const url = localhost + 'api/Contacts/' + Friend.username + '/Messages';
@@ -142,6 +133,7 @@ function Chats({username, nickname, photo, token, Logout}) {
             }),
         })
 
+        // Get the new messages
         await $.ajax({
             url: url, type: 'GET', contentType: "application/json",
             beforeSend: function (xhr) {
@@ -150,12 +142,8 @@ function Chats({username, nickname, photo, token, Logout}) {
             success: function (data) {
                 setMessageList(data)
             }
-        })
-
-        wait(
-            100).then(() => document.getElementsByClassName('Chat')[0].scrollTop = document.getElementsByClassName('Chat')[0].scrollHeight)
+        }).then(() => document.getElementsByClassName('Chat')[0].scrollTop = document.getElementsByClassName('Chat')[0].scrollHeight)
     }
-
 
     return (
         <div className={"container-fluid"}>

@@ -71,10 +71,9 @@ function SignUp({setNickname, setUsername, setPhoto, setToken}) {
                 Contacts: null
             }),
             success: function (data) {
-                let tmp = data.split(" ");
-                setToken(tmp[0])
-                setNickname(tmp[1])
-                setPhoto(tmp[2])
+                setToken(data)
+                setNickname(details.nickname)
+                setPhoto(details.image)
                 setUsername({
                     username: details.username,
                     password: details.password
@@ -175,7 +174,7 @@ function SignUp({setNickname, setUsername, setPhoto, setToken}) {
                                    onChange={e => setDetails({...details, image: e.target.value})}
                             /></div>
                         <button type="submit" className="btn btn-forms">Sign up</button>
-                        <a href={"/"} className="link-primary fontSize">One of us? Log in here</a>
+                        <a href={"/"} className="GeneralButtons btn btn-success fontSize">One of us? Log in here</a>
                         <p className={"social-text"}>Or sign up with social media</p>
                         <div className={"social-media"}>
                             <a href={"#"} className={"social-icon"}>

@@ -71,11 +71,12 @@ function SignIn({setNickname, setUsername, setPhoto, setToken}) {
                             </div>
                             <button type="submit" className="btn btn-forms">Log In</button>
                             <div className={"col-md-12"}>
-                                <a href="#" className="link-primary col-6 leftSide fontSize">Forgot password?</a>
-                                <Link to={"/SignUp"} className="link-primary col-6 rightSide fontSize">Sign up for
-                                    GoChat</Link>
+                                <a href="#" className="GeneralButtons btn btn-secondary col-6 leftSide fontSize"> Forgot password? </a>
+                                <Link to={"/SignUp"} className="GeneralButtons btn btn-success col-6 rightSide fontSize"> Sign up </Link>
                             </div>
-                            {/*<a href="#" className="link-primary col-6 leftSide fontSize">Forgot password?</a>*/}
+                            <a href="http://localhost:5178/" type="button" className="GeneralButtons btn btn-info">Enjoy
+                                our chat? Let us know!</a>
+
                             <p className={"social-text"}>Or sign in with social media</p>
                             <div className={"social-media"}>
                                 <a href={"#"} className={"social-icon"}>
