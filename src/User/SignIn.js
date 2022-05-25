@@ -75,6 +75,7 @@ function SignIn({setNickname, setUsername, setPhoto, setToken}) {
                                 <Link to={"/SignUp"} className="link-primary col-6 rightSide fontSize">Sign up for
                                     GoChat</Link>
                             </div>
+                            {/*<a href="#" className="link-primary col-6 leftSide fontSize">Forgot password?</a>*/}
                             <p className={"social-text"}>Or sign in with social media</p>
                             <div className={"social-media"}>
                                 <a href={"#"} className={"social-icon"}>

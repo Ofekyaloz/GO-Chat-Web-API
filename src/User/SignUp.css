@@ -194,20 +194,14 @@ label {
     margin-left: 105px;
 }
 
-#logo {
-    width: 580px;
-    height: 525px;
-    float: left;
-}
-
 .logo-container {
     float: left;
 }
 
 #logo {
     position: fixed;
-    top: 245px;
-    left: 60px;
-    width: 450px;
-    height: 250px;
+    top: 30%;
+    width: 30%;
+    height: 30%;
+    left: 0;
 }

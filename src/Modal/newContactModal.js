@@ -26,16 +26,26 @@ function NewContactModal({setContactsList, thisUser, token}) {
             url: 'https://localhost:7265/api/Contacts',
             type: 'POST',
             contentType: "application/json",
-            dataType: JSON.stringify({
-                id: id,
-                name: name,
-                server: server
+            data: JSON.stringify({
+                "id": id,
+                "name": name,
+                "server": server
             }),
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', 'Bearer ' + token)
             },
-            success: async function (data) {
-                setContactsList(await data)
+            success: function () {
+                $.ajax({
+                    url: 'https://localhost:7265/api/Contacts',
+                    type: 'GET',
+                    contentType: "application/json",
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader('Authorization', 'Bearer ' + token)
+                    },
+                    success: function(data) {
+                        setContactsList(data)
+                    }
+                })
                 document.getElementById("CloseSearch").click();
                 wait(100).then(() => click(document.getElementById(id)));
             },
@@ -46,12 +56,12 @@ function NewContactModal({setContactsList, thisUser, token}) {
 
 
         //invite
-        const url = server.endsWith('/') ? server + 'api/invitations ' : server + '/api/invitations ';
+        const url = server.endsWith('/') ?'https://' +  server + 'api/invitations' : 'https://' + server + '/api/invitations';
         $.ajax({
             url: url,
             type: 'POST',
             contentType: "application/json",
-            dataType: JSON.stringify({from: thisUser, to: id, server: localhost})
+            data: JSON.stringify({"from": thisUser, "to": id, "server": localhost})
         })
     }
 
@@ -85,7 +95,7 @@ function NewContactModal({setContactsList, thisUser, token}) {
 
                         <input ref={newContactServer} type="text" className="form-control SearchContact"
                                autoComplete="off"
-                               id="newContactServer" placeholder="Server" maxLength={35} onKeyPress={HandlePress}>
+                               id="newContactServer" placeholder="Server: localhost:xxxx" maxLength={35} onKeyPress={HandlePress}>
                         </input>
 
                         <div id="not-found" className="alert alert-danger align-items-center" role="alert">
