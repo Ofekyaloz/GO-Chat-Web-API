@@ -62,7 +62,7 @@ function SignIn({setNickname, setUsername, setPhoto, setToken}) {
                                 <i className="bi bi-lock-fill"/>
                                 <input type="password" className="form-control" placeholder={"Password"}
                                        onChange={e => setDetails({...details, password: e.target.value})}
-                                       value={details.password} required/>
+                                       value={details.password} autoComplete={"false"} required/>
                             </div>
 
                             <div className="checkbox">
