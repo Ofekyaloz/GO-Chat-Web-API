@@ -21,9 +21,9 @@ function NewContactModal({setContactsList, thisUser, token}) {
         let id = newContactUsername.current.value;
         let name = newContactNickname.current.value;
         let server = newContactServer.current.value;
-
+        const url = localhost + 'api/Contacts'
         $.ajax({
-            url: 'https://localhost:7265/api/Contacts',
+            url: url,
             type: 'POST',
             contentType: "application/json",
             data: JSON.stringify({
@@ -36,7 +36,7 @@ function NewContactModal({setContactsList, thisUser, token}) {
             },
             success: function () {
                 $.ajax({
-                    url: 'https://localhost:7265/api/Contacts',
+                    url: url,
                     type: 'GET',
                     contentType: "application/json",
                     beforeSend: function (xhr) {
@@ -56,9 +56,9 @@ function NewContactModal({setContactsList, thisUser, token}) {
 
 
         //invite
-        const url = server.endsWith('/') ?'https://' +  server + 'api/invitations' : 'https://' + server + '/api/invitations';
+        const url2 = server.endsWith('/') ?'https://' +  server + 'api/invitations' : 'https://' + server + '/api/invitations';
         $.ajax({
-            url: url,
+            url: url2,
             type: 'POST',
             contentType: "application/json",
             data: JSON.stringify({"from": thisUser, "to": id, "server": localhost})

@@ -21,8 +21,9 @@ function Chats({username, nickname, photo, token, Logout}) {
     // set the connectionId and get updates
     useEffect(() => {
         (async function () {
+            const url = localhost + 'MyHub'
             const connection = new HubConnectionBuilder()
-                .withUrl('https://localhost:7265/MyHub')
+                .withUrl(url)
                 .withAutomaticReconnect()
                 .build();
             connection.start()
@@ -40,8 +41,9 @@ function Chats({username, nickname, photo, token, Logout}) {
     }, [])
 
     useEffect(() => {
+        const url = localhost + 'api/users/Connection'
         $.ajax({
-            url: 'https://localhost:7265/api/users/Connection',
+            url: url,
             type: 'POST',
             contentType: "application/json",
             data: JSON.stringify({"connectionId": connectionId}),
@@ -54,9 +56,9 @@ function Chats({username, nickname, photo, token, Logout}) {
     // Get contacts
     useEffect(() => {
         (async function () {
-
+            const url = localhost + 'api/Contacts'
             const data = await $.ajax({
-                url: 'https://localhost:7265/api/Contacts',
+                url: url,
                 type: 'GET',
                 contentType: "application/json",
                 beforeSend: function (xhr) {
@@ -73,7 +75,7 @@ function Chats({username, nickname, photo, token, Logout}) {
             if (Friend.username === '') {
                 return;
             }
-            const url = 'https://localhost:7265/api/Contacts/' + Friend.username + '/messages'
+            const url = localhost + 'api/Contacts/' + Friend.username + '/messages'
             const data = await $.ajax({
                 url: url,
                 type: 'GET',

@@ -4,6 +4,7 @@ import React, {useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import defaultImage from "../Pictures/icon-user-default.png";
 import $ from "jquery";
+import {localhost} from "../App";
 
 function SignUp({setNickname, setUsername, setPhoto, setToken}) {
 
@@ -57,9 +58,9 @@ function SignUp({setNickname, setUsername, setPhoto, setToken}) {
         if (details.image === "") {
             details.image = defaultImage;
         }
-
+        const url = localhost + 'api/Users/Register'
         $.ajax({
-            url: 'https://localhost:7265/api/Users/Register',
+            url: url,
             type: 'POST',
             contentType: "application/json",
             data: JSON.stringify({
