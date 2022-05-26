@@ -32,3 +32,5 @@ In order to leave a feedback Go-Chat-Feedbacks must be running.
 You can click on 'Enjou our chat? Let us know!' to post a new feedback or just seeing our rate anad former feedbacks.
 
 ![GoChat](https://github.com/Ofekyaloz/GO-Chat-Web-API/blob/master/src/Pictures/Go-Chat-Signin_Page.jpg)
+
+note: you can change the localhost on app.js file.
